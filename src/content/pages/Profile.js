@@ -4,7 +4,6 @@ import ProfilePage from '../components/ProfilePage'
 
 const Profile = props => {
 
-  let [secretMessage, setSecretMessage] = useState('')
   let [userDetails, setUserDetails] = useState(null)
 
   useEffect(() => {
@@ -19,51 +18,25 @@ const Profile = props => {
       .then(response => {
         console.log('Response', response)
         if (!response.ok) {
-          setSecretMessage('Nice try!')
           return
         }
-        // If we get a good response
+        // If we get a good response, set the user details
         response.json()
           .then(result => {
-            console.log(result)
-            // setUserData(result)
-            console.log("WHAT RESULT", result)
             setUserDetails(result)
           })
       })
       .catch(err => {
         console.log("Error in profile", err)
-        setSecretMessage('No message for you')
       })
   }, [])
-  // })
-  console.log("DID WE GET USER DEETS", userDetails)
-  // Make Sure there is a user before trying to show their info
+  // If user isn't signed in, redirect to home page to login
   if (!props.user) {
-    return <Redirect to="/" />
+    return (
+    <Redirect to="/" />
+    )
   }
-
-
-    // var recipes = userData.recipes
-    // console.log(recipes)
-    // var display 
-    // if(recipes){
-    //   display = recipes.map((r) => {
-    //     return (
-    //       <div>
-    //       {r.recipeName}
-    //       </div>
-    //     )
-    //   })
-    // }
-    // else{
-    //   display = "Loading..."
-    // }
-
-
-
-  // console.log('userData:', userData)
-
+  // If user signed in show, user details
   return (
     <ProfilePage user={props.user} userDetails={userDetails} />
   )
