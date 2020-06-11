@@ -87,7 +87,7 @@ const RecipeDetails = props => {
                         <Grid.Row><Button>Add Twist</Button></Grid.Row>
 
                     </Grid.Column>
-                    <Grid.Column width={8}><Image src={recipeData.pictures} alt="image" /></Grid.Column>
+                    <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>
                 </Grid.Row>
 
                 <Grid.Row>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
-import { Button, Card, Container, Image, List } from 'semantic-ui-react'
+import { Button, Card, Container, Icon, Image, List } from 'semantic-ui-react'
 // import RecipeDetails from './RecipeDetails'
 
 const Recipe = props => {
@@ -49,11 +49,14 @@ const Recipe = props => {
         console.log(recipes)
         display = recipes.map((r) => {
             return (
-             
-                <Card>
-                    <Image wrapped ui={false} src={r.pictures} alt={r.recipeName}/>
-                    <Card.Content>
-                        <Card.Header key={r._id} textAlign="center"><Link to={`/recipe/${r._id}`}>{r.recipeName}</Link></Card.Header>
+                <Card key={r._id}>
+                <Card.Content>
+                        <Card.Header textAlign="center"><Link to={`/recipe/${r._id}`}>{r.recipeName}</Link></Card.Header>
+                        <Card.Meta><span className = 'date'>{r.datePosted}</span></Card.Meta>
+                        <Card.Description>{r.description}</Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <Icon name='user' />Serves {r.servings}
                     </Card.Content>
                 </Card>
                
