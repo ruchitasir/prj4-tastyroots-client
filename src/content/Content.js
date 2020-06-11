@@ -26,6 +26,9 @@ const Content = props => {
       <Route path="/familycircle" render={
         () => <FamilyCircle user={props.user} />
       } />
+      <Route path="/recipe/:id" render={
+          () => <RecipeDetails user={props.user} />
+        }></Route>
       <Route component={Lost} />
     </Switch>
   )

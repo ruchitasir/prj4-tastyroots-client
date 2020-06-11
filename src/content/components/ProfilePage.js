@@ -6,6 +6,7 @@ const ProfilePage = props => {
         return (
             <Segment>
                 <Loader />
+
             </Segment>
         )
     }
@@ -13,6 +14,7 @@ const ProfilePage = props => {
         <Container className="top-spacing">
             <h1>{props.user.firstname} {props.user.lastname}</h1>
             {props.userDetails.email}
+          
         </Container>
     )
 }

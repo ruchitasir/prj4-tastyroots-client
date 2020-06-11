@@ -54,7 +54,6 @@ const Recipe = props => {
                     <Image wrapped ui={false} src={r.pictures} alt={r.recipeName}/>
                     <Card.Content>
                         <Card.Header key={r._id} textAlign="center"><Link to={`/recipe/${r._id}`}>{r.recipeName}</Link></Card.Header>
-                    
                     </Card.Content>
                 </Card>
                
