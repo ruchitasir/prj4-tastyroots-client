@@ -25,16 +25,18 @@ const Profile = props => {
         // If we get a good response
         response.json()
           .then(result => {
+            console.log(result)
+            // setUserData(result)
             console.log("WHAT RESULT", result)
             setUserDetails(result)
-            setSecretMessage(result.message)
           })
       })
       .catch(err => {
         console.log("Error in profile", err)
         setSecretMessage('No message for you')
       })
-  })
+  }, [])
+  // })
   console.log("DID WE GET USER DEETS", userDetails)
   // Make Sure there is a user before trying to show their info
   if (!props.user) {
@@ -42,25 +44,25 @@ const Profile = props => {
   }
 
 
-    var recipes = userData.recipes
-    console.log(recipes)
-    var display 
-    if(recipes){
-      display = recipes.map((r) => {
-        return (
-          <div>
-          {r.recipeName}
-          </div>
-        )
-      })
-    }
-    else{
-      display = "Loading..."
-    }
+    // var recipes = userData.recipes
+    // console.log(recipes)
+    // var display 
+    // if(recipes){
+    //   display = recipes.map((r) => {
+    //     return (
+    //       <div>
+    //       {r.recipeName}
+    //       </div>
+    //     )
+    //   })
+    // }
+    // else{
+    //   display = "Loading..."
+    // }
 
 
 
-  console.log('userData:', userData)
+  // console.log('userData:', userData)
 
   return (
     <ProfilePage user={props.user} userDetails={userDetails} />
