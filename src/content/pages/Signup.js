@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Button, Container, Form, Grid, Input } from 'semantic-ui-react'
+import Alert from '../components/Alert'
 
 const Signup = props => {
   // Declare and initialize state variables
@@ -47,19 +48,18 @@ const Signup = props => {
     .catch(err=>{
         console.log('ERROR SUBMITTING',err)
     })
-
   }
-
+  console.log("MESSAGE", message)
   if(props.user){
     return <Redirect to="/profile"/>
   }
 
   return (
-    <Container className="center-form">   
+    <Container className="center-form top-spacing">   
+      { message ? <Alert message={message}/> : '' }
       <Grid columns={2} verticalAlign="middle">
         <Grid.Row>
-          <Grid.Column width={6} >
-        
+          <Grid.Column width={6} >  
           </Grid.Column>
           <Grid.Column width={2}></Grid.Column>
           <Grid.Column width={6}>
