@@ -13,24 +13,21 @@ import RecipeDetails from './pages/RecipeDetails'
 
 const Content = props => {
   return (
-      <Switch>
-        <Route exact path="/" render={
-          () => <Home user={props.user} />
-        } />
-        <Route path="/profile" render={
-          () => <Profile user={props.user} />
-        } />
-        <Route path="/recipes" render={
-          () => <Recipe user={props.user} />
-        } />
-        <Route path="/familycircle" render={
-          () => <FamilyCircle user={props.user} />
-        } />
-        <Route path="/recipe/:id" render={
-          () => <RecipeDetails user={props.user} />
-        }></Route>
-         <Route component={Lost} />
-      </Switch>
+    <Switch>
+      <Route exact path="/" render={
+        () => <Home user={props.user} />
+      } />
+      <Route path="/profile" render={
+        () => <Profile user={props.user} />
+      } />
+      <Route path="/recipes" render={
+        () => <Recipe user={props.user} />
+      } />
+      <Route path="/familycircle" render={
+        () => <FamilyCircle user={props.user} />
+      } />
+      <Route component={Lost} />
+    </Switch>
   )
 }
 

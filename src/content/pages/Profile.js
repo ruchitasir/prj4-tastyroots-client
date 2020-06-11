@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Card, Container } from 'semantic-ui-react'
+import ProfilePage from '../components/ProfilePage'
 
 const Profile = props => {
 
   let [secretMessage, setSecretMessage] = useState('')
-  let [userData, setUserData] = useState({})
+  let [userDetails, setUserDetails] = useState(null)
 
   useEffect(() => {
     // Get the token from local storage
@@ -25,8 +25,8 @@ const Profile = props => {
         // If we get a good response
         response.json()
           .then(result => {
-            console.log(result)
-            setUserData(result)
+            console.log("WHAT RESULT", result)
+            setUserDetails(result)
             setSecretMessage(result.message)
           })
       })
@@ -34,7 +34,8 @@ const Profile = props => {
         console.log("Error in profile", err)
         setSecretMessage('No message for you')
       })
-  }, [])
+  })
+  console.log("DID WE GET USER DEETS", userDetails)
   // Make Sure there is a user before trying to show their info
   if (!props.user) {
     return <Redirect to="/" />
@@ -62,19 +63,7 @@ const Profile = props => {
   console.log('userData:', userData)
 
   return (
-
-    <div>
-      {display}
-    </div>
-    // <Container>
-    //   <h2>{props.user.firstname} {props.user.lastname}</h2>
-    //   <img src={props.user.pic} alt="profile pic" />
-    //   <Card.Group itemsPerRow={4}>
-    //     {display}
-    //   </Card.Group>
-    //   <h2>{secretMessage}</h2>
-
-    // </Container>
+    <ProfilePage user={props.user} userDetails={userDetails} />
   )
 }
 
