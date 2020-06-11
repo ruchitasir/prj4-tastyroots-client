@@ -5,7 +5,7 @@ const Home = props => {
   if (props.user) {
     return (
       <div>
-        <h1>Welcome to Tasty Roots!</h1>  
+        <h1>Welcome to Tasty Roots!</h1>
       </div>
     )
   }

@@ -8,6 +8,7 @@ import FamilyCircle from './pages/FamilyCircle'
 import Lost from './pages/Lost'
 import Profile from './pages/Profile'
 import Recipe from './pages/Recipe'
+import RecipeDetails from './pages/RecipeDetails'
 
 
 const Content = props => {
@@ -25,6 +26,9 @@ const Content = props => {
         <Route path="/familycircle" render={
           () => <FamilyCircle user={props.user} />
         } />
+        <Route path="/recipe/:id" render={
+          () => <RecipeDetails user={props.user} />
+        }></Route>
          <Route component={Lost} />
       </Switch>
   )
