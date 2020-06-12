@@ -38,7 +38,11 @@ const Profile = props => {
   }
   // If user signed in show, user details
   return (
-    <ProfilePage user={props.user} userDetails={userDetails} />
+    <div>
+       <ProfilePage user={props.user} userDetails={userDetails} />
+    
+    </div>
+    
   )
 }
 
