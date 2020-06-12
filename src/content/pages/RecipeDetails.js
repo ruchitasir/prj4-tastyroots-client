@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { Link, Redirect, useParams } from 'react-router-dom'
+=======
+import { useParams } from 'react-router-dom'
+>>>>>>> f9c3550d784cf71cfcdabb84ad3cd8bc4cdaece5
 import { Button, Container, Divider, Grid, Image, List, Message } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 
