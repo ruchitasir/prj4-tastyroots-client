@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom'
-import { Button, Container, Grid, Image, List, Message } from 'semantic-ui-react'
+import { Button, Container, Divider, Grid, Image, List, Message } from 'semantic-ui-react'
+import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
@@ -64,7 +65,7 @@ const RecipeDetails = props => {
         })
     }
     
-    var creatorName = recipeData.creatorId.firstname
+    // var creatorName = recipeData.creatorId.firstname
  
     return (
         <Container>
@@ -72,19 +73,8 @@ const RecipeDetails = props => {
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Image src="#" alt="creator image" avatar />
-                                <span>{recipeData.creatorId.firstname}</span>
-                            </Grid.Column>
-                            <Grid.Column></Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column width={5}>Prep Time: {recipeData.prepTime} Hours</Grid.Column>
-                            <Grid.Column width={5}>Cook Time: {recipeData.cookTime} Hours</Grid.Column>
-                            <Grid.Column width={5}>Serves {recipeData.servings}</Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row><Button>Add Twist</Button></Grid.Row>
+                        <RecipeDetailsSnap recipeData={recipeData}/>
+                        <Grid.Row className="top-spacing"><Button>Add Twist</Button></Grid.Row>
 
                     </Grid.Column>
                     <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>

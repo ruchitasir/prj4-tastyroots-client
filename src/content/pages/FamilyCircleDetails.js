@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 // import FamilyCircle from './FamilyCircle'
-import { Card, Container, Grid, Icon, Item, Image, Header, List } from 'semantic-ui-react'
+import { Container, Grid, Item, Header } from 'semantic-ui-react'
 import RecipeCards from '../components/RecipeCards'
 import FamilyMembers from '../components/FamilyMembers'
 

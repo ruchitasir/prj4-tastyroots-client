@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, List, Header, Image } from 'semantic-ui-react';
-import FamilyCircleDetails from '../pages/FamilyCircleDetails'
+// import FamilyCircleDetails from '../pages/FamilyCircleDetails'
 
 const FamilyMembers = props => {
 

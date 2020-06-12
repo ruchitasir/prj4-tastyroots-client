@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
-import { Button, Card, Container, Header, Icon, Image, List } from 'semantic-ui-react'
+import { Card, Container, Header, Icon, Image } from 'semantic-ui-react'
 // import RecipeDetails from './RecipeDetails'
 
+//Fetch call to display all public recipes
 const Recipe = props => {
     let [recipeData, setRecipeData] = useState([])
     let [secretMessage, setSecretMessage] = useState('')
