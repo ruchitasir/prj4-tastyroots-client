@@ -214,7 +214,7 @@ const RecipeAddModal = props => {
                 </Form.Field>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' type="submit">Add Recipe</Button>
+                <Button color='green' type="submit" positive>Add Recipe</Button>
             </Modal.Actions>
         </Modal>
     )
