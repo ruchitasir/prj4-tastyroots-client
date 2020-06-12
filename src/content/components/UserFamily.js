@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { List, Icon, Image } from 'semantic-ui-react'
+import FamilyAddModal from '../components/FamilyAddModal'
 
 const UserFamily = props => {
     // if (!props.userDetails.families) {
@@ -17,6 +18,7 @@ const UserFamily = props => {
             return (
                 <List.Item>
                     No family circles yet.
+                    <FamilyAddModal />
                 </List.Item>
             )
         }
@@ -37,7 +39,8 @@ const UserFamily = props => {
             <h2>My Family Circles</h2>
             {family}
             <List.Item>
-                <Icon name='add' /> Join a family circle
+                {/* <Icon name='add' /> Join a family circle */}
+                <FamilyAddModal userDetails={props.userDetails}/>
             </List.Item>
         </List>
 
