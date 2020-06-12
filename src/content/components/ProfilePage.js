@@ -19,9 +19,9 @@ const ProfilePage = props => {
                     <Grid.Column >
                         <Item.Group>
                         <Item>
-                            <Item.Image size='small' src='http://placekitten.com/200/200' circular />
+                            {props.userDetails.picture ? <Item.Image size='small' src={props.userDetails.picture} circular /> : <Item.Image size='small' src="http://placekitten.com/300/300" circular />}
                             <Item.Content verticalAlign="middle">
-                                <h1>{props.user.firstname} {props.user.lastname}</h1>
+                                <h1>{props.userDetails.firstname} {props.userDetails.lastname}</h1>
                                 <Item.Meta>
                                     <span className='email'>{props.userDetails.email}</span>
                                 </Item.Meta>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Button, Container, Divider, Grid, Image, List, Message } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 
@@ -66,7 +66,7 @@ const RecipeDetails = props => {
     }
     
     // var creatorName = recipeData.creatorId.firstname
- 
+
     return (
         <Container>
             <Grid>
