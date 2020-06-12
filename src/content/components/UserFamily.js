@@ -41,13 +41,9 @@ const UserFamily = props => {
             <h2>My Family Circles</h2>
             {family}
             <List.Item>
-<<<<<<< HEAD
-                <Icon name='add' /> Join a family circle
-                <FamilyCircleJoin />
-=======
                 {/* <Icon name='add' /> Join a family circle */}
                 <FamilyAddModal userDetails={props.userDetails}/>
->>>>>>> 650cc0ee024904e9408054a2e4a9bcc011baa90d
+                <FamilyCircleJoin/>
             </List.Item>
         </List>
 
