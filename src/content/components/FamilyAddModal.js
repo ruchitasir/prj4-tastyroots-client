@@ -9,18 +9,8 @@ const FamilyAddModal = props => {
     let [familyToken, setFamilyToken] = useState()
     let [message, setMessage] = useState()
 
-    // if (!props.userDetails){
-    //     return null
-    // }
-    
-
     // *************************Submitting the form *************************
     const handleSubmit = (e) => {
-        // if(!props.userDetails){
-        //     return null
-        // }
-        // console.log(props.userDetails)
-
 
         e.preventDefault()
         let creatorId = props.userDetails._id
@@ -56,7 +46,6 @@ const FamilyAddModal = props => {
             .finally(() => {
                 document.getElementById('famForm').reset()
             })
-
         
     }
    

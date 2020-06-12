@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import Recipe from './pages/Recipe'
 import RecipeDetails from './pages/RecipeDetails'
 import FamilyCircleDetails from './pages/FamilyCircleDetails'
+import AddTwist from './pages/AddTwist'
 
 
 const Content = props => {
@@ -31,6 +32,9 @@ const Content = props => {
       <Route path="/familycircle" render={
         () => <FamilyCircle user={props.user} />
       } />
+        <Route path="/recipe/:id/twist" render={
+        () => <AddTwist user={props.user} />
+        }></Route>
       <Route path="/recipe/:id" render={
           () => <RecipeDetails user={props.user} />
         }></Route>
