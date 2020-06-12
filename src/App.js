@@ -43,9 +43,8 @@ const App = props => {
   }
 
   const updateToken=(newToken)=>{
-    // Set the new tokem into localStorage
+    // Set the new token into localStorage
     localStorage.setItem('boilerToken',newToken || '')
-    
     // Update the state (basically the user info)
     decodeToken()
   }

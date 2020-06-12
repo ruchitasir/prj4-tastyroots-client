@@ -1,7 +1,9 @@
-/* .App {
-  text-align: center;
-}*/
-
+.App {
+  height: 90vh;
+}
+body, html {
+  height: 100%;
+}
 footer {
   position: fixed;
   bottom: 0;
@@ -14,4 +16,26 @@ footer {
 }
 .top-spacing {
   margin-top: 1.5em;
+}
+
+.top-spacing-2 {
+  margin-top: 3em;
+}
+
+main {
+  margin-top: 1em;
+}
+.login-fields {
+  margin: 0 !important; 
+}
+.top-nav {
+  margin: 0 !important;
+}
+#profile {
+  padding: 12px 16px;
+  margin: 0 0 -2px 0 !important;
+  line-height: 14px;
+}
+.remove-btn {
+  margin-top: 2em !important;
 }

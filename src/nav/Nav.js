@@ -32,10 +32,12 @@ const Nav = (props) => {
           href="/"
         /> 
         <Menu.Menu position='right'>
-          <Menu.Item
-            name='Profile'
-            as={Link} to="/profile"
-          />
+          <Dropdown pointing text="Profile" id="profile" className="top-nav">
+            <Dropdown.Menu >
+              <Dropdown.Item as={Link} to= "/profile">My Profile</Dropdown.Item>
+              <Dropdown.Item as={Link} to= "/profile/edit">Edit Profile</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           <Menu.Item
             name='Family Circles'
             as={Link} to="/familycircle"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Label } from 'semantic-ui-react'
 
 const RecipeAddIngredientsModal= props=> {
    return(
@@ -7,18 +7,17 @@ const RecipeAddIngredientsModal= props=> {
                 console.log('ind',ind)
                 return (
                         <div> 
-                            <Form.Group widths='equal'>
+                            <Form.Group columns='equal'>
                                 <Form.Field >
                                     <Form.Input label="Quantity" name="qty" value={ing.qty}  onChange={(e)=>props.handleIngredientQuantityChange(e,ind)}  required />
-                                </Form.Field>
-                            
+                                </Form.Field>                     
                                 <Form.Select fluid required label='Unit' name="unit"  options={props.unitOptions}   onChange={(e,data)=>props.handleIngredientUnitChange(e,data,ind)}  placeholder="Select measurement Unit"/>
-                                </Form.Group>  
-                            <Form.Group widths='equal'>
                                 <Form.Field >
                                     <Form.Input label="Ingredient" name="name" value={ing.name}  onChange={(e)=>props.handleIngredientNameChange(e,ind)}  required />
                                 </Form.Field>
-                                <Button onClick={()=> props.handleRemoveIngredient(ind)}>Remove</Button>
+                                <Form.Field>
+                                    <Form.Button onClick={()=> props.handleRemoveIngredient(ind)} className="remove-btn">Remove</Form.Button>
+                                </Form.Field>
                             </Form.Group>
                         </div>
                 
