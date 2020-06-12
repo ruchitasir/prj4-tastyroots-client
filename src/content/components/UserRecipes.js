@@ -26,7 +26,7 @@ const UserRecipes = props => {
 
     if (props.userDetails.recipes.length < 1) {
         return (
-            <Container className="top-spacing-2">
+            <Container className="top-spacing-2" stackable>
                 <h2>My Recipes</h2>
                 <p>No recipes created yet.</p>
             </Container>

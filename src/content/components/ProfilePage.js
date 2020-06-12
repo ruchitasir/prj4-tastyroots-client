@@ -1,7 +1,12 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Container, Item, Grid, Loader } from 'semantic-ui-react';
 import UserFamily from './UserFamily'
 import UserRecipes from './UserRecipes';
+=======
+import { Container, Loader, Segment  } from 'semantic-ui-react';
+import RecipeAddModal from '../components/RecipeAddModal'
+>>>>>>> 8dd2b0a7fcf84c7222acc9e4881acb6b9efd0eac
 
 const ProfilePage = props => {
     if (!props.userDetails) {

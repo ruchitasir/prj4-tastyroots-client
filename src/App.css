@@ -27,5 +27,12 @@ main {
 }
 .login-fields {
   margin: 0 !important; 
-
+}
+.top-nav {
+  margin: 0 !important;
+}
+#profile {
+  padding: 12px 16px;
+  margin: 0 0 -2px 0 !important;
+  line-height: 14px;
 }

@@ -4,11 +4,11 @@ import { Button, Form } from 'semantic-ui-react'
 const RecipeAddStepsInModal= props=> {
  return ( 
             props.steps.map((step,ind)=>{
-                console.log('ind',ind)
+            
                 return (
                 
                         <Form.Group widths='equal'>
-                            <Form.Field className='index'>
+                            <Form.Field >
                                 <Form.Input label="Step" name="step"  value={step} onChange={(e)=>props.handleStepChange(e,ind)}  required />
                             </Form.Field>
                         
