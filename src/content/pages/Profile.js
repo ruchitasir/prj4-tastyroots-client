@@ -17,7 +17,6 @@ const Profile = props => {
     })
       .then(response => {
         console.log('Response', response)
-        // if not a good response
         if (!response.ok) {
           return
         }
