@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Divider, Icon, Item, List, Grid, Loader } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
+import FamilyCircle from '../pages/FamilyCircle'
 
 const FamilyCirclesPage = props => {
     if (!props.userDetails) {
@@ -16,11 +17,11 @@ const FamilyCirclesPage = props => {
     }
     let family = props.userDetails.families.map(fam => {
     return (
-        <List>
-        <List.Item key={fam._id._id}>
+        <List key={fam._id._id}>
+        <List.Item>
             <Icon name='users' />
-            <List.Content>
-                <List.Header as={Link} to={`/familycircle/${fam._id._id}`}>{fam._id.familyName}</List.Header>
+            <List.Content key={fam._id}>
+                <List.Header as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
                 <Item.Meta>{fam.userRole}</Item.Meta>
                 {fam.userRole == 'creator' ? <List.Description>Family Token: {fam._id.familyToken}</List.Description> : ''}
                 <Item.Meta>Country of Origin: {fam._id.countryOrigin}</Item.Meta>
@@ -28,11 +29,10 @@ const FamilyCirclesPage = props => {
                 
             </List.Content>
         </List.Item>
-        <div class="ui divider"></div>
+        <div className="ui divider"></div>
         </List>
     )
     })
-    console.log(props.userDetails.families)
     // if (!props.userDetails.families._id.recipes){
     //     return null
     // }

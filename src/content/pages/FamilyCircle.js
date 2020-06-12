@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Route} from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import FamilyCirclesPage from '../components/FamilyCirclesPage'
-import { List, Icon } from 'semantic-ui-react'
+// import FamilyCircleDetails from '../components/FamilyCircleDetails'
 
 const FamilyCircle = props => {
     let [userDetails, setUserDetails] = useState(null)
@@ -16,7 +16,6 @@ const FamilyCircle = props => {
           }
         })
           .then(response => {
-            console.log('Response', response)
             if (!response.ok) {
               return
             }
@@ -24,7 +23,6 @@ const FamilyCircle = props => {
             response.json()
               .then(result => {
                 setUserDetails(result)
-                console.log(result)
                 
               })
           })
@@ -37,10 +35,10 @@ const FamilyCircle = props => {
         return <Redirect to="/" />
     }
 
-    console.log('user-------->',userDetails)
     return (
+      <div>
         <FamilyCirclesPage user={props.user} userDetails={userDetails}/>
-        
+        </div>
     )
 }
 
