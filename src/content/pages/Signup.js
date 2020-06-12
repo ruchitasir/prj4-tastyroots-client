@@ -11,7 +11,6 @@ const Signup = props => {
   let [lastname, setLastname] = useState('')
   let [message, setMessage] = useState('')
   let [password, setPassword] = useState('')
-  let [profileUrl, setProfileUrl] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -24,7 +23,6 @@ const Signup = props => {
         password,
         firstname,
         lastname,
-        pic: profileUrl
       }),
       headers: {
         'Content-Type' : 'application/json'

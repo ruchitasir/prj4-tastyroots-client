@@ -21,18 +21,20 @@ const RecipeAddModal = props => {
     let [ingredientQuantity, setIngredientQuantity] = useState()
 
     const servingsOptions = [
-        { text: '0.5', value: 0.5 },
         { text: '1', value: 1 },
-        { text: '1.5', value: 1.5 },
         { text: '2', value: 2 },
-        { text: '2.5', value: 2.5 },
         { text: '3', value: 3 },
-        { text: '3.5', value: 3.5 },
         { text: '4', value: 4 },
-        { text: '4.5', value: 4.5 },
         { text: '5', value: 5 },
-        { text: '5.5', value: 5.5 },
-        { text: '6', value: 6 }
+        { text: '6', value: 6 }, 
+        { text: '7', value: 7 },
+        { text: '8', value: 8 },
+        { text: '9', value: 9 },
+        { text: '10', value: 10 },
+        { text: '11', value: 11 },
+        { text: '12', value: 12 }
+
+
     ]
 
     const unitOptions = [
@@ -117,8 +119,8 @@ const RecipeAddModal = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let creatorId = props.userDetails._id
-        let originalRecipe = props.userDetails._id
+        let creatorId = props.user._id
+        let originalRecipe = props.user._id
         console.log('creator Id', creatorId)
         console.log('Ingredients', ingredients)
         let ing = ingredients.map((ing) => {
@@ -181,13 +183,14 @@ const RecipeAddModal = props => {
     /**************************************************************************/
     return (
 
-        <Modal id='recipeForm' trigger={<Icon color="orange" name='add' size='large' textAlign="right"></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+        <Modal id='recipeForm' trigger={<Icon color="orange" name='add' size='large'></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
             <Header icon='user circle' content='Add new recipe' />
             <Modal.Content>
                 <Form.Group widths='equal'>
                     <Form.Field>
                         <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
                     </Form.Field>
+
                     <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" onChange={(e, data) => setServings(data.value)} placeholder="Servings" />
                 </Form.Group>
                 <Form.Group widths='equal'>
@@ -214,7 +217,7 @@ const RecipeAddModal = props => {
                 </Form.Field>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' type="submit" positive>Add Recipe</Button>
+                <Button color='green' type="submit">Add Recipe</Button>
             </Modal.Actions>
         </Modal>
     )

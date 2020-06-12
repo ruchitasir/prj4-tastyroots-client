@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom'
+import { Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
 import UploadWidget from '../components/UploadWidget'
 
 const EditProfile = props => {
     let [userDetails, setUserDetails] = useState(null)
+    let [message, setMessage] = useState('')
+    let [firstname, setFirstName] = useState('')
+    let [lastname, setLastName] = useState('')
+    let [bio, setBio] = useState('')
+    let [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
         // Get the token from local storage
@@ -31,32 +37,70 @@ const EditProfile = props => {
             })
     }, [])
 
+    /**************** Submitting the form ***************************************/
 
-
-    if (!userDetails) {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        let token = localStorage.getItem('boilerToken')
+        fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
+            method: 'PUT',
+            body: JSON.stringify({
+                firstname,
+                lastname,
+                bio
+                // picture
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log("Here is the response!", response)
+                if (!response.ok) {
+                    setMessage(`${response.status} : ${response.statusText}`)
+                    return
+                }
+                response.json().then(result => {
+                    console.log("result!", result)
+                    setRedirect(true)
+                })
+            })
+            .catch(err => {
+                console.log('ERROR UPDATING USER PROFILE', err)
+            })
+       
+        
+    }
+        if (redirect) {
+            return (
+                <Redirect to="/profile" />
+            )
+        }
+        if (!userDetails) {
+            return (
+                <div>
+                    <Loader />
+                </div>
+            )
+        }
         return (
-            <div>
-                <Loader />
-            </div>
+            <Container>
+                <h1>Edit Profile</h1>
+                <Form onSubmit={(e) => handleSubmit(e)}>
+                    <Form.Group widths='equal'>
+                        <Form.Field name="firstname" control={Input} label='First name' placeholder='First name' defaultValue={userDetails.firstname} onChange={(e) => setFirstName(e.target.value)} />
+                        <Form.Field name="lastname" control={Input} label='Last name' placeholder='Last name' defaultValue={userDetails.lastname} onChange={(e) => setLastName(e.target.value)} />
+                    </Form.Group>
+                    <Form.Field name="bio"control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={(e) => setBio(e.target.value)} />
+                    <UploadWidget />
+                    <Form.Group>
+                        <Form.Button type="submit" color="teal" className="top-spacing">Save</Form.Button>
+                    </Form.Group>
+
+                </Form>
+            </Container>
         )
     }
-    return (
-        <Container>
-            <h1>Edit Profile</h1>
-            <Form>
-                <Form.Group widths='equal'>
-                    <Form.Field control={Input} label='First name' placeholder='First name' value={userDetails.firstname} />
-                    <Form.Field control={Input} label='Last name' placeholder='Last name' value={userDetails.lastname} />
-                </Form.Group>
-                <Form.Field control={TextArea} label='Bio' placeholder="A little about me" value={userDetails.bio} />
-                <UploadWidget />
-                <Form.Group>
-                    <Form.Button type="submit" color="teal" className="top-spacing">Save</Form.Button>
-                </Form.Group>
 
-            </Form>
-        </Container>
-    )
-}
-
-export default EditProfile
+    export default EditProfile

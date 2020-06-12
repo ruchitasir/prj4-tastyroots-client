@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Input } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 const UploadWidget = props => {
     let [imageUrl, setImageUrl] = useState('')
@@ -30,7 +30,7 @@ const UploadWidget = props => {
         <Form.Group>
             <Form.Input
                 label="Profile Pic"
-                action="Upload"
+                action={{content: "Upload", icon:"cloud upload"}}
                 name="picture" value={imageUrl}
                 onClick={() => showWidget(widget)}
                 width={16}

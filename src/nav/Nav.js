@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { Dropdown, Menu } from 'semantic-ui-react'
 import Login from '../nav/Login'
