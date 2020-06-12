@@ -1,46 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { Button,Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
 
 
 const EditProfile = props => {
     let [userDetails, setUserDetails] = useState(null)
     let [message, setMessage] = useState('')
-    let [firstname, setFirstName] = useState('')
-    let [lastname, setLastName] = useState('')
-    let [bio, setBio] = useState('')
+    let [firstName, setFirstName] = useState('')
+    let [lastName, setLastName] = useState('')
+    let [biography, setBiography] = useState('')
     let [imageUrl, setImageUrl] = useState('')
-
-    let handleFirstName = (e) => {setFirstName(e.target.value)}
-    let handleLastName = (e) => {setLastName(e.target.value)}
-    let handleBio = (e) => { setBio(e.target.value)}
+    let [redirect, setRedirect] = useState(false)
+    let toProfile
     
 
     //Cloudinary widget + picture upload
     var checkUploadResult = (resultEvent) => {
         if (resultEvent.event === 'success') {
+            // photo = resultEvent.info.secure_url
             setImageUrl(resultEvent.info.secure_url)
         }
+
+        console.log("SUCCESS IMAGE", imageUrl)
     }
     let widget = window.cloudinary.createUploadWidget({
         cloudName: "tasty-roots",
         cropping: true,
         croppingAspectRatio: 1.0,
         maxImageWidth: 500,
-        maxiImageHeight: 500,
-        uploadPreset: "tasty-roots"
+        maxImageHeight: 500,
+        uploadPreset: "tasty-roots",
+        croppingCoordinatesMode: 'custom'
     },
         (error, result) => {
             checkUploadResult(result)
         })
 
-    const showWidget = (widget) => {
+    const showWidget = (widget, e) => {
+        e.preventDefault()
         widget.open()
     }
-    
-    console.log("SUCCESS IMAGE", imageUrl)
-
-
 
     useEffect(() => {
         // Get the token from local storage
@@ -72,26 +71,31 @@ const EditProfile = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("IMAEG---------", imageUrl)
         let token = localStorage.getItem('boilerToken')
+        let firstname = firstName
+        let lastname = lastName
+        let bio = biography
         let picture = userDetails.picture
         if (imageUrl) {
             picture = imageUrl
         }
-        if (!firstname) {
-            setFirstName(userDetails.firstname)
+        if (!firstName) {
+            firstname = userDetails.firstname
         }
-        if (!lastname) {
-            setLastName(userDetails.lastname)
+        if (!lastName) {
+            lastname = userDetails.lastname
         }
-        if (!bio) {
-            setBio(userDetails.bio)
+        if (!biography) {
+            bio = userDetails.bio
         }
+        
         fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
             method: 'PUT',
             body: JSON.stringify({
                 firstname,
                 lastname,
-                bio,
+                bio, 
                 picture
             }),
             headers: {
@@ -107,13 +111,17 @@ const EditProfile = props => {
                 }
                 response.json().then(result => {
                     console.log("result!", result)
+                    setRedirect(true)
                 })
             })
             .catch(err => {
                 console.log('ERROR UPDATING USER PROFILE', err)
             })
+            
     }
-   
+    if (redirect) {
+       toProfile= <Redirect to="/profile"/>
+    }
     if (!userDetails) {
         return (
             <div>
@@ -127,25 +135,26 @@ const EditProfile = props => {
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group widths='equal'>
                     <Form.Field name="firstname" control={Input} label='First name' 
-                    placeholder='First name' defaultValue={userDetails.firstname} onChange={handleFirstName} required/>
+                    placeholder='First name' defaultValue={userDetails.firstname} 
+                    onChange={(e) => setFirstName(e.target.value)} required/>
                     <Form.Field name="lastname" control={Input} label='Last name' 
-                    placeholder='Last name' defaultValue={userDetails.lastname} onChange={handleLastName} required/>
+                    placeholder='Last name' defaultValue={userDetails.lastname} 
+                    onChange={(e) => setLastName(e.target.value)} required/>
                 </Form.Group>
-                <Form.Field name="bio" control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={handleBio} />
+                <Form.Field name="bio" control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={(e) => setBiography(e.target.value)} />
                 <Form.Group>
-                    <Form.Input
+                    {/* <Form.Input
                         label="Profile Pic"
-                        action={{ content: "Upload", icon: "cloud upload", onClick:()=> {showWidget(widget)}}}
                         name="picture" value={imageUrl}
-                        width={16}
-                    />
+                        width={16} disabled
+                    /> */}
+                    <Button onClick={(e)=>showWidget(widget, e)} type="text">Upload</Button>
                 </Form.Group>
                 <Form.Group>
-                    <Button type="submit" color="teal" className="top-spacing" 
-                    as={Link} to='/profile'>Save</Button>
+                    <Button type="submit" color="teal" className="top-spacing" >Save</Button>
                 </Form.Group>
-
             </Form>
+            {toProfile}
         </Container>
     )
 }
