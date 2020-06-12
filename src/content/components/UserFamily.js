@@ -13,13 +13,13 @@ const UserFamily = props => {
 
 
     var family = props.userDetails.families.map(fam => {
-        // if (!fam._id) {
-        //     return (
-        //         <List.Item>
-        //             No family circles yet.
-        //         </List.Item>
-        //     )
-        // }
+        if (!fam._id) {
+            return (
+                <List.Item>
+                    -
+                </List.Item>
+            )
+        }
         return (
             <List.Item key={fam._id._id}>
                 <Icon name='users' />

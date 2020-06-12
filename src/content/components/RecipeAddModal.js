@@ -96,14 +96,10 @@ const RecipeAddModal = props => {
         steps[index] = e.target.value
         setStep(steps[index])
         setSteps(steps)
-        console.log("SINGLE STEP----", step)
-        
-
     }
 
     const addSteps = (e) => {
         setSteps([...steps, ''])
-        console.log("NEW STEPS---", steps)
     }
 
     const handleRemoveSteps = (index) => {
@@ -175,9 +171,7 @@ const RecipeAddModal = props => {
                 setIngredientQuantity(0)
                 setIngredientUnit('')
                 document.getElementById("recipeForm").reset();
-
             })
-
     }
 
 

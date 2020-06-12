@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardGroup, Container, Icon, Image, Header, Segment, Grid } from 'semantic-ui-react';
+import { Card, CardGroup, Container, Icon, Image, Header, Grid } from 'semantic-ui-react';
 import RecipeAddModal from './RecipeAddModal'
 
 const UserRecipes = props => {
@@ -27,7 +27,7 @@ const UserRecipes = props => {
     if (props.userDetails.recipes.length < 1) {
         return (
             <Container className="top-spacing-2" stackable>
-                <Grid clearing>
+                <Grid>
                 <Grid.Row>
                     <Grid.Column width={14}>
                         <Header as="h2" dividing>My Recipes</Header>
@@ -43,7 +43,7 @@ const UserRecipes = props => {
     }
     return (
         <Container className="top-spacing-2">
-            <Grid clearing>
+            <Grid>
                 <Grid.Row>
                     <Grid.Column width={14}>
                         <Header as="h2">My Recipes</Header>

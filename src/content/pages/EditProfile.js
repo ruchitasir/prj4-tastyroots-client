@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
-import UploadWidget from '../components/UploadWidget'
+import { Link } from 'react-router-dom'
+import { Button,Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
+
 
 const EditProfile = props => {
     let [userDetails, setUserDetails] = useState(null)
@@ -9,7 +9,38 @@ const EditProfile = props => {
     let [firstname, setFirstName] = useState('')
     let [lastname, setLastName] = useState('')
     let [bio, setBio] = useState('')
-    let [redirect, setRedirect] = useState(false)
+    let [imageUrl, setImageUrl] = useState('')
+
+    let handleFirstName = (e) => {setFirstName(e.target.value)}
+    let handleLastName = (e) => {setLastName(e.target.value)}
+    let handleBio = (e) => { setBio(e.target.value)}
+    
+
+    //Cloudinary widget + picture upload
+    var checkUploadResult = (resultEvent) => {
+        if (resultEvent.event === 'success') {
+            setImageUrl(resultEvent.info.secure_url)
+        }
+    }
+    let widget = window.cloudinary.createUploadWidget({
+        cloudName: "tasty-roots",
+        cropping: true,
+        croppingAspectRatio: 1.0,
+        maxImageWidth: 500,
+        maxiImageHeight: 500,
+        uploadPreset: "tasty-roots"
+    },
+        (error, result) => {
+            checkUploadResult(result)
+        })
+
+    const showWidget = (widget) => {
+        widget.open()
+    }
+    
+    console.log("SUCCESS IMAGE", imageUrl)
+
+
 
     useEffect(() => {
         // Get the token from local storage
@@ -42,13 +73,26 @@ const EditProfile = props => {
     const handleSubmit = (e) => {
         e.preventDefault()
         let token = localStorage.getItem('boilerToken')
+        let picture = userDetails.picture
+        if (imageUrl) {
+            picture = imageUrl
+        }
+        if (!firstname) {
+            setFirstName(userDetails.firstname)
+        }
+        if (!lastname) {
+            setLastName(userDetails.lastname)
+        }
+        if (!bio) {
+            setBio(userDetails.bio)
+        }
         fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
             method: 'PUT',
             body: JSON.stringify({
                 firstname,
                 lastname,
-                bio
-                // picture
+                bio,
+                picture
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -63,44 +107,47 @@ const EditProfile = props => {
                 }
                 response.json().then(result => {
                     console.log("result!", result)
-                    setRedirect(true)
                 })
             })
             .catch(err => {
                 console.log('ERROR UPDATING USER PROFILE', err)
             })
-       
-        
     }
-        if (redirect) {
-            return (
-                <Redirect to="/profile" />
-            )
-        }
-        if (!userDetails) {
-            return (
-                <div>
-                    <Loader />
-                </div>
-            )
-        }
+   
+    if (!userDetails) {
         return (
-            <Container>
-                <h1>Edit Profile</h1>
-                <Form onSubmit={(e) => handleSubmit(e)}>
-                    <Form.Group widths='equal'>
-                        <Form.Field name="firstname" control={Input} label='First name' placeholder='First name' defaultValue={userDetails.firstname} onChange={(e) => setFirstName(e.target.value)} />
-                        <Form.Field name="lastname" control={Input} label='Last name' placeholder='Last name' defaultValue={userDetails.lastname} onChange={(e) => setLastName(e.target.value)} />
-                    </Form.Group>
-                    <Form.Field name="bio"control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={(e) => setBio(e.target.value)} />
-                    <UploadWidget />
-                    <Form.Group>
-                        <Form.Button type="submit" color="teal" className="top-spacing">Save</Form.Button>
-                    </Form.Group>
-
-                </Form>
-            </Container>
+            <div>
+                <Loader />
+            </div>
         )
     }
+    return (
+        <Container>
+            <h1>Edit Profile</h1>
+            <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form.Group widths='equal'>
+                    <Form.Field name="firstname" control={Input} label='First name' 
+                    placeholder='First name' defaultValue={userDetails.firstname} onChange={handleFirstName} required/>
+                    <Form.Field name="lastname" control={Input} label='Last name' 
+                    placeholder='Last name' defaultValue={userDetails.lastname} onChange={handleLastName} required/>
+                </Form.Group>
+                <Form.Field name="bio" control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={handleBio} />
+                <Form.Group>
+                    <Form.Input
+                        label="Profile Pic"
+                        action={{ content: "Upload", icon: "cloud upload", onClick:()=> {showWidget(widget)}}}
+                        name="picture" value={imageUrl}
+                        width={16}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Button type="submit" color="teal" className="top-spacing" 
+                    as={Link} to='/profile'>Save</Button>
+                </Form.Group>
 
-    export default EditProfile
+            </Form>
+        </Container>
+    )
+}
+
+export default EditProfile
