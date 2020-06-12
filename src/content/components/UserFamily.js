@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { List, Icon, Image } from 'semantic-ui-react'
 import FamilyAddModal from '../components/FamilyAddModal'
 
+import FamilyCircleJoin from './FamilyCircleJoin';
+
 const UserFamily = props => {
     // if (!props.userDetails.families) {
     //     var family = (
@@ -41,6 +43,7 @@ const UserFamily = props => {
             <List.Item>
                 {/* <Icon name='add' /> Join a family circle */}
                 <FamilyAddModal userDetails={props.userDetails}/>
+                <FamilyCircleJoin/>
             </List.Item>
         </List>
 
