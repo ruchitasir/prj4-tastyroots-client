@@ -96,15 +96,17 @@ const RecipeAddModal = props => {
         steps[index] = e.target.value
         setStep(steps[index])
         setSteps(steps)
+        console.log("SINGLE STEP----", step)
+        
 
     }
 
     const addSteps = (e) => {
         setSteps([...steps, ''])
+        console.log("NEW STEPS---", steps)
     }
 
     const handleRemoveSteps = (index) => {
-
         console.log('steps', steps)
         console.log('index to be removed', index)
         console.log('step at index', steps[index])
@@ -119,8 +121,8 @@ const RecipeAddModal = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let creatorId = props.user._id
-        let originalRecipe = props.user._id
+        let creatorId = props.userDetails._id
+        // let originalRecipe = props.userDetails._id
         console.log('creator Id', creatorId)
         console.log('Ingredients', ingredients)
         let ing = ingredients.map((ing) => {
@@ -134,7 +136,6 @@ const RecipeAddModal = props => {
             method: 'POST',
             body: JSON.stringify({
                 recipeName,
-                originalRecipe,
                 description,
                 creatorId,
                 servings,
@@ -190,7 +191,6 @@ const RecipeAddModal = props => {
                     <Form.Field>
                         <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
                     </Form.Field>
-
                     <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" onChange={(e, data) => setServings(data.value)} placeholder="Servings" />
                 </Form.Group>
                 <Form.Group widths='equal'>
@@ -210,7 +210,6 @@ const RecipeAddModal = props => {
                 <Form.Field>
                     <Button onClick={addNewIngredient}>Add a new ingredient</Button>
                 </Form.Field>
-
                 <RecipeAddStepsInModal steps={steps} handleRemoveSteps={handleRemoveSteps} handleStepChange={handleStepChange} />
                 <Form.Field>
                     <Button onClick={(e) => addSteps(e)}>Add steps</Button>

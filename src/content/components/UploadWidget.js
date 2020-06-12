@@ -23,7 +23,6 @@ const UploadWidget = props => {
         })
     const showWidget = (widget) => {
         widget.open()
-
     }
 
     return (

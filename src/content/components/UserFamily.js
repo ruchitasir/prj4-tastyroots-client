@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 import { List, Icon } from 'semantic-ui-react'
 
 const UserFamily = props => {
-    // if (!props.userDetails.families) {
-    //     var family = (
-    //         <List.Item>
-    //             No family circles yet.
-    //         </List.Item>
-    //     )
-    // }
+    if (!props.userDetails.families) {
+        var family = (
+            <List.Item>
+                No family circles yet.
+            </List.Item>
+        )
+    }
 
 
     var family = props.userDetails.families.map(fam => {
-        if (!fam._id) {
-            return (
-                <List.Item>
-                    No family circles yet.
-                </List.Item>
-            )
-        }
+        // if (!fam._id) {
+        //     return (
+        //         <List.Item>
+        //             No family circles yet.
+        //         </List.Item>
+        //     )
+        // }
         return (
             <List.Item key={fam._id._id}>
                 <Icon name='users' />
