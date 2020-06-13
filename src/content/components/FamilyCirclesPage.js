@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, Icon, Item, List, Grid, Loader } from 'semantic-ui-react';
+import { Container, Header, Icon, Item, List, Grid, Loader } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
 import FamilyCircle from '../pages/FamilyCircle'
 
@@ -48,7 +48,7 @@ const FamilyCirclesPage = props => {
                 <Grid.Row>
                     
                     <Grid.Column>
-                        <h1>Family Circles</h1>
+                        <Header as="h1" dividing>Family Circles</Header>
                         {/* <FamilyMembers userDetails={props.userDetails} /> */}
                         {family}
                     </Grid.Column>
