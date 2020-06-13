@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Loader, Input, TextArea } from 'semantic-ui-react';
 
 
 const EditProfile = props => {
@@ -145,8 +145,9 @@ const EditProfile = props => {
                     <Button onClick={(e) => showWidget(widget, e)} type="text">Upload</Button>
                     <p className="url">{imageUrl}</p>
                 </Form.Group>
+                <Divider />
                 <Form.Group>
-                    <Button type="submit" color="teal" className="top-spacing ">Save</Button>
+                    <Button type="submit" color="teal" className="top-spacing" textAlign='center'>Save</Button>
                 </Form.Group>
             </Form>
             {toProfile}

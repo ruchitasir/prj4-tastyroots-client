@@ -11,7 +11,7 @@ const FamilyCirclesPage = props => {
             </div>
         )
     }
-    console.log(props.userDetails)
+    console.log("FC user deets--->", props.userDetails)
     if (!props.userDetails.families){
         return null
     }

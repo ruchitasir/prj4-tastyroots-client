@@ -11,7 +11,6 @@ import Profile from './pages/Profile'
 import Recipe from './pages/Recipe'
 import RecipeDetails from './pages/RecipeDetails'
 import FamilyCircleDetails from './pages/FamilyCircleDetails'
-import ShareWith from './pages/ShareWith'
 import AddTwist from './pages/AddTwist'
 
 
@@ -32,9 +31,6 @@ const Content = props => {
       } />
       <Route path="/familycircle" render={
         () => <FamilyCircle user={props.user} />
-      } />
-      <Route path="/recipe/:id/share" render={
-        () => <ShareWith user={props.user} />
       } />
       <Route path="/recipe/:id/twist" render={
         () => <AddTwist user={props.user} />

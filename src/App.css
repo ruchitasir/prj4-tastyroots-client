@@ -21,6 +21,9 @@ footer {
 .top-spacing-2 {
   margin-top: 3em;
 }
+.btm-spacing {
+  margin-bottom: 1.5em;
+}
 
 main {
   margin-top: 1em;
@@ -41,4 +44,7 @@ main {
 }
 .url {
   padding: 10px 0 10px 10px; 
+}
+.pr {
+  padding-right: 10px;
 }
