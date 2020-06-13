@@ -7,6 +7,7 @@ import RecipeAddIngredientsModal from './RecipeAddIngredientsModal';
 const RecipeAddModal = props => {
 
     let [message, setMessage] = useState()
+    let [recipeStatus, setRecipeStatus] = useState()
     let [recipeName, setRecipeName] = useState()
     let [description, setDescription] = useState()
     let [servings, setServings] = useState(2)
@@ -126,8 +127,11 @@ const RecipeAddModal = props => {
             return ingStr
         })
         ingredients = ing
-        let token = localStorage.getItem('boilerToken')
         console.log('ingredients in string', ingredients)
+        let recipePublic = recipeStatus
+        console.log('recipe status public',recipeStatus)
+      
+        let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',
             body: JSON.stringify({
@@ -138,7 +142,8 @@ const RecipeAddModal = props => {
                 prepTime,
                 cookTime,
                 ingredients,
-                steps
+                steps,
+                recipePublic
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -173,14 +178,17 @@ const RecipeAddModal = props => {
                 document.getElementById("recipeForm").reset();
             })
     }
-
-
+    const toggleRecipeStatus = (e,data) => {
+         setRecipeStatus(data.checked)
+    }
     /**************************************************************************/
     return (
 
         <Modal id='recipeForm' trigger={<Icon color="orange" name='add' size='large'></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
             <Header icon='user circle' content='Add new recipe' />
             <Modal.Content>
+                <Form.Radio label='Public'
+                 onChange={toggleRecipeStatus} toggle/>
                 <Form.Group widths='equal'>
                     <Form.Field>
                         <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
