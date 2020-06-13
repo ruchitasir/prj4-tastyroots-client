@@ -40,31 +40,31 @@ const RecipeDetails = props => {
             })
     }, [])
 
-    if (!recipeData.creatorId){
+    if (!recipeData.creatorId) {
         return null
     }
-    
+
 
     var recipeIngredients = recipeData.ingredients
     var displayIngredients
-    if (recipeIngredients){
+    if (recipeIngredients) {
         displayIngredients = recipeIngredients.map((i) => {
-            return(
-            <List key={i._id}>{i.qty} {i.unit} {i.name}</List>
+            return (
+                <List key={i._id}>{i.qty} {i.unit} {i.name}</List>
             )
         })
     }
 
     var steps = recipeData.steps
     var instructions
-    if (steps){
+    if (steps) {
         instructions = steps.map((s) => {
-            return(
+            return (
                 <List.Item as="li" key={steps.indexOf(s)}>{s}</List.Item>
             )
         })
     }
-    
+
     // var creatorName = recipeData.creatorId.firstname
 
     return (
@@ -82,7 +82,6 @@ const RecipeDetails = props => {
                     </Grid.Column>
                     <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>
                 </Grid.Row>
-
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <h3>Ingredients</h3>

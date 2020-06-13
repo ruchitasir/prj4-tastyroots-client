@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 import { Button, Form, Header, Icon, Input, Label, Modal } from 'semantic-ui-react'
 
 const FamilyAddModal = props => {
@@ -8,19 +9,11 @@ const FamilyAddModal = props => {
     let [familyStory, setFamilyStory] = useState()
     let [familyToken, setFamilyToken] = useState()
     let [message, setMessage] = useState()
-
-    // if (!props.userDetails){
-    //     return null
-    // }
-    
+    let [redirect, setRedirect] = useState(false)
+    let toFamily
 
     // *************************Submitting the form *************************
     const handleSubmit = (e) => {
-        // if(!props.userDetails){
-        //     return null
-        // }
-        // console.log(props.userDetails)
-
 
         e.preventDefault()
         let creatorId = props.userDetails._id
@@ -43,9 +36,11 @@ const FamilyAddModal = props => {
                 console.log("Here is the response!", response)
                 if (!response.ok) {
                     setMessage(`${response.status} : ${response.statusText}`)
+                    
                     return
                 }
                 response.json().then(result => {
+                    setRedirect(true)
                     console.log("result!", result)
 
                 })
@@ -56,8 +51,11 @@ const FamilyAddModal = props => {
             .finally(() => {
                 document.getElementById('famForm').reset()
             })
-
         
+    }
+    console.log('redirect', redirect)
+    if (redirect){
+        return <Redirect to="/profile" />
     }
    
 
@@ -89,6 +87,7 @@ const FamilyAddModal = props => {
                     <Button type="submit">Submit</Button>
                 </Modal.Actions>
             </Modal.Content>
+            {/* {toFamily} */}
         </Modal>
     )
 }

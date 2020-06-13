@@ -12,13 +12,14 @@ import Recipe from './pages/Recipe'
 import RecipeDetails from './pages/RecipeDetails'
 import FamilyCircleDetails from './pages/FamilyCircleDetails'
 import ShareWith from './pages/ShareWith'
+import AddTwist from './pages/AddTwist'
 
 
 const Content = props => {
   return (
     <Switch>
       <Route exact path="/" render={
-        () => <Home user={props.user} updateToken={props.updateToken}/>
+        () => <Home user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile/edit" render={
         () => <EditProfile user={props.user} />
@@ -33,14 +34,17 @@ const Content = props => {
         () => <FamilyCircle user={props.user} />
       } />
       <Route path="/recipe/:id/share" render={
-          () => <ShareWith user={props.user} />
-        }></Route>
+        () => <ShareWith user={props.user} />
+      } />
+      <Route path="/recipe/:id/twist" render={
+        () => <AddTwist user={props.user} />
+      } />
       <Route path="/recipe/:id" render={
-          () => <RecipeDetails user={props.user} />
-        }></Route>
-        <Route path="/family/:id" render={
-          () => <FamilyCircleDetails user={props.user} />
-          }></Route>
+        () => <RecipeDetails user={props.user} />
+      } />
+      <Route path="/family/:id" render={
+        () => <FamilyCircleDetails user={props.user} />
+      } />
       <Route component={Lost} />
     </Switch>
   )
