@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import ProfilePage from '../components/ProfilePage'
+import UserFromDB from '../components/UserFromDB'
 
 const Profile = props => {
 
@@ -40,7 +41,6 @@ const Profile = props => {
   return (
     <div>
        <ProfilePage user={props.user} userDetails={userDetails} />
-    
     </div>
     
   )

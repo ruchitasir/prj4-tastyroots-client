@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
+<<<<<<< HEAD
 import { Button, Container, Divider, Grid, Image, List, Segment } from 'semantic-ui-react'
+=======
+import { Button, Checkbox, Container, Divider, Grid, Image, List, Message, Radio } from 'semantic-ui-react'
+>>>>>>> 8d57a8ad1ce72149e90643e91598b82cdbb6dd4b
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
 
@@ -12,8 +16,14 @@ const RecipeDetails = props => {
     let [sharedWith, setSharedWith] = useState([])
     let [share, setShare] = useState(false)
     let { id } = useParams()
+<<<<<<< HEAD
 
     //Fetch recipe details
+=======
+    // let [checked, setChecked] = useState(false)
+    // let [publicState, setPublicState] = useState()
+    // let [radiostate, setRadioState] = useState()
+>>>>>>> 8d57a8ad1ce72149e90643e91598b82cdbb6dd4b
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
@@ -35,6 +45,7 @@ const RecipeDetails = props => {
                     .then(result => {
                         setRecipeData(result)
                         setSharedWith(result.sharedWith)
+                        // setPublicState(result.public)
                         console.log(result)
                     })
                     .catch((innErr) => {
@@ -98,6 +109,52 @@ const RecipeDetails = props => {
         })
     }
     // var creatorName = recipeData.creatorId.firstname
+    // console.log('checked', checked)
+   
+
+    // const handleToggle = () => {
+    //     let token = localStorage.getItem('boilerToken')
+    //     fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': "application/json",
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     })
+    //         .then(response => {
+    //             console.log('Response:', response)
+    //             if (!response.ok) {
+    //                 setSecretMessage('Invalid')
+    //                 return
+    //             }
+    //             //if response is good
+    //             response.json()
+    //                 .then(result => {
+    //                     setRecipeData(result)
+    //                     console.log(result)
+    //                 })
+    //                 .catch((innErr) => {
+    //                     console.log('Error in RecipeDetails:', innErr)
+    //                     setSecretMessage(innErr)
+    //                 })
+    //         })
+    //         .catch((err) => {
+    //             setSecretMessage(err)
+    //             console.log(err)
+    //         })
+    // }
+    // let toggleMsg
+    
+    // var radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)}/>)
+    // if (publicState){
+    //     console.log('public state---->', publicState)
+    //     radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/>)
+    //     // setRadioState(radioState)
+    // }
+    
+    // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
+    
+    
 
 
     //********************* Recipe Sharing ************************************
@@ -119,9 +176,13 @@ const RecipeDetails = props => {
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
+                        <Grid.Row>
+                         {/* {radioState} */}
+                         {/* <Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/> */}
+                    </Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
-                    <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>
+                    <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'http://placekitten.com/400/200'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
