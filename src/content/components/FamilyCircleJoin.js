@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 import { Button, Form, Header, Icon, Modal } from 'semantic-ui-react'
 
 const FamilyCircleJoin= props=> {
 
     let [familyToken, setFamilyToken] = useState()
+    let [redirect, setRedirect] = useState(false)
     let [message, setMessage] = useState()
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,7 +30,7 @@ const FamilyCircleJoin= props=> {
                 }
                 response.json().then(result => {
                     console.log("result!", result)
-
+                    setRedirect(true)
                 })
             })
             .catch(err => {
@@ -38,12 +41,16 @@ const FamilyCircleJoin= props=> {
             })
     }
 
+    if (redirect) {
+  
+        return <Redirect to="/profile"/>
+     }
 
-    
    return(
-        //    <span className="red">{message}</span>
+            
             <Modal id='joinFamilyForm' trigger={<Icon color="orange" name='add' size='large' textAlign="right"></Icon>} size={"small"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
-                <Header icon='user circle' content='Add family circle token' />
+                <Header icon='user circle' content='Enter the family token to join the family circle' />
+                {/*    <span className="red">{message}</span> */}
                 <Modal.Content>
                     <Form.Group widths='equal'>
                         <Form.Field>
@@ -55,7 +62,8 @@ const FamilyCircleJoin= props=> {
                     <Button color='green' type="submit">Join Family Circle</Button>
                 </Modal.Actions>
              </Modal>
-     
+            
+           
           )
     }
 
