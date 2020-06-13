@@ -9,6 +9,10 @@ import Content from './content/Content'
 import Footer from './nav/Footer'
 import Nav from './nav/Nav'
 
+// Redux 
+import { Provider } from 'react-redux'
+import store from './redux/store/store'
+
 const App = props => {
   // Declare state variables
   let [user, setUser] = useState(null)
@@ -50,15 +54,17 @@ const App = props => {
   }
 
   return (
-    <Router>
-      <div className="App">
-        <Nav user={user} updateToken={updateToken}/>
-        <main>
-          <Content user={user} updateToken={updateToken}/>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <Provider store={store}> 
+      <Router>
+        <div className="App">
+          <Nav user={user} updateToken={updateToken}/>
+          <main>
+            <Content user={user} updateToken={updateToken}/>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </Provider>
   )
 }
 
