@@ -39,3 +39,6 @@ main {
 .remove-btn {
   margin-top: 2em !important;
 }
+.url {
+  padding: 10px 0 10px 10px; 
+}

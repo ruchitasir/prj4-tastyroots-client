@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Button, Container, Divider, Grid, Image, List, Message } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 
@@ -74,7 +74,10 @@ const RecipeDetails = props => {
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData}/>
-                        <Grid.Row className="top-spacing"><Button>Add Twist</Button></Grid.Row>
+                        <Grid.Row className="top-spacing"> 
+                        <Button>Add Twist</Button>
+                        <Button as={Link} to={`/recipe/${recipeData._id}/share`}>Share Recipe</Button>
+                        </Grid.Row>
 
                     </Grid.Column>
                     <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>

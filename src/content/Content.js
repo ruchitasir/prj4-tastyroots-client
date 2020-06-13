@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-// Custom component
+// Custom components
 import Home from './pages/Home'
 import FamilyCircle from './pages/FamilyCircle'
 import EditProfile from './pages/EditProfile'
@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import Recipe from './pages/Recipe'
 import RecipeDetails from './pages/RecipeDetails'
 import FamilyCircleDetails from './pages/FamilyCircleDetails'
+import ShareWith from './pages/ShareWith'
 
 
 const Content = props => {
@@ -31,6 +32,9 @@ const Content = props => {
       <Route path="/familycircle" render={
         () => <FamilyCircle user={props.user} />
       } />
+      <Route path="/recipe/:id/share" render={
+          () => <ShareWith user={props.user} />
+        }></Route>
       <Route path="/recipe/:id" render={
           () => <RecipeDetails user={props.user} />
         }></Route>
