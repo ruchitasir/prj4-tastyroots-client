@@ -7,9 +7,9 @@ const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
     let [secretMessage, setSecretMessage] = useState('')
     let { id } = useParams()
-    let [checked, setChecked] = useState(false)
-    let [publicState, setPublicState] = useState()
-    let [radiostate, setRadioState] = useState()
+    // let [checked, setChecked] = useState(false)
+    // let [publicState, setPublicState] = useState()
+    // let [radiostate, setRadioState] = useState()
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
@@ -30,7 +30,7 @@ const RecipeDetails = props => {
                 response.json()
                     .then(result => {
                         setRecipeData(result)
-                        setPublicState(result.public)
+                        // setPublicState(result.public)
                         console.log(result)
                     })
                     .catch((innErr) => {
@@ -70,7 +70,7 @@ const RecipeDetails = props => {
     }
 
     // var creatorName = recipeData.creatorId.firstname
-    console.log('checked', checked)
+    // console.log('checked', checked)
    
 
     // const handleToggle = () => {
@@ -104,16 +104,16 @@ const RecipeDetails = props => {
     //             console.log(err)
     //         })
     // }
-    let toggleMsg
+    // let toggleMsg
     
-    var radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)}/>)
-    if (publicState){
-        console.log('public state---->', publicState)
-        radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/>)
-        // setRadioState(radioState)
-    }
+    // var radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)}/>)
+    // if (publicState){
+    //     console.log('public state---->', publicState)
+    //     radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/>)
+    //     // setRadioState(radioState)
+    // }
     
-    if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
+    // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
     
     
 
@@ -124,7 +124,7 @@ const RecipeDetails = props => {
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
                         <Grid.Row>
-                         {radioState}
+                         {/* {radioState} */}
                          {/* <Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/> */}
                     </Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData} />

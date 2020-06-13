@@ -8,6 +8,10 @@ const FamilyMembers = props => {
         return null
     }
     let members = props.familyData.members.map((m) => {
+        // let memberPic
+        // if (!m.picture){
+        //     memberPic = 'http://placekitten.com/200/200'
+        // }
         return(
 
         <List.Item key={m._id} >
@@ -17,9 +21,13 @@ const FamilyMembers = props => {
         )
 
     })
+    let creatorPic
 
     if (!props.familyData.creatorId){
         return null
+    }
+    if (!props.familyData.creatorId.picture){
+        creatorPic = 'http://placekitten.com/200/200'
     }
 
     return (
