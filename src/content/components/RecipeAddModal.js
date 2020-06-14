@@ -27,7 +27,7 @@ const RecipeAddModal = props => {
         { text: '3', value: 3 },
         { text: '4', value: 4 },
         { text: '5', value: 5 },
-        { text: '6', value: 6 }, 
+        { text: '6', value: 6 },
         { text: '7', value: 7 },
         { text: '8', value: 8 },
         { text: '9', value: 9 },
@@ -129,8 +129,8 @@ const RecipeAddModal = props => {
         ingredients = ing
         console.log('ingredients in string', ingredients)
         let recipePublic = recipeStatus
-        console.log('recipe status public',recipeStatus)
-      
+        console.log('recipe status public', recipeStatus)
+
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',
@@ -178,8 +178,8 @@ const RecipeAddModal = props => {
                 document.getElementById("recipeForm").reset();
             })
     }
-    const toggleRecipeStatus = (e,data) => {
-         setRecipeStatus(data.checked)
+    const toggleRecipeStatus = (e, data) => {
+        setRecipeStatus(data.checked)
     }
     /**************************************************************************/
     return (
@@ -188,7 +188,7 @@ const RecipeAddModal = props => {
             <Header icon='user circle' content='Add new recipe' />
             <Modal.Content>
                 <Form.Radio label='Public'
-                 onChange={toggleRecipeStatus} toggle/>
+                    onChange={toggleRecipeStatus} toggle />
                 <Form.Group widths='equal'>
                     <Form.Field>
                         <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />

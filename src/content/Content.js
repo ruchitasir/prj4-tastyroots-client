@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-// Custom component
+// Custom components
 import Home from './pages/Home'
 import FamilyCircle from './pages/FamilyCircle'
 import EditProfile from './pages/EditProfile'
@@ -18,7 +18,7 @@ const Content = props => {
   return (
     <Switch>
       <Route exact path="/" render={
-        () => <Home user={props.user} updateToken={props.updateToken}/>
+        () => <Home user={props.user} updateToken={props.updateToken} />
       } />
       <Route path="/profile/edit" render={
         () => <EditProfile user={props.user} />
@@ -32,15 +32,15 @@ const Content = props => {
       <Route path="/familycircle" render={
         () => <FamilyCircle user={props.user} />
       } />
-        <Route path="/recipe/:id/twist" render={
+      <Route path="/recipe/:id/twist" render={
         () => <AddTwist user={props.user} />
-        }></Route>
+      } />
       <Route path="/recipe/:id" render={
-          () => <RecipeDetails user={props.user} />
-        }></Route>
-        <Route path="/family/:id" render={
-          () => <FamilyCircleDetails user={props.user} />
-          }></Route>
+        () => <RecipeDetails user={props.user} />
+      } />
+      <Route path="/family/:id" render={
+        () => <FamilyCircleDetails user={props.user} />
+      } />
       <Route component={Lost} />
     </Switch>
   )

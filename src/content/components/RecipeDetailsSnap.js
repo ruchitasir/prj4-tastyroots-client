@@ -17,7 +17,7 @@ const RecipeDetailsSnap = props => {
                 <Grid.Row className="top-spacing">
                     <Grid.Column><h3>{props.recipeData.prepTime}</h3>{(parseFloat(props.recipeData.prepTime) > 1) ? 'Hours' : 'Hour'}<br />Prep</Grid.Column>
                     <Grid.Column><h3>{props.recipeData.cookTime}</h3>{(parseFloat(props.recipeData.cookTime) > 1) ? 'Hours' : 'Hour'}<br />Cook</Grid.Column>
-                    <Grid.Column><h3>{props.recipeData.servings}</h3><br />Serves</Grid.Column>
+                    <Grid.Column><h3>{props.recipeData.servings}</h3><br />Servings</Grid.Column>
                 </Grid.Row>
            </Grid>
         </Container>
