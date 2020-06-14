@@ -22,7 +22,7 @@ const FamilyCirclesPage = props => {
                     <List.Content key={fam._id}>
                         <List.Header as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
                         <Item.Meta><Icon name='user circle' />{fam.userRole}</Item.Meta>
-                        {fam.userRole == 'creator' ? <List.Description> <Icon name='lock' />Family Token: {fam._id.familyToken}</List.Description> : ''}
+                        {fam.userRole === 'creator' ? <List.Description> <Icon name='lock' />Family Token: {fam._id.familyToken}</List.Description> : ''}
                     <Item.Meta><Icon name="globe"/>Country of Origin: {fam._id.countryOrigin}</Item.Meta>
                         <Item.Meta><Icon name="spoon"/>{fam._id.familyStory}</Item.Meta>
                     </List.Content>

@@ -9,9 +9,7 @@ const FamilyAddModal = props => {
     let [familyToken, setFamilyToken] = useState()
     let [message, setMessage] = useState()
     let [redirect, setRedirect] = useState(false)
-    let toFamily
 
-    // Family flag options
 
     // *************************Submitting the form *************************
     const handleSubmit = (e) => {
