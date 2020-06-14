@@ -4,6 +4,7 @@ import { Container, Grid, Image } from 'semantic-ui-react'
 import Moment from 'moment'
 
 const RecipeDetailsSnap = props => {
+    
     let defaultImg = 'https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5zjggogrej4qcal99e.jpg'
     if (props.recipeData.creatorId.picture){
         defaultImg = props.recipeData.creatorId.picture

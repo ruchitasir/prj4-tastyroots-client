@@ -173,6 +173,17 @@ const RecipeDetails = props => {
     if (!props.user){
         return null
     }
+
+    let defaultImageArr = [
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592125142/tasty-roots/bawtwugyxiqncunyfncg.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592127596/tasty-roots/xwfxeyhgcrrbukdisrnn.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592127800/tasty-roots/nbyavqnq6szwbjuaj6zk.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157817/tasty-roots/f2ws93rk2h8witzd84lp.png',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157853/tasty-roots/zglx6vph69ix5trog2js.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157963/tasty-roots/pppyg1lx2camgeudiltc.jpg'
+    ]
+    let randoNum = Math.floor(Math.random() * defaultImageArr.length)
+    let defaultImg = defaultImageArr[randoNum]
     
     return (
         <Container>
@@ -187,7 +198,7 @@ const RecipeDetails = props => {
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5zjggogrej4qcal99e.jpg'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
+                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={defaultImg} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
