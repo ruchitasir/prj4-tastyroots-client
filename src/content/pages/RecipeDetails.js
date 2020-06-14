@@ -152,7 +152,7 @@ const RecipeDetails = props => {
 
     //********************* Recipe Sharing ************************************
     // If the logged in user is the recipe creator, allow sharing with family circles
-    // if (props.user._id === recipeData.creatorId) {
+    // if (userDetails && userDetails._id === recipeData.creatorId) {
     //     var shareBtn =  (
     //     <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button>
     //     )
@@ -175,12 +175,14 @@ const RecipeDetails = props => {
                     </Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
-                    <Grid.Column width={8}>{(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'http://placekitten.com/400/200'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}</Grid.Column>
+                    <Grid.Column width={8}>
+                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'http://placekitten.com/400/200'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
+                    </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
                     <Button size="tiny" basic color="teal">Add Twist</Button>
-                    {(props.user._id === recipeData.creatorId) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
+                    {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
                 </Grid.Row>
                 {share ? <ShareWith recipeData={recipeData} userFamilies={userFamilies}
                     sharedWith={sharedWith} userDetails={userDetails} updateShare={updateShare} 
