@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Message, Radio } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
+import RecipeTwist from '../components/RecipeTwist'
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])

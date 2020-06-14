@@ -4,8 +4,8 @@ import { Container, Grid, Image } from 'semantic-ui-react'
 
 const RecipeDetailsSnap = props => {
     let defaultImg = 'http://placekitten.com/200/200'
-    if (props.recipeData.creatorId.pictures){
-        defaultImg = props.recipeData.creatorId.pictures[0]
+    if (props.recipeData.creatorId.picture){
+        defaultImg = props.recipeData.creatorId.picture
     }
 
     return (
