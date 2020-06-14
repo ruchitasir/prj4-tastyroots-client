@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import { Button, Checkbox, Container, Divider, Grid, Image, List, Message, Radio } from 'semantic-ui-react'
+import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Message, Radio } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
+import RecipeTwist from '../components/RecipeTwist'
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
     let [secretMessage, setSecretMessage] = useState('')
     let { id } = useParams()
-    // let [checked, setChecked] = useState(false)
+    let [checked, setChecked] = useState(false)
     // let [publicState, setPublicState] = useState()
     // let [radiostate, setRadioState] = useState()
     useEffect(() => {
@@ -30,8 +31,9 @@ const RecipeDetails = props => {
                 response.json()
                     .then(result => {
                         setRecipeData(result)
-                        // setPublicState(result.public)
+                        setChecked(result.public)
                         console.log(result)
+                       
                     })
                     .catch((innErr) => {
                         console.log('Error in RecipeDetails:', innErr)
@@ -43,7 +45,7 @@ const RecipeDetails = props => {
                 console.log(err)
             })
     }, [])
-
+    console.log('checked ------------->',checked)
     if (!recipeData.creatorId) {
         return null
     }
@@ -70,48 +72,55 @@ const RecipeDetails = props => {
     }
 
     // var creatorName = recipeData.creatorId.firstname
-    // console.log('checked', checked)
-   
 
-    // const handleToggle = () => {
-    //     let token = localStorage.getItem('boilerToken')
-    //     fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': "application/json",
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     })
-    //         .then(response => {
-    //             console.log('Response:', response)
-    //             if (!response.ok) {
-    //                 setSecretMessage('Invalid')
-    //                 return
-    //             }
-    //             //if response is good
-    //             response.json()
-    //                 .then(result => {
-    //                     setRecipeData(result)
-    //                     console.log(result)
-    //                 })
-    //                 .catch((innErr) => {
-    //                     console.log('Error in RecipeDetails:', innErr)
-    //                     setSecretMessage(innErr)
-    //                 })
-    //         })
-    //         .catch((err) => {
-    //             setSecretMessage(err)
-    //             console.log(err)
-    //         })
-    // }
-    // let toggleMsg
-    
-    // var radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)}/>)
-    // if (publicState){
-    //     console.log('public state---->', publicState)
-    //     radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/>)
+    // const handleToggle = (e) => {
+    //     console.log(e)
+    //     setChecked(!checked)
+    //     // let token = localStorage.getItem('boilerToken')
+    //     // console.log(e)
+    //     // fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
+    //     //     method: 'PUT',
+    //     //     headers: {
+    //     //         'Content-Type': "application/json",
+    //     //         'Authorization': `Bearer ${token}`
+    //     //     }
+    //     // })
+    //     //     .then(response => {
+    //     //         console.log('Response:', response)
+    //     //         if (!response.ok) {
+    //     //             setSecretMessage('Invalid')
+    //     //             return
+    //     //         }
+    //     //         //if response is good
+    //     //         response.json()
+    //     //             .then(result => {
+    //     //                 setRecipeData(result)
+    //     //                 console.log(result)
+    //     //             })
+    //     //             .catch((innErr) => {
+    //     //                 console.log('Error in RecipeDetails:', innErr)
+    //     //                 setSecretMessage(innErr)
+    //     //             })
+    //     //     })
+    //     //     .catch((err) => {
+    //     //         setSecretMessage(err)
+    //     //         console.log(err)
+    //     //     })
+
+    //     if (checked){
+    //     // toggleMsg = 'Public'
+    //     radioState = (<Radio toggle label="Public" onChange={(e) => handleToggle(checked} checked/>)
     //     // setRadioState(radioState)
+    //     }
+    //     else{
+    //         radioState = (<Radio toggle label="Private" onChange={(e) => setChecked(e.currentTarget.value)} />)
+    //         // toggleMsg = 'Private'
+    //     }
     // }
+    // // let toggleMsg
+    // var radioState = (<Radio toggle label="Public" onClick={handleToggle} value={checked} checked/>)
+    
+    
     
     // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
     
@@ -142,6 +151,10 @@ const RecipeDetails = props => {
                         <h3>Instructions</h3>
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Header>Twists</Header>
+                    <RecipeTwist />
                 </Grid.Row>
             </Grid>
         </Container>
