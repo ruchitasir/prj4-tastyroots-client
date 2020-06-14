@@ -40,6 +40,7 @@ const RecipeTwist = props => {
                 setSecretMessage(err)
                 console.log(err)
             })
+        
     }, [])
 
     if (!recipeTwist){
@@ -50,7 +51,8 @@ const RecipeTwist = props => {
         return (
 
         <Card key={r._id}>
-                {(!r.pictures || r.pictures.length < 1) ? <Image src='http://www.placekitten.com/100/100' wrapped /> : <Image src={r.pictures[0]} wrapped />}
+                {(!r.pictures || r.pictures.length < 1) ? <Image src='
+https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5zjggogrej4qcal99e.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                 <Card.Content>
                     <Card.Header as={Link} to={`/recipe/${r._id}`}>{r.recipeName}</Card.Header>
                     <Card.Meta>

@@ -8,7 +8,7 @@ const RecipeCards = props => {
     if (!props.familyData.familyRecipes){
         return null
     }
-    let recipe = props.familyData.familyRecipes.map(r => {
+    let recipe = props.familyData.familyRecipes.map((r) => {
         let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
             <Card key={r._id}>

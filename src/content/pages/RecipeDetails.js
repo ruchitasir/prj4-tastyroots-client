@@ -170,7 +170,10 @@ const RecipeDetails = props => {
         share ? setShare(false) : setShare(true)
         console.log('share is', share)
     }
-
+    if (!props.user){
+        return null
+    }
+    
     return (
         <Container>
             <Grid >
@@ -184,7 +187,7 @@ const RecipeDetails = props => {
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'http://placekitten.com/400/200'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
+                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5zjggogrej4qcal99e.jpg'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
