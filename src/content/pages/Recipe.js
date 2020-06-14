@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
-import { Card, Container, Header, Icon, Image } from 'semantic-ui-react'
+import { Card, Container, Grid, Header, Icon, Image } from 'semantic-ui-react'
 // import RecipeDetails from './RecipeDetails'
 
 //Fetch call to display all public recipes
@@ -71,9 +71,9 @@ const Recipe = props => {
     }
 
     return (
-        <Container>
+        <Container as={Grid} columns={4} stackable>
             <Header as="h2" dividing>Community Recipes</Header>
-            <Card.Group itemsPerRow="4">
+            <Card.Group>
             {display}
             </Card.Group>
         </Container>

@@ -38,9 +38,9 @@ const FamilyCircleDetails = props => {
             })
             .catch((err) => {
                 setSecretMessage(err)
-                console.log(err)
+                console.log(secretMessage)
             })
-    }, [])
+    }, []);
     if (!props.user) {
         return (
         <Redirect to="/" />

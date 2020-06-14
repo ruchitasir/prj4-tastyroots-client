@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, Icon, Item, List, Grid, Loader } from 'semantic-ui-react';
+import { Container, Icon, Item, List, Grid, Loader } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
 import FamilyCircle from '../pages/FamilyCircle'
 
