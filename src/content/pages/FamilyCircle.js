@@ -5,6 +5,7 @@ import FamilyCirclesPage from '../components/FamilyCirclesPage'
 
 const FamilyCircle = props => {
     let [userDetails, setUserDetails] = useState(null)
+    let [refreshPage, setRefreshPage] = useState(false)
 
     useEffect(() => {
         // Get the token from local storage
@@ -29,7 +30,7 @@ const FamilyCircle = props => {
           .catch(err => {
             console.log("Error in profile", err)
           })
-      }, [])
+      }, [refreshPage])
     
     if (!props.user) {
         return <Redirect to="/" />
@@ -37,7 +38,7 @@ const FamilyCircle = props => {
 
     return (
       <div>
-        <FamilyCirclesPage user={props.user} userDetails={userDetails}/>
+        <FamilyCirclesPage user={props.user} userDetails={userDetails} setRefreshPage={setRefreshPage}/>
         </div>
     )
 }

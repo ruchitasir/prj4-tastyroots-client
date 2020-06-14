@@ -48,7 +48,7 @@ const FamilyCircleJoin= props=> {
 
    return(
             
-            <Modal id='joinFamilyForm' trigger={<Icon color="orange" name='add' size='large' textAlign="right"></Icon>} size={"small"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+            <Modal id='joinFamilyForm' trigger={<Button name='add' size="small" basic color="purple">Join a Family Circle</Button>} size={"small"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
                 <Header icon='user circle' content='Enter the family token to join the family circle' />
                 {/*    <span className="red">{message}</span> */}
                 <Modal.Content>

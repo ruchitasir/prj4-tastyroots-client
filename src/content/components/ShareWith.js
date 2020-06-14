@@ -45,6 +45,7 @@ const ShareWith = props => {
                 }
                 response.json().then(result => {
                     console.log("result!", result)
+                    console.log("PROPS? ", props.updateShare)
                     props.updateShare ? props.setUpdateShare(false) : props.setUpdateShare(true)
                 })
             })
