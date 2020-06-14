@@ -236,10 +236,7 @@ const AddTwist = props => {
                     <Form.Field>
                         <Button onClick={(e) => addSteps(e)}>Add steps</Button>
                     </Form.Field>  
-                    {/* <Form.Field> 
-                          <Button color='green' type='submit'>Add twist</Button>
-                    </Form.Field> */}
-                </Form.Group>  
+               </Form.Group>  
             </Form>
         </Container>
     )
