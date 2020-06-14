@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button,Container, Form, Loader, Input, TextArea } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Loader, Input, TextArea } from 'semantic-ui-react';
 
 
 const EditProfile = props => {
@@ -12,12 +12,11 @@ const EditProfile = props => {
     let [imageUrl, setImageUrl] = useState('')
     let [redirect, setRedirect] = useState(false)
     let toProfile
-    
+
 
     //Cloudinary widget + picture upload
     var checkUploadResult = (resultEvent) => {
         if (resultEvent.event === 'success') {
-            // photo = resultEvent.info.secure_url
             setImageUrl(resultEvent.info.secure_url)
         }
 
@@ -93,13 +92,13 @@ const EditProfile = props => {
         if (!biography) {
             bio = userDetails.bio
         }
-        
+
         fetch(process.env.REACT_APP_SERVER_URL + 'profile', {
             method: 'PUT',
             body: JSON.stringify({
                 firstname,
                 lastname,
-                bio, 
+                bio,
                 picture
             }),
             headers: {
@@ -121,10 +120,10 @@ const EditProfile = props => {
             .catch(err => {
                 console.log('ERROR UPDATING USER PROFILE', err)
             })
-            
+
     }
     if (redirect) {
-       toProfile= <Redirect to="/profile"/>
+        toProfile = <Redirect to="/profile" />
     }
     if (!userDetails) {
         return (
@@ -138,24 +137,21 @@ const EditProfile = props => {
             <h1>Edit Profile</h1>
             <Form onSubmit={(e) => handleSubmit(e)}>
                 <Form.Group widths='equal'>
-                    <Form.Field name="firstname" control={Input} label='First name' 
-                    placeholder='First name' defaultValue={userDetails.firstname} 
-                    onChange={(e) => setFirstName(e.target.value)} required/>
-                    <Form.Field name="lastname" control={Input} label='Last name' 
-                    placeholder='Last name' defaultValue={userDetails.lastname} 
-                    onChange={(e) => setLastName(e.target.value)} required/>
+                    <Form.Field name="firstname" control={Input} label='First name'
+                        placeholder='First name' defaultValue={userDetails.firstname}
+                        onChange={(e) => setFirstName(e.target.value)} required />
+                    <Form.Field name="lastname" control={Input} label='Last name'
+                        placeholder='Last name' defaultValue={userDetails.lastname}
+                        onChange={(e) => setLastName(e.target.value)} required />
                 </Form.Group>
                 <Form.Field name="bio" control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={(e) => setBiography(e.target.value)} />
                 <Form.Group>
-                    {/* <Form.Input
-                        label="Profile Pic"
-                        name="picture" value={imageUrl}
-                        width={16} disabled
-                    /> */}
-                    <Button onClick={(e)=>showWidget(widget, e)} type="text">Upload</Button>
+                    <Button onClick={(e) => showWidget(widget, e)} type="text">Upload</Button>
+                    <p className="url">{imageUrl}</p>
                 </Form.Group>
+                <Divider />
                 <Form.Group>
-                    <Button type="submit" color="teal" className="top-spacing" >Save</Button>
+                    <Button type="submit" color="teal" className="top-spacing" textAlign='center'>Save</Button>
                 </Form.Group>
             </Form>
             {toProfile}

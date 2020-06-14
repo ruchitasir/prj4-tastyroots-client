@@ -71,9 +71,9 @@ const Recipe = props => {
     }
 
     return (
-        <Container as={Grid} columns={4} stackable>
-            <Header as="h2" dividing>Community Recipes</Header>
-            <Card.Group>
+        <Container>
+            <Header as="h1" dividing>Community Recipes</Header>
+            <Card.Group itemsPerRow="4">
             {display}
             </Card.Group>
         </Container>
