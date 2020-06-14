@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { List, Icon, Image } from 'semantic-ui-react'
+import { List, Icon } from 'semantic-ui-react'
 
 const UserFamily = props => {
     if (!props.userDetails.families) {
@@ -12,7 +12,7 @@ const UserFamily = props => {
     }
 
 
-    var family = props.userDetails.families.map(fam => {
+    family = props.userDetails.families.map(fam => {
         if (!fam._id) {
             return (
                 <List.Item>

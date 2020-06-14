@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Header, Icon, Modal } from 'semantic-ui-react'
+import { Button, Form, Header, Message, Modal } from 'semantic-ui-react'
 
 const FamilyCircleJoin= props=> {
 
@@ -42,9 +42,8 @@ const FamilyCircleJoin= props=> {
     }
 
     if (redirect) {
-  
         return <Redirect to="/profile"/>
-     }
+    }
 
    return(
             
@@ -52,19 +51,20 @@ const FamilyCircleJoin= props=> {
                 <Header icon='user circle' content='Enter the family token to join the family circle' />
                 {/*    <span className="red">{message}</span> */}
                 <Modal.Content>
+                    <Message info><p>Make sure your family token is at least 8 characters long.</p></Message>
                     <Form.Group widths='equal'>
                         <Form.Field>
-                            <Form.Input label="Family Token" name="familyToken" value={familyToken} onChange={(e) => setFamilyToken(e.target.value)} required />
+                            <Form.Input label="Family Token" name="familyToken" onChange={(e) => setFamilyToken(e.target.value)} required />
                         </Form.Field>
                     </Form.Group>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color='green' type="submit">Join Family Circle</Button>
                 </Modal.Actions>
-             </Modal>
+            {message ? <Message warning error header='Oops!' content={message}/> : ''}
+            </Modal>
             
-           
-          )
+        )
     }
 
 export default FamilyCircleJoin

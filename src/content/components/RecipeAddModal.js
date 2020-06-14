@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Header, Icon, Modal } from 'semantic-ui-react'
 import RecipeAddStepsInModal from '../components/RecipeAddStepsInModal'
 import RecipeAddIngredientsModal from './RecipeAddIngredientsModal';
+import RecipePics from './RecipePics'
 import { Redirect } from 'react-router-dom'
 
 
@@ -24,6 +25,8 @@ const RecipeAddModal = props => {
     let [ingredientQuantity, setIngredientQuantity] = useState()
     let [redirect, setRedirect] = useState(false)
 
+    let [imageUrl, setImageUrl] = useState('')
+
     const servingsOptions = [
         { text: '1', value: 1 },
         { text: '2', value: 2 },
@@ -37,8 +40,6 @@ const RecipeAddModal = props => {
         { text: '10', value: 10 },
         { text: '11', value: 11 },
         { text: '12', value: 12 }
-
-
     ]
 
     const unitOptions = [
@@ -134,7 +135,7 @@ const RecipeAddModal = props => {
 
         let recipePublic = recipeStatus
         console.log('recipe status public', recipeStatus)
-
+        let pictures = imageUrl
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',
@@ -147,7 +148,8 @@ const RecipeAddModal = props => {
                 cookTime,
                 ingredients,
                 steps,
-                recipePublic
+                recipePublic, 
+                pictures
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -182,7 +184,7 @@ const RecipeAddModal = props => {
                 props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
                 document.getElementById("recipeForm").reset();
                 setRedirect(true)
-               
+
             })
     }
 
@@ -196,8 +198,8 @@ const RecipeAddModal = props => {
     /**************************************************************************/
     return (
 
-        <Modal id='recipeForm' trigger={<Icon color="orange" name='add' size='large'></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
-            <Header icon='user circle' content='Add new recipe' />
+        <Modal id='recipeForm' trigger={<Icon className="burgundy-font" name='add' size='large' content="Add recipe"></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+            <Header icon='food' content='Add new recipe' />
             <Modal.Content>
                 <Form.Radio label='Public'
                     onChange={toggleRecipeStatus} toggle />
@@ -228,6 +230,7 @@ const RecipeAddModal = props => {
                 <Form.Field>
                     <Button onClick={(e) => addSteps(e)}>Add steps</Button>
                 </Form.Field>
+                <RecipePics setImageUrl={setImageUrl} imageUrl={imageUrl}/>
             </Modal.Content>
             <Modal.Actions>
                 <Button color='green' type="submit">Add Recipe</Button>

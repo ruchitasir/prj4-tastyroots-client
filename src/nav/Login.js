@@ -61,7 +61,7 @@ const Login = props => {
             <Input label="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
           </Menu.Item>
           <Menu.Item>
-            <Button color="orange" size={"tiny"} content="Login" icon="sign-in" labelPosition="right" type="submit" />
+            <Button className="mauve-bg white-font" size={"tiny"} content="Login" icon="sign-in" labelPosition="right" type="submit" />
           </Menu.Item>
         </Form.Group>
       </Form>

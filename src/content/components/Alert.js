@@ -4,7 +4,7 @@ import { Message } from 'semantic-ui-react'
 const Alert = props => {
     if (props.message) {
         return (
-            <Message compact negative>
+            <Message negative>
                 {props.message}
             </Message>
         )
