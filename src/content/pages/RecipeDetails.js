@@ -52,6 +52,7 @@ const RecipeDetails = props => {
                 setSecretMessage(err)
                 console.log(err)
             })
+            console.log("WHAT HAPPENING WITH UPDATE SHARE", updateShare)
     }, [updateShare])
 
     //Fetch user details
@@ -80,6 +81,7 @@ const RecipeDetails = props => {
             .catch(err => {
                 console.log("Error in profile", err)
             })
+            console.log("WHAT HAPPENING WITH UPDATE SHARE 2", updateShare)
     }, [updateShare])
 
     if (!recipeData.creatorId) {
@@ -153,11 +155,6 @@ const RecipeDetails = props => {
 
     //********************* Recipe Sharing ************************************
     // If the logged in user is the recipe creator, allow sharing with family circles
-    // if (userDetails && userDetails._id === recipeData.creatorId) {
-    //     var shareBtn =  (
-    //     <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button>
-    //     )
-    // }
     //Toggle sharing popup
     var shareRecipe = () => {
         share ? setShare(false) : setShare(true)

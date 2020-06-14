@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import { Button, Form, Header, Icon, Input, Label, Modal } from 'semantic-ui-react'
 
 const FamilyAddModal = props => {
-
     let [familyName, setFamilyName] = useState()
     let [countryOrigin, setCountryOrigin] = useState()
     let [familyStory, setFamilyStory] = useState()
@@ -35,8 +34,7 @@ const FamilyAddModal = props => {
             .then(response => {
                 console.log("Here is the response!", response)
                 if (!response.ok) {
-                    setMessage(`${response.status} : ${response.statusText}`)
-                    
+                    setMessage(`${response.status} : ${response.statusText}`)              
                     return
                 }
                 response.json().then(result => {
@@ -57,10 +55,9 @@ const FamilyAddModal = props => {
     if (redirect){
         return <Redirect to="/profile" />
     }
-   
 
     return (
-        <Modal id="famForm" trigger={<Icon name='add' size="large">Create a Family Circle</Icon>} size={"large"} as={Form}  onSubmit={handleSubmit}closeIcon>
+        <Modal id="famForm" trigger={<Button name='add' size="small" basic color="purple" floated="right">Create a Family Circle</Button>} size={"large"} as={Form}  onSubmit={handleSubmit}closeIcon>
             <Header icon="users" content="Create a Family Circle"></Header>
             <Modal.Content>
                 <Form.Group widths="equal">
@@ -80,7 +77,7 @@ const FamilyAddModal = props => {
                 </Form.Group>
                 <Form.Group widths="equal">
                     <Form.Field>
-                        <Form.Input label="Family Token" placeholder="Enter a special key your loved ones will use to join your family" name="countryOrigin" onChange={(e) => setFamilyToken(e.target.value)} />
+                        <Form.Input label="Family Token" required placeholder="Enter a special key your loved ones will use to join your family" name="countryOrigin" onChange={(e) => setFamilyToken(e.target.value)} />
                     </Form.Field>
                 </Form.Group>
                 <Modal.Actions>
