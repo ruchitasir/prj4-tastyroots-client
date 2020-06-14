@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom'
 const RecipeAddModal = props => {
 
     let [message, setMessage] = useState()
-    let [recipeStatus, setRecipeStatus] = useState()
+    let [recipeStatus, setRecipeStatus] = useState(false)
     let [recipeName, setRecipeName] = useState()
     let [description, setDescription] = useState()
     let [servings, setServings] = useState(2)
@@ -131,6 +131,7 @@ const RecipeAddModal = props => {
         })
         ingredients = ing
         console.log('ingredients in string', ingredients)
+
         let recipePublic = recipeStatus
         console.log('recipe status public', recipeStatus)
 
@@ -184,6 +185,7 @@ const RecipeAddModal = props => {
                
             })
     }
+
     const toggleRecipeStatus = (e, data) => {
         setRecipeStatus(data.checked)
     }

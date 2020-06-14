@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Button, Checkbox, Container, Divider, Grid, Image, List, Message, Radio } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
+import AddTwist from './AddTwist';
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
@@ -182,6 +183,7 @@ const RecipeDetails = props => {
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
                     <Button size="tiny" basic color="teal">Add Twist</Button>
+                
                     {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
                 </Grid.Row>
                 {share ? <ShareWith recipeData={recipeData} userFamilies={userFamilies}
@@ -198,6 +200,7 @@ const RecipeDetails = props => {
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
                 </Grid.Row>
+                {/* <AddTwist userDetails={userDetails}/> */}
             </Grid>
         </Container>
     )
