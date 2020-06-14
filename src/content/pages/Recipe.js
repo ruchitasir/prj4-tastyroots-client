@@ -50,19 +50,19 @@ const Recipe = props => {
         console.log(recipes)
         display = recipes.map((r) => {
             return (
-                
+
                 <Card key={r._id}>
-                     {(!r.pictures || r.pictures.length < 1) ? <Image src={'./ingredients.jpg'} wrapped /> : <Image src={r.pictures[0]} wrapped />}
-                <Card.Content>
+                    {(!r.pictures || r.pictures.length < 1) ? <Image src={'./ingredients.jpg'} wrapped /> : <Image src={r.pictures[0]} wrapped />}
+                    <Card.Content>
                         <Card.Header textAlign="center"><Link to={`/recipe/${r._id}`}>{r.recipeName}</Link></Card.Header>
-                        <Card.Meta><span className = 'date'>{r.datePosted}</span></Card.Meta>
+                        <Card.Meta><span className='date'>{r.datePosted}</span></Card.Meta>
                         <Card.Description>{r.description}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
                         <Icon name='user' />Serves {r.servings}
                     </Card.Content>
                 </Card>
-               
+
             )
         })
     }
@@ -74,7 +74,7 @@ const Recipe = props => {
         <Container>
             <Header as="h1" dividing>Community Recipes</Header>
             <Card.Group itemsPerRow="4">
-            {display}
+                {display}
             </Card.Group>
         </Container>
 

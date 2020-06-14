@@ -19,7 +19,7 @@ const RecipeDetailsSnap = props => {
                     <Grid.Column><h3>{props.recipeData.cookTime}</h3>{(parseFloat(props.recipeData.cookTime) > 1) ? 'Hours' : 'Hour'}<br />Cook</Grid.Column>
                     <Grid.Column><h3>{props.recipeData.servings}</h3><br />Servings</Grid.Column>
                 </Grid.Row>
-           </Grid>
+            </Grid>
         </Container>
     )
 }
