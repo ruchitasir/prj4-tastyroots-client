@@ -4,27 +4,67 @@ import { Button, Checkbox, Container, Divider, Form, Message } from 'semantic-ui
 
 
 const ShareWith = props => {
+    let [message, setMessage] = useState()
+    let shareWithCopy = [...props.sharedWith]
+    let [shareArray, setShareArray] = useState(shareWithCopy)
+    let { id } = useParams()
+
+    let handleCheck = (e, data) => {
+        let newShareArray
+        if (data.checked) {
+            newShareArray = [...shareArray, data.value]
+        } else {
+            let idx = shareArray.indexOf(data.value)
+            newShareArray = [...shareArray]
+            newShareArray.splice(idx, 1)
+        }
+        setShareArray(newShareArray)
+    }
+
+    // submit sharing settings
     let handleSubmit = (e) => {
         e.preventDefault()
-        console.log("submit form")
-    }
+        console.log("submit form with this shareArray", shareArray)
+        let sharedWith = shareArray
+        let token = localStorage.getItem('boilerToken')
+        fetch(process.env.REACT_APP_SERVER_URL + 'recipe/sharedWith/' + id, {
+            method: 'PUT',
+            body: JSON.stringify({
+                sharedWith
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log("Here is the response!", response)
+                if (!response.ok) {
+                    setMessage(`${response.status} : ${response.statusText}`)
+                    return
+                }
+                response.json().then(result => {
+                    console.log("result!", result)
+                    props.updateShare ? props.setUpdateShare(false) : props.setUpdateShare(true)
+                })
+            })
+            .catch(err => {
+                console.log('ERROR SHARING RECIPE WITH FAMILY CIRCLES', err)
+            })
 
-    let handleCheck = (e) => {
-        console.log('this is the family being added', e.target.value)
     }
-
     //if user has family circles, provide them as options to share recipe with
     if (props.userFamilies) {
         var display = props.userFamilies.map(f => {
-            console.log("shared with who?", f)
-            console.log("WHERE THEM RECIPE shared at", props.recipeData)
             if (props.sharedWith.includes(f._id._id)) {
                 return (
-                    <Checkbox key={f._id._id}  value={f._id._id} label={f._id.familyName} className="top-spacing pr" defaultChecked onClick={(e)=> handleCheck}/>
-            )} else {
+                    <Checkbox key={f._id._id} value={f._id._id} label={f._id.familyName} className="top-spacing pr" defaultChecked onChange={handleCheck} />
+                )
+            } else {
                 return (
-                    <Checkbox key={f._id._id}  value={f._id._id} label={f._id.familyName} className="top-spacing pr" onClick={(e)=> handleCheck}/>
-            )}
+                    <Checkbox key={f._id._id} value={f._id._id} label={f._id.familyName} className="top-spacing pr" onChange={handleCheck} />
+                )
+            }
         })
     } else {
         display = (
@@ -33,7 +73,7 @@ const ShareWith = props => {
         )
     }
 
-
+    /**************************************************************************/
     return (
         <Container textAlign="center">
             <Divider horizontal />

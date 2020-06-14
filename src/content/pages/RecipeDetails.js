@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-<<<<<<< HEAD
-import { Button, Container, Divider, Grid, Image, List, Segment } from 'semantic-ui-react'
-=======
 import { Button, Checkbox, Container, Divider, Grid, Image, List, Message, Radio } from 'semantic-ui-react'
->>>>>>> 8d57a8ad1ce72149e90643e91598b82cdbb6dd4b
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
 
@@ -15,15 +11,13 @@ const RecipeDetails = props => {
     let [userFamilies, setUserFamilies] = useState([])
     let [sharedWith, setSharedWith] = useState([])
     let [share, setShare] = useState(false)
+    let [updateShare, setUpdateShare] = useState(false)
     let { id } = useParams()
-<<<<<<< HEAD
 
     //Fetch recipe details
-=======
     // let [checked, setChecked] = useState(false)
     // let [publicState, setPublicState] = useState()
     // let [radiostate, setRadioState] = useState()
->>>>>>> 8d57a8ad1ce72149e90643e91598b82cdbb6dd4b
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
@@ -57,7 +51,7 @@ const RecipeDetails = props => {
                 setSecretMessage(err)
                 console.log(err)
             })
-    }, [])
+    }, [updateShare])
 
     //Fetch user details
     useEffect(() => {
@@ -85,7 +79,7 @@ const RecipeDetails = props => {
             .catch(err => {
                 console.log("Error in profile", err)
             })
-    }, [])
+    }, [updateShare])
 
     if (!recipeData.creatorId) {
         return null
@@ -110,7 +104,6 @@ const RecipeDetails = props => {
     }
     // var creatorName = recipeData.creatorId.firstname
     // console.log('checked', checked)
-   
 
     // const handleToggle = () => {
     //     let token = localStorage.getItem('boilerToken')
@@ -190,7 +183,8 @@ const RecipeDetails = props => {
                     {(props.user._id === recipeData.creatorId) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
                 </Grid.Row>
                 {share ? <ShareWith recipeData={recipeData} userFamilies={userFamilies}
-                    sharedWith={sharedWith} userDetails={userDetails} /> : ''}
+                    sharedWith={sharedWith} userDetails={userDetails} updateShare={updateShare} 
+                    setUpdateShare={setUpdateShare}/> : ''}
                 <Divider horizontal />
                 <Grid.Row>
                     <Grid.Column width={8}>
