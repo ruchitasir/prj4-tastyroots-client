@@ -30,14 +30,14 @@ const RecipeCards = props => {
     if (props.familyData.familyRecipes.length < 1) {
         return (
             <Container className="top-spacing-2" stackable>
-                <Header as="h2" dividing>My Recipes</Header>
+                <Header as="h2" dividing>Family Recipes</Header>
                 <p>No recipes created yet.</p>
             </Container>
         )
     }
     return (
         <Container className="top-spacing-2">
-            <Header as="h2" dividing>My Recipes</Header>
+            <Header as="h2" dividing>Family Recipes</Header>
             <CardGroup itemsPerRow={4}>
                 {recipe}
             </CardGroup>

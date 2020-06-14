@@ -5,7 +5,7 @@ import FamilyCirclesPage from '../components/FamilyCirclesPage'
 
 const FamilyCircle = props => {
     let [userDetails, setUserDetails] = useState(null)
- 
+
     useEffect(() => {
         // Get the token from local storage
         let token = localStorage.getItem('boilerToken')
