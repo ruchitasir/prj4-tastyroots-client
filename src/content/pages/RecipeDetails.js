@@ -4,6 +4,7 @@ import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Messag
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
 import RecipeTwist from '../components/RecipeTwist'
+import AddTwist from './AddTwist';
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
@@ -175,12 +176,16 @@ const RecipeDetails = props => {
     }
 
     let defaultImageArr = [
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592125142/tasty-roots/bawtwugyxiqncunyfncg.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592127596/tasty-roots/xwfxeyhgcrrbukdisrnn.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592127800/tasty-roots/nbyavqnq6szwbjuaj6zk.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157817/tasty-roots/f2ws93rk2h8witzd84lp.png',
         'https://res.cloudinary.com/tasty-roots/image/upload/v1592157853/tasty-roots/zglx6vph69ix5trog2js.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157963/tasty-roots/pppyg1lx2camgeudiltc.jpg'
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592160517/tasty-roots/vykzrh9lnhk25axpku2j.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161032/tasty-roots/dsajyspmwi63hbrucebz.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161120/tasty-roots/rt4dyiaqxia9shzup9md.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161324/tasty-roots/wphj0nie7cyy56kff9ex.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161777/tasty-roots/tsuzpiavicimssdb7tft.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161929/tasty-roots/drjgcu4xvqs57yxkmaxy.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162398/tasty-roots/lqrazeqnisqlpqpsbdni.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg'
     ]
     let randoNum = Math.floor(Math.random() * defaultImageArr.length)
     let defaultImg = defaultImageArr[randoNum]
@@ -204,6 +209,7 @@ const RecipeDetails = props => {
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
                     <Button size="tiny" basic color="teal">Add Twist</Button>
+                
                     {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
                 </Grid.Row>
                 {share ? <ShareWith recipeData={recipeData} userFamilies={userFamilies}
@@ -220,9 +226,7 @@ const RecipeDetails = props => {
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row>
-                    <RecipeTwist />
-                </Grid.Row>
+                {/* <AddTwist userDetails={userDetails}/> */}
             </Grid>
         </Container>
     )
