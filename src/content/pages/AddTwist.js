@@ -62,6 +62,14 @@ const AddTwist = props => {
                     <Form.Input placeholder={recipeData.servings}></Form.Input>
                 </Form.Field>
             </Form.Group>
+            <Form.Group widths='equal'>
+                    <Form.Field>
+                        <Form.Input label="Prep Time" name="prepTime" onChange={(e) => setPrepTime(e.target.value)}  placeholder={recipeData.prepTime}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Input label="Cook Time" name="cookTime" onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime}/>
+                    </Form.Field>
+            </Form.Group>
         </Container>
     )
 
