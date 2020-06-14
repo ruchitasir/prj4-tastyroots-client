@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardGroup, Container, Icon, Image, Header, Grid } from 'semantic-ui-react';
+import { Card, CardGroup, Container, Divider, Icon, Image, Header, Grid } from 'semantic-ui-react';
 import RecipeAddModal from './RecipeAddModal'
 import Moment from 'moment'
 
@@ -65,6 +65,7 @@ const UserRecipes = props => {
                 <Grid.Row>
                     <Grid.Column width={14}>
                         <Header as="h2">My Recipes</Header>
+                        <Divider />
                     </Grid.Column>
                     <Grid.Column  position="right" width={2}>
                         <RecipeAddModal textAlign="right" userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>

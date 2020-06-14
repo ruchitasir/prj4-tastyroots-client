@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { List, Icon } from 'semantic-ui-react'
 
 const UserFamily = props => {
-    if (!props.userDetails.families) {
+    if (props.userDetails.families === undefined || props.userDetails.families.length == 0) {
         var family = (
             <List.Item>
                 No family circles yet.
@@ -35,7 +35,7 @@ const UserFamily = props => {
     return (
         <List relaxed='very'>
             <h2>My Family Circles</h2>
-            {family}
+            {family} 
             <List.Item>
                 {/* <Icon name='add' /> Join a family circle */}
             </List.Item>

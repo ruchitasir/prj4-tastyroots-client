@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer>
       Made by RS, RU, SL in 2020
-      <div className="float-right"><Icon name="github"/><a href="https://github.com/ruchitasir/prj4-tastyroots-client">Code here</a></div>
+      <div className="float-right"><a href="https://github.com/ruchitasir/prj4-tastyroots-client">Code here </a><Icon name="github"/></div>
     </footer>
   )
 }

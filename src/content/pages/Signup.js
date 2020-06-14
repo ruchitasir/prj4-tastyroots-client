@@ -87,7 +87,7 @@ const Signup = props => {
                 />
               </Form.Group>
               <Form.Input label='Email' placeholder='Email' type='email' onChange={(e) => setEmail(e.target.value)} required />
-              <Form.Input label='Password' type='password' onChange={(e) => setEmail(e.target.value)} required placeholder="minimum 8 characters" />
+              <Form.Input label='Password' type='password' onChange={(e) => setPassword(e.target.value)} required placeholder="minimum 8 characters" />
               <Button className="mauve-bg white-font">Submit</Button>
             </Form>
             <Message attached='bottom' className="pink-outline">
