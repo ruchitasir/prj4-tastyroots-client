@@ -40,7 +40,11 @@ const AddTwist = props => {
                 console.log(err)
             })
     }, [])
-
+    if (!props.user) {
+        return (
+        <Redirect to="/" />
+        )
+      }
     return (
 
         <Container>

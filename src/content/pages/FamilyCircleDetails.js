@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 // import FamilyCircle from './FamilyCircle'
 import { Container, Grid, Item, Header } from 'semantic-ui-react'
 import RecipeCards from '../components/RecipeCards'
@@ -41,7 +41,11 @@ const FamilyCircleDetails = props => {
                 console.log(err)
             })
     }, [])
-
+    if (!props.user) {
+        return (
+        <Redirect to="/" />
+        )
+      }
     return (
 
         <Container className="top-spacing-2">

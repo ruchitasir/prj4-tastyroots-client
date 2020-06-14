@@ -66,7 +66,11 @@ const EditProfile = props => {
                 console.log("Error in profile", err)
             })
     }, [])
-
+    if (!props.user) {
+        return (
+        <Redirect to="/" />
+        )
+      }
     /**************** Submitting the form ***************************************/
 
     const handleSubmit = (e) => {
