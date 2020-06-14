@@ -1,7 +1,7 @@
 // Packages
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Container, Form, Icon, Input, Message, Grid } from 'semantic-ui-react'
+import { Button, Container, Form, Icon, Image, Message, Grid } from 'semantic-ui-react'
 import Alert from '../components/Alert'
 
 const Signup = props => {
@@ -54,16 +54,20 @@ const Signup = props => {
 
   return (
 
-    <Container className="center-form middle">
+    <Container fluid className="center-form middle">
       {message ? <Alert message={message} /> : ''}
       <Grid columns={2} verticalAlign="middle">
         <Grid.Row>
-          <Grid.Column></Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={10}>
+            <Image src="./Beet_v2.png"/>
+          </Grid.Column>
+          <Grid.Column width={1}></Grid.Column>
+          <Grid.Column width={5}>
             <Message
               attached
               header='Welcome to our site!'
-              content='Fill out the form below to sign-up for a new account'
+              content='Fill out the form to create a new account.'
+              className="mauve-font"
             />
             <Form className='attached fluid segment'>
               <Form.Group widths='equal'>
@@ -84,12 +88,11 @@ const Signup = props => {
               </Form.Group>
               <Form.Input label='Email' placeholder='Email' type='email' onChange={(e) => setEmail(e.target.value)} required />
               <Form.Input label='Password' type='password' onChange={(e) => setEmail(e.target.value)} required placeholder="minimum 8 characters" />
-              <Form.Checkbox inline label='I agree to the terms and conditions' />
-              <Button color='blue'>Submit</Button>
+              <Button className="mauve-bg white-font">Submit</Button>
             </Form>
-            <Message attached='bottom' warning>
-              <Icon name='help' />Already signed up? Login at the top instead.
-</Message>
+            <Message attached='bottom' className="pink-outline">
+              <Icon name='help' /><span className="dark-grey">Already signed up? Login above.</span>
+            </Message>
           </Grid.Column>
         </Grid.Row>
       </Grid>

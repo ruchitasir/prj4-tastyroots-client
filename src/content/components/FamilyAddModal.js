@@ -58,7 +58,7 @@ const FamilyAddModal = props => {
     }
 
     return (
-        <Modal id="famForm" trigger={<Button name='add' size="small" basic color="purple" floated="right">Create a Family Circle</Button>} size={"large"} as={Form} onSubmit={handleSubmit} closeIcon>
+        <Modal id="famForm" trigger={<Button name='add' size="small" basic color="purple">Create a Family Circle</Button>} size={"large"} as={Form} onSubmit={handleSubmit} closeIcon>
             <Header icon="users" content="Create a Family Circle"></Header>
             <Modal.Content>
             <Message info><p>Make sure your family token is at least 8 characters long.</p></Message>
