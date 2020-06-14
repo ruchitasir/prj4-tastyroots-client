@@ -33,7 +33,7 @@ const UserRecipes = props => {
                         <Header as="h2" dividing>My Recipes</Header>
                     </Grid.Column>
                     <Grid.Column  position="right" width={2}>
-                        <RecipeAddModal textAlign="right" userDetails={props.userDetails} />
+                        <RecipeAddModal textAlign="right" userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
@@ -49,7 +49,7 @@ const UserRecipes = props => {
                         <Header as="h2">My Recipes</Header>
                     </Grid.Column>
                     <Grid.Column  position="right" width={2}>
-                        <RecipeAddModal textAlign="right" userDetails={props.userDetails} />
+                        <RecipeAddModal textAlign="right" userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

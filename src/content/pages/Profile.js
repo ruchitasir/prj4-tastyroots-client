@@ -6,6 +6,7 @@ import UserFromDB from '../components/UserFromDB'
 const Profile = props => {
 
   let [userDetails, setUserDetails] = useState(null)
+  let [updateState,setUpdateState]= useState(false)
 
   useEffect(() => {
     // Get the token from local storage
@@ -30,7 +31,7 @@ const Profile = props => {
       .catch(err => {
         console.log("Error in profile", err)
       })
-  }, [])
+  }, [updateState])
   // If user isn't signed in, redirect to home page to login
   if (!props.user) {
     return (
@@ -40,7 +41,7 @@ const Profile = props => {
   // If user signed in show, user details
   return (
     <div>
-       <ProfilePage user={props.user} userDetails={userDetails} />
+       <ProfilePage user={props.user} userDetails={userDetails} updateState = {updateState} setUpdateState={setUpdateState}/>
     </div>
     
   )

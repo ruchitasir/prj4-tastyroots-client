@@ -20,11 +20,11 @@ const ProfilePage = props => {
                         <UserFromDB/>
                     </Grid.Column>
                     <Grid.Column>
-                        <UserFamily userDetails={props.userDetails} />
+                        <UserFamily userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            <UserRecipes userDetails={props.userDetails} />
+            <UserRecipes userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>
         </Container>
     )
 }

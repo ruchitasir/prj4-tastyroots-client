@@ -8,6 +8,12 @@ const AddTwist = props => {
     let [recipeData, setRecipeData] = useState([])
     let [secretMessage, setSecretMessage] = useState()
 
+    let [recipeName, setRecipeName] = useState()
+    let [description, setDescription] = useState()
+    let [servings, setServings] = useState(2)
+    let [prepTime, setPrepTime] = useState()
+    let [cookTime, setCookTime] = useState()
+
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
@@ -51,7 +57,7 @@ const AddTwist = props => {
             <Form.Group>
                 <Form.Field>
                     <label>Name</label>
-                    <Form.Input placeholder={recipeData.recipeName}></Form.Input>
+                    <Form.Input placeholder={recipeData.recipeName} onChange={(e) => setRecipeName(e.target.value)} required />
                 </Form.Field>
             </Form.Group>
             <Form.Group>
@@ -59,6 +65,14 @@ const AddTwist = props => {
                     <label>Servings</label>
                     <Form.Input placeholder={recipeData.servings}></Form.Input>
                 </Form.Field>
+            </Form.Group>
+            <Form.Group widths='equal'>
+                    <Form.Field>
+                        <Form.Input label="Prep Time" name="prepTime" onChange={(e) => setPrepTime(e.target.value)}  placeholder={recipeData.prepTime}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Input label="Cook Time" name="cookTime" onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime}/>
+                    </Form.Field>
             </Form.Group>
         </Container>
     )

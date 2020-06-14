@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Header, Icon, Modal } from 'semantic-ui-react'
 import RecipeAddStepsInModal from '../components/RecipeAddStepsInModal'
 import RecipeAddIngredientsModal from './RecipeAddIngredientsModal';
+import { Redirect } from 'react-router-dom'
 
 
 const RecipeAddModal = props => {
@@ -14,12 +15,14 @@ const RecipeAddModal = props => {
     let [prepTime, setPrepTime] = useState()
     let [cookTime, setCookTime] = useState()
 
+ 
     let [steps, setSteps] = useState([])
     let [step, setStep] = useState()
     let [ingredients, setIngredients] = useState([])
     let [ingredientName, setIngredientName] = useState()
     let [ingredientUnit, setIngredientUnit] = useState()
     let [ingredientQuantity, setIngredientQuantity] = useState()
+    let [redirect, setRedirect] = useState(false)
 
     const servingsOptions = [
         { text: '1', value: 1 },
@@ -175,11 +178,18 @@ const RecipeAddModal = props => {
                 setIngredientName('')
                 setIngredientQuantity(0)
                 setIngredientUnit('')
+                props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
                 document.getElementById("recipeForm").reset();
+                setRedirect(true)
+               
             })
     }
     const toggleRecipeStatus = (e, data) => {
         setRecipeStatus(data.checked)
+    }
+
+    if (redirect) {
+       return <Redirect to="/profile" />
     }
     /**************************************************************************/
     return (
