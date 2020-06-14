@@ -128,7 +128,7 @@ const AddTwist = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let creatorId = props.userDetails._id
+        let creatorId = props.user._id
         let recipePublic = recipeStatus
         let originalRecipe = recipeData._id
 
