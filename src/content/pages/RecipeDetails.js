@@ -152,11 +152,6 @@ const RecipeDetails = props => {
 
     //********************* Recipe Sharing ************************************
     // If the logged in user is the recipe creator, allow sharing with family circles
-    // if (userDetails && userDetails._id === recipeData.creatorId) {
-    //     var shareBtn =  (
-    //     <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button>
-    //     )
-    // }
     //Toggle sharing popup
     var shareRecipe = () => {
         share ? setShare(false) : setShare(true)
