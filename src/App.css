@@ -85,6 +85,9 @@ footer a {
 footer a:hover, a:visited {
   color: #5A2737 !important;
 }
+.top-nav .item {
+  color: black !important;
+}
 .burgundy-font {
   color: #5A2737 !important;
 }
@@ -99,4 +102,9 @@ a {
 }
 a:hover, a:visited {
   color: #84728F !important;
+}
+.btn-outline {
+  border:  #84728F 2px solid !important;
+  color: #84728F !important;
+  background-color: white !important; 
 }

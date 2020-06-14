@@ -146,12 +146,12 @@ const EditProfile = props => {
                 </Form.Group>
                 <Form.Field name="bio" control={TextArea} label='Bio' placeholder="A little about me" defaultValue={userDetails.bio} onChange={(e) => setBiography(e.target.value)} />
                 <Form.Group>
-                    <Button onClick={(e) => showWidget(widget, e)} type="text">Upload</Button>
+                    <Button className="btn-outline" onClick={(e) => showWidget(widget, e)} type="text">Upload</Button>
                     <p className="url">{imageUrl}</p>
                 </Form.Group>
                 <Divider />
                 <Form.Group>
-                    <Button type="submit" color="teal" className="top-spacing" textAlign='center'>Save</Button>
+                    <Button type="submit" className="mauve-bg white-font top-spacing" textAlign='center'>Save</Button>
                 </Form.Group>
             </Form>
             {toProfile}

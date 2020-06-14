@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { Dropdown, Menu } from 'semantic-ui-react'
 import Login from '../nav/Login'
 
 
 const Nav = (props) => {
+  let [message, setMessage] = useState('')
   const handleLogout = (e) => {
     e.preventDefault()
     // Remove the token from local storage (or cookies)
@@ -19,7 +20,8 @@ const Nav = (props) => {
         name='Home'
         as={Link} to="/"
       />
-      <Login user={props.user} updateToken={props.updateToken} />
+      message ? <p>{message}</p>: ''
+      <Login user={props.user} updateToken={props.updateToken} message={message} setMessage={setMessage}/>
     </Menu>
   )
 

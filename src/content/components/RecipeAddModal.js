@@ -199,10 +199,10 @@ const RecipeAddModal = props => {
     return (
 
         <Modal id='recipeForm' trigger={<Icon className="burgundy-font" name='add' size='large' content="Add recipe"></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
-            <Header icon='food' content='Add new recipe' />
+            <Header icon='food' className="mauve-font" content='Add new recipe' />
             <Modal.Content>
                 <Form.Radio label='Public'
-                    onChange={toggleRecipeStatus} toggle />
+                    onChange={toggleRecipeStatus} slider className="mauve-font"/>
                 <Form.Group widths='equal'>
                     <Form.Field>
                         <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
@@ -224,16 +224,16 @@ const RecipeAddModal = props => {
                 </Form.Group>
                 <RecipeAddIngredientsModal ingredients={ingredients} unitOptions={unitOptions} handleIngredientQuantityChange={handleIngredientQuantityChange} handleIngredientUnitChange={handleIngredientUnitChange} handleIngredientNameChange={handleIngredientNameChange} handleRemoveIngredient={handleRemoveIngredient} />
                 <Form.Field>
-                    <Button onClick={addNewIngredient}>Add a new ingredient</Button>
+                    <Button className="btn-outline" onClick={addNewIngredient}>Add a new ingredient</Button>
                 </Form.Field>
                 <RecipeAddStepsInModal steps={steps} handleRemoveSteps={handleRemoveSteps} handleStepChange={handleStepChange} />
                 <Form.Field>
-                    <Button onClick={(e) => addSteps(e)}>Add steps</Button>
+                    <Button className="btn-outline" onClick={(e) => addSteps(e)}>Add steps</Button>
                 </Form.Field>
                 <RecipePics setImageUrl={setImageUrl} imageUrl={imageUrl}/>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' type="submit">Add Recipe</Button>
+                <Button className="mauve-bg white-font" type="submit">Add Recipe</Button>
             </Modal.Actions>
         </Modal>
     )

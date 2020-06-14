@@ -31,8 +31,8 @@ const RecipePic = props => {
 
     return (
         <Form.Field>
-            {props.imageUrl ? <p className="url"> Added: {props.imageUrl}</p> : null}
-            <Button onClick={(e) => showWidget(widget, e)} type="text">Upload</Button>
+            {props.imageUrl ? <Form.Input className="url" readOnly value= {props.imageUrl}/> : null}
+            <Button className="btn-outline" onClick={(e) => showWidget(widget, e)} type="text">Add pic</Button>
         </Form.Field>
     )
 }

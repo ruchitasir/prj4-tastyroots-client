@@ -7,7 +7,6 @@ import { Button, Form, Input, Menu } from 'semantic-ui-react'
 const Login = props => {
   // Declare and initialize state variables
   let [email, setEmail] = useState('')
-  let [message, setMessage] = useState('')
   let [password, setPassword] = useState('')
 
   // Event handlers
@@ -28,8 +27,8 @@ const Login = props => {
       .then(response => {
         //Handle non-200 responses
         if (!response.ok) {
-          setMessage(`${response.status}: ${response.statusText}`)
-          console.log(message)
+          props.setMessage(`${response.status}: ${response.statusText}`)
+          console.log(props.message)
           return
         }
         //we got a good (200) response, we get the token
@@ -46,9 +45,7 @@ const Login = props => {
   if (props.user) {
     return <Redirect to="/profile" />
   }
-  if (message) {
-    
-  }
+  
 
   return (
     <Menu.Menu position='right' className="login">
