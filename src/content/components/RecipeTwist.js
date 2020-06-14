@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import { Button, Checkbox, Container, Divider, Grid, Icon, Image, List, Message, Radio, Card } from 'semantic-ui-react'
+import { Button, Checkbox, Container, Divider, Grid, Header, Icon, Image, List, Message, Radio, Card } from 'semantic-ui-react'
 
 const RecipeTwist = props => {
     let [recipeTwist, setRecipeTwist] = useState()
@@ -45,6 +45,7 @@ const RecipeTwist = props => {
     if (!recipeTwist){
         return null
     }
+    
     let display = recipeTwist.map((r) => {
         return (
 
@@ -65,11 +66,15 @@ const RecipeTwist = props => {
             </Card>
         )
     })
-    return (
-        <Container>
-            <Card.Group>{display}</Card.Group>
-        </Container>
-    )
+   
+        return (
+            <Container>
+                <Header>Twists</Header>
+                <Card.Group>{display}</Card.Group>
+            </Container>
+        )
+
+   
 }
 
 export default RecipeTwist

@@ -124,7 +124,7 @@ const RecipeDetails = props => {
     
     // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
     
-    
+
 
     return (
         <Container>
@@ -153,7 +153,6 @@ const RecipeDetails = props => {
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    <Header>Twists</Header>
                     <RecipeTwist />
                 </Grid.Row>
             </Grid>
