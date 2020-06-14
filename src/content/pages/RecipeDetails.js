@@ -51,6 +51,7 @@ const RecipeDetails = props => {
                 setSecretMessage(err)
                 console.log(err)
             })
+            console.log("WHAT HAPPENING WITH UPDATE SHARE", updateShare)
     }, [updateShare])
 
     //Fetch user details
@@ -79,6 +80,7 @@ const RecipeDetails = props => {
             .catch(err => {
                 console.log("Error in profile", err)
             })
+            console.log("WHAT HAPPENING WITH UPDATE SHARE 2", updateShare)
     }, [updateShare])
 
     if (!recipeData.creatorId) {
