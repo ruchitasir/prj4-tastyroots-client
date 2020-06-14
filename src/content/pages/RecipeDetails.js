@@ -196,10 +196,6 @@ const RecipeDetails = props => {
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
-                        <Grid.Row>
-                         {/* {radioState} */}
-                         {/* <Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/> */}
-                    </Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
                     <Grid.Column width={8}>
@@ -208,7 +204,7 @@ const RecipeDetails = props => {
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
-                    <Button size="tiny" basic color="teal">Add Twist</Button>
+                    <Button size="tiny" basic color="teal" as={Link} to={`/recipe/${recipeData._id}/twist`} >Add Twist</Button>
                 
                     {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
                 </Grid.Row>
@@ -226,7 +222,7 @@ const RecipeDetails = props => {
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
                 </Grid.Row>
-                {/* <AddTwist userDetails={userDetails}/> */}
+         
             </Grid>
         </Container>
     )

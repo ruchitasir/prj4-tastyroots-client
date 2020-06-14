@@ -3,16 +3,20 @@
 }
 body, html {
   height: 100%;
+  font-family: "Lato";
 }
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   color: white;
-  background-color: lightsalmon;
+  background-color:  #84728F;
   font-size: 16px;
   padding: 15px;
-  text-align: center;
+  text-align: left;
+}
+.float-right {
+  float: right;
 }
 .top-spacing {
   margin-top: 1.5em;
@@ -47,4 +51,52 @@ main {
 }
 .pr {
   padding-right: 10px;
+}
+.middle {
+  margin-top: 10%;
+}
+.mauve-font {
+  color: #84728F !important;
+}
+.mauve-bg {
+  background-color: #84728F !important;
+}
+.pink-font {
+  color: #DF84A4 !important;
+}
+.pink-bg {
+  background-color: rgba(223, 132, 164, 0.3) !important;
+}
+.pink-outline {
+  border-color: rgba(223, 132, 164, 0.3) !important;
+}
+.btn-pair {
+  text-align: center !important;
+}
+.white-font {
+  color: white !important
+}
+.dark-grey {
+  color: #403c3b !important;
+}
+footer a {
+  color: white !important;
+}
+footer a:hover, a:visited {
+  color: #5A2737 !important;
+}
+.burgundy-font {
+  color: #5A2737 !important;
+}
+h1 {
+  color: #5A2737 !important;
+}
+h2 {
+  color: #84728F !important;
+}
+a {
+  color: #403c3b !important;
+}
+a:hover, a:visited {
+  color: #84728F !important;
 }

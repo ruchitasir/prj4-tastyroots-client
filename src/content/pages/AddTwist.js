@@ -55,8 +55,17 @@ const AddTwist = props => {
                     .then(result => {
                         setRecipeData(result)
                         console.log(result)
-                        console.log('recipe steps',result.steps)
-                        setSteps(result.steps)
+                        if(result){
+                            console.log('recipe steps',result.steps)
+                            setSteps(result.steps)
+                            setRecipeName(result.recipeName)
+                            setServings(result.servings)    
+                            setDescription(result.description)
+                            setCookTime(result.cookTime)
+                            setPrepTime(result.prepTime)
+                            console.log('recipe status',result.recipePublic)
+                            setRecipeStatus(result.recipePublic)
+                        }
                     })
                     .catch((innErr) => {
                         console.log('Error in RecipeDetails:', innErr)
@@ -98,6 +107,12 @@ const AddTwist = props => {
         console.log('newsteps after removal', newSteps)
         setSteps(newSteps)
     }
+
+    const handleServings = (e, data) =>{ 
+        console.log('servings data',data)
+        setServings(data.value)
+    }
+
     let showSteps = ''
     if(steps){
         showSteps =  steps.map((step, ind) => {
@@ -110,11 +125,18 @@ const AddTwist = props => {
         })
 
     }
+
+    let showPublic  =  <Form.Radio label='Public' onChange={toggleRecipeStatus} toggle />
+    if(recipeStatus){
+      showPublic =  <Form.Radio label='Public' onChange={toggleRecipeStatus} toggle checked/>
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        let creatorId = props.userDetails._id
-      
-        console.log('creator Id', creatorId)
+        let creatorId = props.user._id
+        let recipePublic = recipeStatus
+        let originalRecipe = recipeData._id
+
         // console.log('Ingredients', ingredients)
         // let ing = ingredients.map((ing) => {
         //     let ingStr = ing.qty + ',' + ing.unit + ',' + ing.name
@@ -122,106 +144,94 @@ const AddTwist = props => {
         // })
         // ingredients = ing
         // console.log('ingredients in string', ingredients)
-
-        let recipePublic = recipeStatus
+         
+        console.log('recipe originalRecipe ', originalRecipe)
+        console.log('recipe recipeName ', recipeName)
+        console.log('recipe description ', description)
+        console.log('creator Id', creatorId)
+        console.log('recipe servings ', servings)
+        console.log('recipe cookTime ', cookTime)
+        console.log('recipe prepTime ', prepTime)
+        console.log('recipe steps ', steps)
         console.log('recipe status public', recipeStatus)
 
-        let originalRecipe = recipeData._id
-        console.log('original recipe',originalRecipe,recipeData._id)
-        if(!recipeName){
-            setRecipeName(recipeData.recipeName)
-        }
-        if(!servings){
-            setServings(recipeData.servings)    
-        }
-        if(!description){
-            setDescription(recipeData.description)
-        }
-        if(!cookTime){
-            setCookTime(cookTime)
-        }
-        if(!prepTime){
-            setPrepTime(prepTime)
-        }
-
         let token = localStorage.getItem('boilerToken')
-        // fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         originalRecipe,
-        //         recipeName,
-        //         description,
-        //         creatorId,
-        //         servings,
-        //         prepTime,
-        //         cookTime,
-        //         // ingredients,
-        //         steps,
-        //         recipePublic
-        //     }),
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${token}`
-        //     }
-        // })
-        //     .then(response => {
-        //         console.log("Here is the response!", response)
-        //         if (!response.ok) {
-        //             setMessage(`${response.status} : ${response.statusText}`)
-        //             return
-        //         }
-        //         response.json().then(result => {
-        //             console.log("result!", result)
+        fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
+            method: 'POST',
+            body: JSON.stringify({
+                originalRecipe,
+                recipeName,
+                description,
+                creatorId,
+                servings,
+                prepTime,
+                cookTime,
+                // ingredients,
+                steps,
+                recipePublic
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log("Here is the response!", response)
+                if (!response.ok) {
+                    setMessage(`${response.status} : ${response.statusText}`)
+                    return
+                }
+                response.json().then(result => {
+                    console.log("result!", result)
 
-        //         })
-        //     })
-        //     .catch(err => {
-        //         console.log('ERROR SUBMITTING RECIPE ADD FORM', err)
-        //     })
-        //     .finally(() => {
-        //         setRecipeName('')
-        //         setDescription('')
-        //         setServings('')
-        //         setPrepTime('')
-        //         setCookTime('')
-        //         setSteps([])
-        //         // setIngredients([])
-        //         // setIngredientName('')
-        //         // setIngredientQuantity(0)
-        //         // setIngredientUnit('')
-        //         // props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
-        //         // document.getElementById("recipeForm").reset();
-        //         // setRedirect(true)
+                })
+            })
+            .catch(err => {
+                console.log('ERROR SUBMITTING RECIPE ADD FORM', err)
+            })
+            .finally(() => {
+                setRecipeName('')
+                setDescription('')
+                setServings('')
+                setPrepTime('')
+                setCookTime('')
+                setSteps([])
+                // setIngredients([])
+                // setIngredientName('')
+                // setIngredientQuantity(0)
+                // setIngredientUnit('')
+                // props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
+                // document.getElementById("recipeForm").reset();
+                // setRedirect(true)
                
-        //     })
+            })
     }
 
     return (
 
         <Container>
-            <Form onSubmit={(e) => handleSubmit(e)}> 
+            <Form>
                     <Form.Field> 
-                          <Button color='green' type='submit'>Add twist</Button>
+                          <Form.Button color='green' type='submit' onClick={(e) => handleSubmit(e)}>Add twist</Form.Button>
                     </Form.Field>
-                <Form.Radio label='Public'
-                        onChange={toggleRecipeStatus} toggle />
+                    {showPublic}
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Form.Input label='Recipe Name' name= 'recipeName' placeholder={recipeData.recipeName} onChange={(e) => setRecipeName(e.target.value)} required />
+                        <Form.Input label='Recipe Name' name= 'recipeName' value={recipeName} placeholder={recipeData.recipeName} onChange={(e) => setRecipeName(e.target.value)} required />
                     </Form.Field>
-                    <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" onChange={(e, data) => setServings(data.value)} placeholder={recipeData.servings} />
+                    <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" value={servings} onChange={handleServings} placeholder={recipeData.servings} />
                 </Form.Group>
                 <Form.Group widths='equal'>
                         <Form.Field>
-                            <Form.Input label="Prep Time" name="prepTime" onChange={(e) => setPrepTime(e.target.value)}  placeholder={recipeData.prepTime}/>
+                            <Form.Input label="Prep Time" name="prepTime" value={prepTime} onChange={(e) => setPrepTime(e.target.value)}  placeholder={recipeData.prepTime}/>
                         </Form.Field>
                         <Form.Field>
-                            <Form.Input label="Cook Time" name="cookTime" onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime}/>
+                            <Form.Input label="Cook Time" name="cookTime" value={cookTime} onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime}/>
                         </Form.Field>
                 </Form.Group>
                 <Form.Group widths='equal'>
                         <Form.Field>
-                            <Form.TextArea label="Description" name="description" onChange={(e) => setDescription(e.target.value)} placeholder={recipeData.description} required />
+                            <Form.TextArea label="Description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder={recipeData.description} required />
                         </Form.Field>           
                 </Form.Group>
                 <Form.Group widths='equal'>
