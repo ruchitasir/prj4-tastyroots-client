@@ -1,18 +1,21 @@
 import React from 'react';
 import RecipeDetails from '../pages/RecipeDetails'
 import { Container, Grid, Image } from 'semantic-ui-react'
+import Moment from 'moment'
 
 const RecipeDetailsSnap = props => {
     let defaultImg = 'http://placekitten.com/200/200'
     if (props.recipeData.creatorId.picture){
         defaultImg = props.recipeData.creatorId.picture
     }
+    let recipeDate = Moment(props.recipeData.datePosted).format('MM/DD/YYYY')
 
     return (
         
         <Container>
                 <Image src={defaultImg} avatar className="top-spacing"/>
-                <span>{props.recipeData.creatorId.firstname}</span>
+                {props.recipeData.creatorId.firstname}
+                <span>{recipeDate}</span>
             <Grid columns={3}>
                 <Grid.Row className="top-spacing">
                     <Grid.Column><h3>{props.recipeData.prepTime}</h3>{(parseFloat(props.recipeData.prepTime) > 1) ? 'Hours' : 'Hour'}<br />Prep</Grid.Column>
