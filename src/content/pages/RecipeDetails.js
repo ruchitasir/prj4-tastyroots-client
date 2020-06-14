@@ -164,6 +164,9 @@ const RecipeDetails = props => {
     return (
         <Container>
             <Grid >
+                {/* <Grid.Row>
+                <AddTwist userDetails={userDetails}/>
+                </Grid.Row> */}
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
@@ -197,7 +200,7 @@ const RecipeDetails = props => {
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
                 </Grid.Row>
-                {/* <AddTwist userDetails={userDetails}/> */}
+         
             </Grid>
         </Container>
     )
