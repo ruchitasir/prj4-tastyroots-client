@@ -198,7 +198,7 @@ const RecipeAddModal = props => {
     /**************************************************************************/
     return (
 
-        <Modal id='recipeForm' trigger={<Icon color="orange" name='add' size='large'></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+        <Modal id='recipeForm' trigger={<Icon className="burgundy-font" name='add' size='large' content="Add recipe"></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
             <Header icon='food' content='Add new recipe' />
             <Modal.Content>
                 <Form.Radio label='Public'

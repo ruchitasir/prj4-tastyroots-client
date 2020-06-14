@@ -58,7 +58,6 @@ main {
 .mauve-font {
   color: #84728F !important;
 }
-
 .mauve-bg {
   background-color: #84728F !important;
 }
@@ -81,8 +80,23 @@ main {
   color: #403c3b !important;
 }
 footer a {
-  color: white;
+  color: white !important;
 }
 footer a:hover, a:visited {
-  color:  #DF84A4;
+  color: #5A2737 !important;
+}
+.burgundy-font {
+  color: #5A2737 !important;
+}
+h1 {
+  color: #5A2737 !important;
+}
+h2 {
+  color: #84728F !important;
+}
+a {
+  color: #403c3b !important;
+}
+a:hover, a:visited {
+  color: #84728F !important;
 }

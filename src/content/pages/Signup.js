@@ -67,9 +67,9 @@ const Signup = props => {
               attached
               header='Welcome to our site!'
               content='Fill out the form to create a new account.'
-              className="mauve-font"
+              className="burgundy-font"
             />
-            <Form className='attached fluid segment'>
+            <Form className='attached fluid segment' onSubmit={handleSubmit}>
               <Form.Group widths='equal'>
                 <Form.Input
                   fluid
