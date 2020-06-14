@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import { Button, Checkbox, Container, Divider, Grid, Image, List, Message, Radio } from 'semantic-ui-react'
+import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Message, Radio } from 'semantic-ui-react'
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
+import RecipeTwist from '../components/RecipeTwist'
 import AddTwist from './AddTwist';
 
 const RecipeDetails = props => {
@@ -42,6 +43,7 @@ const RecipeDetails = props => {
                         setSharedWith(result.sharedWith)
                         // setPublicState(result.public)
                         console.log(result)
+                       
                     })
                     .catch((innErr) => {
                         console.log('Error in RecipeDetails:', innErr)
@@ -108,49 +110,58 @@ const RecipeDetails = props => {
     // var creatorName = recipeData.creatorId.firstname
     // console.log('checked', checked)
 
-    // const handleToggle = () => {
-    //     let token = localStorage.getItem('boilerToken')
-    //     fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': "application/json",
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     })
-    //         .then(response => {
-    //             console.log('Response:', response)
-    //             if (!response.ok) {
-    //                 setSecretMessage('Invalid')
-    //                 return
-    //             }
-    //             //if response is good
-    //             response.json()
-    //                 .then(result => {
-    //                     setRecipeData(result)
-    //                     console.log(result)
-    //                 })
-    //                 .catch((innErr) => {
-    //                     console.log('Error in RecipeDetails:', innErr)
-    //                     setSecretMessage(innErr)
-    //                 })
-    //         })
-    //         .catch((err) => {
-    //             setSecretMessage(err)
-    //             console.log(err)
-    //         })
-    // }
-    // let toggleMsg
-    
-    // var radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)}/>)
-    // if (publicState){
-    //     console.log('public state---->', publicState)
-    //     radioState = (<Radio toggle label={toggleMsg} onChange={(e) => setChecked(e.target.value)} defaultChecked/>)
+    // const handleToggle = (e) => {
+    //     console.log(e)
+    //     setChecked(!checked)
+    //     // let token = localStorage.getItem('boilerToken')
+    //     // console.log(e)
+    //     // fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
+    //     //     method: 'PUT',
+    //     //     headers: {
+    //     //         'Content-Type': "application/json",
+    //     //         'Authorization': `Bearer ${token}`
+    //     //     }
+    //     // })
+    //     //     .then(response => {
+    //     //         console.log('Response:', response)
+    //     //         if (!response.ok) {
+    //     //             setSecretMessage('Invalid')
+    //     //             return
+    //     //         }
+    //     //         //if response is good
+    //     //         response.json()
+    //     //             .then(result => {
+    //     //                 setRecipeData(result)
+    //     //                 console.log(result)
+    //     //             })
+    //     //             .catch((innErr) => {
+    //     //                 console.log('Error in RecipeDetails:', innErr)
+    //     //                 setSecretMessage(innErr)
+    //     //             })
+    //     //     })
+    //     //     .catch((err) => {
+    //     //         setSecretMessage(err)
+    //     //         console.log(err)
+    //     //     })
+
+    //     if (checked){
+    //     // toggleMsg = 'Public'
+    //     radioState = (<Radio toggle label="Public" onChange={(e) => handleToggle(checked} checked/>)
     //     // setRadioState(radioState)
+    //     }
+    //     else{
+    //         radioState = (<Radio toggle label="Private" onChange={(e) => setChecked(e.currentTarget.value)} />)
+    //         // toggleMsg = 'Private'
+    //     }
     // }
+    // // let toggleMsg
+    // var radioState = (<Radio toggle label="Public" onClick={handleToggle} value={checked} checked/>)
+    
+    
     
     // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
     
-    
+
 
 
     //********************* Recipe Sharing ************************************
@@ -160,7 +171,25 @@ const RecipeDetails = props => {
         share ? setShare(false) : setShare(true)
         console.log('share is', share)
     }
+    if (!props.user){
+        return null
+    }
 
+    let defaultImageArr = [
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157853/tasty-roots/zglx6vph69ix5trog2js.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592160517/tasty-roots/vykzrh9lnhk25axpku2j.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161032/tasty-roots/dsajyspmwi63hbrucebz.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161120/tasty-roots/rt4dyiaqxia9shzup9md.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161324/tasty-roots/wphj0nie7cyy56kff9ex.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161777/tasty-roots/tsuzpiavicimssdb7tft.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161929/tasty-roots/drjgcu4xvqs57yxkmaxy.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162398/tasty-roots/lqrazeqnisqlpqpsbdni.jpg',
+        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg'
+    ]
+    let randoNum = Math.floor(Math.random() * defaultImageArr.length)
+    let defaultImg = defaultImageArr[randoNum]
+    
     return (
         <Container>
             <Grid >
@@ -170,7 +199,7 @@ const RecipeDetails = props => {
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={'http://placekitten.com/400/200'} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
+                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={defaultImg} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>

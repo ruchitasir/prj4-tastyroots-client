@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
-import { Card, Container, Header, Icon, Image } from 'semantic-ui-react'
+import { Card, Container, Grid, Header, Icon, Image } from 'semantic-ui-react'
+import Moment from 'moment'
 // import RecipeDetails from './RecipeDetails'
 
 //Fetch call to display all public recipes
@@ -49,13 +50,14 @@ const Recipe = props => {
     if (recipes) {
         console.log(recipes)
         display = recipes.map((r) => {
+            let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
             return (
 
                 <Card key={r._id}>
                     {(!r.pictures || r.pictures.length < 1) ? <Image src={'./ingredients.jpg'} wrapped /> : <Image src={r.pictures[0]} wrapped />}
                     <Card.Content>
                         <Card.Header textAlign="center"><Link to={`/recipe/${r._id}`}>{r.recipeName}</Link></Card.Header>
-                        <Card.Meta><span className='date'>{r.datePosted}</span></Card.Meta>
+                        <Card.Meta><span className='date'>{recipeDate}</span></Card.Meta>
                         <Card.Description>{r.description}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>
