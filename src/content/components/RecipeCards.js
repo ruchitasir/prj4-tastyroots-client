@@ -2,19 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import FamilyCircleDetails from '../pages/FamilyCircleDetails'
 import {Card, CardGroup, Container, Header, Icon, Image, Segment} from 'semantic-ui-react'
+import Moment from 'moment'
 
 const RecipeCards = props => {
     if (!props.familyData.familyRecipes){
         return null
     }
     let recipe = props.familyData.familyRecipes.map(r => {
+        let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
             <Card key={r._id}>
                 {(!r.pictures || r.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                 <Card.Content>
                     <Card.Header as={Link} to={`/recipe/${r._id}`}>{r.recipeName}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>{r.datePosted}</span>
+                        <span className='date'>{recipeDate}</span>
                     </Card.Meta>
                     <Card.Description>
                         {r.description}

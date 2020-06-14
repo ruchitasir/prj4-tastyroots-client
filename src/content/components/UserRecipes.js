@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardGroup, Container, Icon, Image, Header, Grid } from 'semantic-ui-react';
 import RecipeAddModal from './RecipeAddModal'
+import Moment from 'moment'
 
 const UserRecipes = props => {
     let recipe = props.userDetails.recipes.map(r => {
+        let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
             <Card key={r._id}>
                 {(!r.pictures || r.pictures.length < 1) ? <Image src='./ingredients.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                 <Card.Content>
                     <Card.Header as={Link} to={`/recipe/${r._id}`}>{r.recipeName}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>{r.datePosted}</span>
+                        <span className='date'>{recipeDate}</span>
                     </Card.Meta>
                     <Card.Description>
                         {r.description}
