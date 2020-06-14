@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect, useParams } from 'react-router-dom'
+import {  Redirect, useParams } from 'react-router-dom'
 import { Container, Form, Button } from 'semantic-ui-react';
+import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
 
-
+let twistedRecipeId =''
 const AddTwist = props => {
     let { id } = useParams()
     let [recipeData, setRecipeData] = useState([])
-    let [message, setMessage] = useState()
 
+    let [message, setMessage] = useState()
+    let [redirect, setRedirect] = useState(false)
+ 
     let [recipeStatus, setRecipeStatus] = useState(false)
     let [recipeName, setRecipeName] = useState()
     let [description, setDescription] = useState()
@@ -16,6 +19,13 @@ const AddTwist = props => {
     let [cookTime, setCookTime] = useState()
     let [step, setStep] = useState()
     let [steps, setSteps] = useState([])
+    let [ingredients, setIngredients] = useState([])
+    let [ingredientName, setIngredientName] = useState()
+    let [ingredientUnit, setIngredientUnit] = useState()
+    let [ingredientQuantity, setIngredientQuantity] = useState()
+
+    // let [twistedRecipeData,setTwistedRecipeData] = useState()
+    
 
     const servingsOptions = [
         { text: '1', value: 1 },
@@ -30,8 +40,27 @@ const AddTwist = props => {
         { text: '10', value: 10 },
         { text: '11', value: 11 },
         { text: '12', value: 12 }
+    ]
 
-
+    const unitOptions = [
+        { text: 'piece', value: 'piece' },
+        { text: 'each', value: 'each' },
+        { text: 'tsp', value: 'tsp' },
+        { text: 'tbsp', value: 'tbsp' },
+        { text: 'cup', value: 'cup' },
+        { text: 'ounce', value: 'ounce' },
+        { text: 'lb', value: 'lb' },
+        { text: 'grams', value: 'grams' },
+        { text: 'miligrams', value: 'miligrams' },
+        { text: 'fluid-ounce', value: 'fluid-ounce' },
+        { text: 'fluid-cup', value: 'fluid-cup' },
+        { text: 'pint', value: 'pint' },
+        { text: 'quart', value: 'quart' },
+        { text: 'gallom', value: 'gallon' },
+        { text: 'litre', value: 'litre' },
+        { text: 'mililitre', value: 'mililitre' },
+        { text: 'stick', value: 'stick' },
+        { text: 'packet', value: 'packet' },
     ]
 
     useEffect(() => {
@@ -65,6 +94,7 @@ const AddTwist = props => {
                             setPrepTime(result.prepTime)
                             console.log('recipe status',result.recipePublic)
                             setRecipeStatus(result.recipePublic)
+                            setIngredients(result.ingredients)
                         }
                     })
                     .catch((innErr) => {
@@ -113,6 +143,40 @@ const AddTwist = props => {
         setServings(data.value)
     }
 
+    /*********************   Adding and Removing Ingredient fields on form ********************/
+    const handleIngredientQuantityChange = (e, index) => {
+        ingredients[index].qty = e.target.value
+        setIngredientQuantity(ingredients[index].qty)
+        setIngredients(ingredients)
+    }
+
+    const handleIngredientUnitChange = (e, data, index) => {
+        ingredients[index].unit = data.value
+        console.log('options value', data.value)
+        setIngredientUnit(ingredients[index].unit)
+        setIngredients(ingredients)
+    }
+
+    const handleIngredientNameChange = (e, index) => {
+        ingredients[index].name = e.target.value
+        setIngredientName(ingredients[index].name)
+        setIngredients(ingredients)
+    }
+
+
+    const addNewIngredient = () => {
+        console.log('clicked for add new ingredient')
+        console.log('ingredients', ingredients)
+        setIngredients([...ingredients, { qty: 0, unit: '', name: '' }])
+    }
+
+    const handleRemoveIngredient = (index) => {
+        let newIngredients = [...ingredients]
+        newIngredients.splice(index, 1)
+        setIngredients(newIngredients)
+    }
+
+
     let showSteps = ''
     if(steps){
         showSteps =  steps.map((step, ind) => {
@@ -137,13 +201,13 @@ const AddTwist = props => {
         let recipePublic = recipeStatus
         let originalRecipe = recipeData._id
 
-        // console.log('Ingredients', ingredients)
-        // let ing = ingredients.map((ing) => {
-        //     let ingStr = ing.qty + ',' + ing.unit + ',' + ing.name
-        //     return ingStr
-        // })
-        // ingredients = ing
-        // console.log('ingredients in string', ingredients)
+        console.log('Ingredients', ingredients)
+        let ing = ingredients.map((ing) => {
+            let ingStr = ing.qty + ',' + ing.unit + ',' + ing.name
+            return ingStr
+        })
+        ingredients = ing
+      
          
         console.log('recipe originalRecipe ', originalRecipe)
         console.log('recipe recipeName ', recipeName)
@@ -154,6 +218,7 @@ const AddTwist = props => {
         console.log('recipe prepTime ', prepTime)
         console.log('recipe steps ', steps)
         console.log('recipe status public', recipeStatus)
+        console.log('recipe ingredients',ingredients)
 
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
@@ -166,7 +231,7 @@ const AddTwist = props => {
                 servings,
                 prepTime,
                 cookTime,
-                // ingredients,
+                ingredients,
                 steps,
                 recipePublic
             }),
@@ -182,8 +247,12 @@ const AddTwist = props => {
                     return
                 }
                 response.json().then(result => {
-                    console.log("result!", result)
-
+                console.log("result!", result)
+                    if(result){
+                      //  setTwistedRecipeData(result)
+                      twistedRecipeId = result._id
+                        console.log("new twisted recipe id ",result._id,twistedRecipeId)   
+                    }
                 })
             })
             .catch(err => {
@@ -196,15 +265,19 @@ const AddTwist = props => {
                 setPrepTime('')
                 setCookTime('')
                 setSteps([])
-                // setIngredients([])
-                // setIngredientName('')
-                // setIngredientQuantity(0)
-                // setIngredientUnit('')
-                // props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
-                // document.getElementById("recipeForm").reset();
-                // setRedirect(true)
+                setIngredients([])
+                setIngredientName('')
+                setIngredientQuantity(0)
+                setIngredientUnit('')
+                setRedirect(true)
                
             })
+    }
+
+    if (redirect) {
+       // console.log('twsitedRecipe Id',twistedRecipeId)
+       return <Redirect to={`/recipe/${recipeData._id}`} />
+       
     }
 
     return (
@@ -237,11 +310,15 @@ const AddTwist = props => {
                 <Form.Group widths='equal'>
                     { showSteps    }             
                 </Form.Group>
-                <Form.Group widths='equal'>
+           
                     <Form.Field>
                         <Button onClick={(e) => addSteps(e)}>Add steps</Button>
                     </Form.Field>  
-               </Form.Group>  
+   
+               <RecipeAddIngredientsModal ingredients={ingredients} unitOptions={unitOptions} handleIngredientQuantityChange={handleIngredientQuantityChange} handleIngredientUnitChange={handleIngredientUnitChange} handleIngredientNameChange={handleIngredientNameChange} handleRemoveIngredient={handleRemoveIngredient} />
+                <Form.Field>
+                    <Button onClick={addNewIngredient}>Add a new ingredient</Button>
+                </Form.Field>
             </Form>
         </Container>
     )
