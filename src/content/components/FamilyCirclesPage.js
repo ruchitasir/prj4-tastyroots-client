@@ -19,13 +19,12 @@ const FamilyCirclesPage = props => {
         return (
             <List key={fam._id._id}>
                 <List.Item>
-                    <Icon name='heart outline' />
                     <List.Content key={fam._id}>
                         <List.Header as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
-                        <Item.Meta>{fam.userRole}</Item.Meta>
-                        {fam.userRole == 'creator' ? <List.Description>Family Token: {fam._id.familyToken}</List.Description> : ''}
-                        <Item.Meta>Country of Origin: {fam._id.countryOrigin}</Item.Meta>
-                        <Item.Meta>{fam._id.familyStory}</Item.Meta>
+                        <Item.Meta><Icon name='user circle' />{fam.userRole}</Item.Meta>
+                        {fam.userRole == 'creator' ? <List.Description> <Icon name='lock' />Family Token: {fam._id.familyToken}</List.Description> : ''}
+                    <Item.Meta><Icon name="globe"/>Country of Origin: {fam._id.countryOrigin}</Item.Meta>
+                        <Item.Meta><Icon name="spoon"/>{fam._id.familyStory}</Item.Meta>
                     </List.Content>
                 </List.Item>
                 <div className="ui divider"></div>
@@ -55,7 +54,7 @@ const FamilyCirclesPage = props => {
                     </Grid.Column>
                 </Grid.Row>
                 <Divider horizontal>
-                    <Header as='h4'><Icon name='users'/>Your Family Circle</Header>
+                    <Header as='h4'><Icon name='users' />Your Family Circle</Header>
                 </Divider>
                 <Grid.Row>
                     <Grid.Column>

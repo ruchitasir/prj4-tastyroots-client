@@ -182,7 +182,7 @@ const RecipeAddModal = props => {
                 props.updateState ? props.setUpdateState(false) : props.setUpdateState(true)
                 document.getElementById("recipeForm").reset();
                 setRedirect(true)
-               
+
             })
     }
 
