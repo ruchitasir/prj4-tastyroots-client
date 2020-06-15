@@ -141,14 +141,14 @@ const RecipeDetails = props => {
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
-                    <Grid.Column width={8}>
-                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={defaultImg} wrapped /> : <Image src={recipeData.pictures[0]} wrapped />}
+                    <Grid.Column width={4}>{recipeData.description ? <p className="top-spacing">{recipeData.description}</p>: ''} </Grid.Column>
+                    <Grid.Column width={4}>
+                        {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src={defaultImg} wrapped className="recipePic" /> : <Image src={recipeData.pictures[0]} wrapped className="recipePic" />}
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
                     <Button size="tiny" className="btn-outline" as={Link} to={`/recipe/${recipeData._id}/twist`} >Add Twist</Button>
-                
                     {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" className="btn-outline">Share Recipe</Button> : null}
                 </Grid.Row>
                 {share ? <ShareWith share={share} setShare={setShare} recipeData={recipeData} userFamilies={userFamilies}

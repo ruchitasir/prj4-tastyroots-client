@@ -162,3 +162,6 @@ a:hover, a:visited, #link {
 #logo {
   max-height: 100px;
 }
+.recipePic image {
+  max-height: 300px;
+}
