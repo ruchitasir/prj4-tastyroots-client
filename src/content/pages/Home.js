@@ -31,15 +31,16 @@ const Home = props => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column>
-            <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592191196/tasty-roots/d541fyn0p7wzjwmer4d5.jpg" alt="pizza" />
-          </Grid.Column>
-          <Grid.Column>
-            <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png" alt="nacho" />
+        <Grid.Column>
+            <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592190801/tasty-roots/bdx9lfvglqedjwju2fyr.jpg" alt="thali" />
           </Grid.Column>
           <Grid.Column>
             <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592161929/tasty-roots/drjgcu4xvqs57yxkmaxy.jpg" alt="fried rice" />
           </Grid.Column>
+        <Grid.Column>
+            <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png" alt="nacho" />
+          </Grid.Column>
+          
           <Grid.Column className="square">
             <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg" alt="lumpia" />
           </Grid.Column>
