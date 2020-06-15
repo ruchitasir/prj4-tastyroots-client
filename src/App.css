@@ -142,3 +142,23 @@ a:hover, a:visited, #link {
   color: #5A2737 !important;
   font-family: 'Lato' sans-serif;
 }
+.color1 {
+  background-color: #84728F !important;
+}
+.color2 {
+  background-color:#5A2737 !important;
+}
+.color3 {
+  background-color: #84728F !important;
+}
+.color4 {
+  background-color: #84728F !important;
+}
+.square {
+  max-width: 400px;
+  width: 400px;
+  max-height: 400px;
+}
+.about {
+  font-size: 1.2em;
+}

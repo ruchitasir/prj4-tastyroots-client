@@ -42,8 +42,8 @@ const FamilyCirclesPage = props => {
                 <Grid.Row>
                     <Grid.Column>
                         <Header as="h1" dividing>Family Circles</Header>
-                        <Image attached src="http://placekitten.com/300/300"/>
-                        <Segment raised>Good food has a way of bringing families together. Every gathering, every meal and every special occasion- family history is made. What are some of your fond memories with your family? Share your creations with a family circle of your choosing.
+                        <Image attached src="https://res.cloudinary.com/tasty-roots/image/upload/v1592192547/tasty-roots/5FED2003-F410-43F4-84E2-D19722D8B4B8_e95vqi.png"/>
+                        <Segment textAlign="center" as="h2">Good food has a way of bringing families together. Every gathering, every meal and every special occasion- family history is made.<br/> What are some of your fond memories with your family? Share your creations with a family circle of your choosing.
                         <br/>
                         {/* <Segment.Inline>
                         <FamilyAddModal userDetails={props.userDetails} />
