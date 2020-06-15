@@ -6,26 +6,26 @@ import Moment from 'moment'
 
 const UserRecipes = props => {
 
-    let defaultImageArr = [
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592157853/tasty-roots/zglx6vph69ix5trog2js.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592160517/tasty-roots/vykzrh9lnhk25axpku2j.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161032/tasty-roots/dsajyspmwi63hbrucebz.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161120/tasty-roots/rt4dyiaqxia9shzup9md.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161324/tasty-roots/wphj0nie7cyy56kff9ex.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161777/tasty-roots/tsuzpiavicimssdb7tft.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592161929/tasty-roots/drjgcu4xvqs57yxkmaxy.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162398/tasty-roots/lqrazeqnisqlpqpsbdni.jpg',
-        'https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg'
-    ]
-    let randoNum = Math.floor(Math.random() * defaultImageArr.length)
-    let defaultImg = defaultImageArr[randoNum]
+    // let defaultImageArr = [
+
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592160517/tasty-roots/vykzrh9lnhk25axpku2j.jpg',
+    //     'https://res.cloudinary.com/tasty-roots/image/upload/v1592161032/tasty-roots/dsajyspmwi63hbrucebz.jpg'
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161120/tasty-roots/rt4dyiaqxia9shzup9md.jpg',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161324/tasty-roots/wphj0nie7cyy56kff9ex.jpg',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161777/tasty-roots/tsuzpiavicimssdb7tft.jpg',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161929/tasty-roots/drjgcu4xvqs57yxkmaxy.jpg',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592162398/tasty-roots/lqrazeqnisqlpqpsbdni.jpg',
+    //     // 'https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg'
+    // ]
+    // let randoNum = Math.floor(Math.random() * defaultImageArr.length)
+    // let defaultImg = defaultImageArr[randoNum]
 
     let recipe = props.userDetails.recipes.map(r => {
         let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
             <Card key={r._id}>
-                {(!r.pictures || r.pictures.length < 1) ? <Image src={defaultImg} wrapped /> : <Image src={r.pictures[0]} wrapped />}
+                {(!r.pictures || r.pictures.length < 1) ? <Image src='https://res.cloudinary.com/tasty-roots/image/upload/v1592161032/tasty-roots/dsajyspmwi63hbrucebz.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                 <Card.Content>
                     <Card.Header as={Link} to={`/recipe/${r._id}`}>{r.recipeName}</Card.Header>
                     <Card.Meta>
