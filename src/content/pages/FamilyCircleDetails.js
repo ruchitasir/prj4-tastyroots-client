@@ -51,7 +51,7 @@ const FamilyCircleDetails = props => {
         <Container className="top-spacing-2">
             <Grid columns={2}  divided>
                 <Grid.Column width={4}>
-                    <h1>{familyData.familyName} Family</h1>
+                    <Header as="h1">{familyData.familyName} Family</Header>
                     <Item.Content>Country of Origin: {familyData.countryOrigin}</Item.Content>
                 </Grid.Column>
                 <Grid.Column width={12}>
