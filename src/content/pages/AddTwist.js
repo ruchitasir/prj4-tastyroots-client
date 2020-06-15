@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import {  Redirect, useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
+import RecipePics from '../components/RecipePics'
 
+<<<<<<< HEAD
+=======
+let twistedRecipeId = ''
+>>>>>>> 6a2c7a352975042617df4e0b285fcbff1c9c2ba5
 const AddTwist = props => {
     let { id } = useParams()
     let [recipeData, setRecipeData] = useState([])
+    let [imageUrl, setImageUrl] = useState('')
 
     let [message, setMessage] = useState()
     let [redirect, setRedirect] = useState(false)
- 
+
     let [recipeStatus, setRecipeStatus] = useState(false)
     let [recipeName, setRecipeName] = useState()
     let [description, setDescription] = useState()
@@ -23,8 +29,13 @@ const AddTwist = props => {
     let [ingredientUnit, setIngredientUnit] = useState()
     let [ingredientQuantity, setIngredientQuantity] = useState()
 
+<<<<<<< HEAD
   
     
+=======
+    // let [twistedRecipeData,setTwistedRecipeData] = useState()
+
+>>>>>>> 6a2c7a352975042617df4e0b285fcbff1c9c2ba5
 
     const servingsOptions = [
         { text: '1', value: 1 },
@@ -83,15 +94,15 @@ const AddTwist = props => {
                     .then(result => {
                         setRecipeData(result)
                         console.log(result)
-                        if(result){
-                            console.log('recipe steps',result.steps)
+                        if (result) {
+                            console.log('recipe steps', result.steps)
                             setSteps(result.steps)
                             setRecipeName(result.recipeName)
-                            setServings(result.servings)    
+                            setServings(result.servings)
                             setDescription(result.description)
                             setCookTime(result.cookTime)
                             setPrepTime(result.prepTime)
-                            console.log('recipe status',result.recipePublic)
+                            console.log('recipe status', result.recipePublic)
                             setRecipeStatus(result.recipePublic)
                             setIngredients(result.ingredients)
                         }
@@ -108,9 +119,9 @@ const AddTwist = props => {
     }, [])
     if (!props.user) {
         return (
-        <Redirect to="/" />
+            <Redirect to="/" />
         )
-      }
+    }
 
     const toggleRecipeStatus = (e, data) => {
         setRecipeStatus(data.checked)
@@ -137,8 +148,8 @@ const AddTwist = props => {
         setSteps(newSteps)
     }
 
-    const handleServings = (e, data) =>{ 
-        console.log('servings data',data)
+    const handleServings = (e, data) => {
+        console.log('servings data', data)
         setServings(data.value)
     }
 
@@ -177,21 +188,21 @@ const AddTwist = props => {
 
 
     let showSteps = ''
-    if(steps){
-        showSteps =  steps.map((step, ind) => {
+    if (steps) {
+        showSteps = steps.map((step, ind) => {
             return (
                 <Form.Group widths='equal'>
-                        <Form.Input  label="Step" name="step" value={step} onChange={(e) => handleStepChange(e, ind)} required />
-                        <Form.Button onClick={() => handleRemoveSteps(ind)} className="remove-btn">Remove</Form.Button>
+                    <Form.Input label="Step" name="step" value={step} onChange={(e) => handleStepChange(e, ind)} required />
+                    <Form.Button onClick={() => handleRemoveSteps(ind)} className="remove-btn">Remove</Form.Button>
                 </Form.Group>
             )
         })
 
     }
 
-    let showPublic  =  <Form.Radio label='Public' onChange={toggleRecipeStatus} toggle />
-    if(recipeStatus){
-      showPublic =  <Form.Radio label='Public' onChange={toggleRecipeStatus} toggle checked/>
+    let showPublic = <Form.Radio label='Public' onChange={toggleRecipeStatus} slider />
+    if (recipeStatus) {
+        showPublic = <Form.Radio label='Public' onChange={toggleRecipeStatus} slider checked />
     }
 
     const handleSubmit = (e) => {
@@ -206,8 +217,8 @@ const AddTwist = props => {
             return ingStr
         })
         ingredients = ing
-      
-         
+
+        
         console.log('recipe originalRecipe ', originalRecipe)
         console.log('recipe recipeName ', recipeName)
         console.log('recipe description ', description)
@@ -217,8 +228,8 @@ const AddTwist = props => {
         console.log('recipe prepTime ', prepTime)
         console.log('recipe steps ', steps)
         console.log('recipe status public', recipeStatus)
-        console.log('recipe ingredients',ingredients)
-
+        console.log('recipe ingredients', ingredients)
+        let pictures = imageUrl
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',
@@ -232,7 +243,8 @@ const AddTwist = props => {
                 cookTime,
                 ingredients,
                 steps,
-                recipePublic
+                recipePublic, 
+                pictures
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -265,7 +277,7 @@ const AddTwist = props => {
                 setIngredientQuantity(0)
                 setIngredientUnit('')
                 setRedirect(true)
-               
+
             })
     }
 
@@ -279,40 +291,39 @@ const AddTwist = props => {
 
         <Container>
             <Form>
-                    <Form.Field> 
-                          <Form.Button color='green' type='submit' onClick={(e) => handleSubmit(e)}>Add twist</Form.Button>
-                    </Form.Field>
-                    {showPublic}
+                {showPublic}
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Form.Input label='Recipe Name' name= 'recipeName' value={recipeName} placeholder={recipeData.recipeName} onChange={(e) => setRecipeName(e.target.value)} required />
+                        <Form.Input label='Recipe Name' name='recipeName' value={recipeName} placeholder={recipeData.recipeName} onChange={(e) => setRecipeName(e.target.value)} required />
                     </Form.Field>
                     <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" value={servings} onChange={handleServings} placeholder={recipeData.servings} />
                 </Form.Group>
                 <Form.Group widths='equal'>
-                        <Form.Field>
-                            <Form.Input label="Prep Time" name="prepTime" value={prepTime} onChange={(e) => setPrepTime(e.target.value)}  placeholder={recipeData.prepTime}/>
-                        </Form.Field>
-                        <Form.Field>
-                            <Form.Input label="Cook Time" name="cookTime" value={cookTime} onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime}/>
-                        </Form.Field>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                        <Form.Field>
-                            <Form.TextArea label="Description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder={recipeData.description} required />
-                        </Form.Field>           
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    { showSteps    }             
-                </Form.Group>
-           
                     <Form.Field>
-                        <Button onClick={(e) => addSteps(e)}>Add steps</Button>
-                    </Form.Field>  
-   
-               <RecipeAddIngredientsModal ingredients={ingredients} unitOptions={unitOptions} handleIngredientQuantityChange={handleIngredientQuantityChange} handleIngredientUnitChange={handleIngredientUnitChange} handleIngredientNameChange={handleIngredientNameChange} handleRemoveIngredient={handleRemoveIngredient} />
+                        <Form.Input label="Prep Time" name="prepTime" value={prepTime} onChange={(e) => setPrepTime(e.target.value)} placeholder={recipeData.prepTime} />
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Input label="Cook Time" name="cookTime" value={cookTime} onChange={(e) => setCookTime(e.target.value)} placeholder={recipeData.cookTime} />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    <Form.Field>
+                        <Form.TextArea label="Description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder={recipeData.description} required />
+                    </Form.Field>
+                </Form.Group>
+                <Form.Group widths='equal'>
+                    {showSteps}
+                </Form.Group>
                 <Form.Field>
-                    <Button onClick={addNewIngredient}>Add a new ingredient</Button>
+                    <Button className="btn-outline" onClick={(e) => addSteps(e)}>Add steps</Button>
+                </Form.Field>
+                <RecipeAddIngredientsModal ingredients={ingredients} unitOptions={unitOptions} handleIngredientQuantityChange={handleIngredientQuantityChange} handleIngredientUnitChange={handleIngredientUnitChange} handleIngredientNameChange={handleIngredientNameChange} handleRemoveIngredient={handleRemoveIngredient} />
+                <Form.Field>
+                    <Button className="btn-outline" onClick={addNewIngredient}>Add a new ingredient</Button>
+                </Form.Field>
+                <RecipePics setImageUrl={setImageUrl} imageUrl={imageUrl} />
+                <Form.Field>
+                    <Button className="mauve-bg white-font" type='submit' onClick={(e) => handleSubmit(e)}>Add twist</Button>
                 </Form.Field>
             </Form>
         </Container>

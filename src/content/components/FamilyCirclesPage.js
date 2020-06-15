@@ -20,7 +20,7 @@ const FamilyCirclesPage = props => {
             <List key={fam._id._id}>
                 <List.Item>
                     <List.Content key={fam._id}>
-                        <List.Header as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
+                        <List.Header id="link" as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
                         <Item.Meta><Icon name='user circle' />{fam.userRole}</Item.Meta>
                         {fam.userRole === 'creator' ? <List.Description> <Icon name='lock' />Family Token: {fam._id.familyToken}</List.Description> : ''}
                         <Item.Meta><Icon name="globe" />Country of Origin: {fam._id.countryOrigin}</Item.Meta>
@@ -61,7 +61,7 @@ const FamilyCirclesPage = props => {
                 </Grid.Row>
 
                 <Divider horizontal>
-                    <Header as='h4'><Icon name='users' />Your Family Circle</Header>
+                    <Header as='h4'>Your Family Circles</Header>
                 </Divider>
                 <Grid.Row>
                     <Grid.Column>
