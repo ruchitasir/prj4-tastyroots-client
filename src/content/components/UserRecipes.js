@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardGroup, Container, Divider, Icon, Image, Header, Grid } from 'semantic-ui-react';
+import { Card, Container, Divider, Icon, Image, Header, Grid } from 'semantic-ui-react';
 import RecipeAddModal from './RecipeAddModal'
 import Moment from 'moment'
 
@@ -72,9 +72,9 @@ const UserRecipes = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            <CardGroup itemsPerRow={4}>
+            <Card.Group centered>
                 {recipe}
-            </CardGroup>
+            </Card.Group>
         </Container>
     )
 }

@@ -55,11 +55,11 @@ const Signup = props => {
   return (
 
     <Container fluid className="center-form middle">
-      {message ? <Alert message={message} /> : ''}
-      <Grid columns={2} verticalAlign="middle">
+      {/* {message ? <Alert message={message} /> : ''} */}
+      <Grid columns={2} verticalAlign="middle" stackable>
         <Grid.Row>
           <Grid.Column width={10}>
-            <Image src="./Beet_v2.png"/>
+            <Image src="https://res.cloudinary.com/tasty-roots/image/upload/v1592190472/tasty-roots/Beet_v2_bwqzcv.png"/>
           </Grid.Column>
           <Grid.Column width={1}></Grid.Column>
           <Grid.Column width={5}>
@@ -91,7 +91,7 @@ const Signup = props => {
               <Button className="mauve-bg white-font">Submit</Button>
             </Form>
             <Message attached='bottom'>
-              {message ? <><Icon name='Exclamation' /><span className="dark-grey">{message}</span></> : <><Icon name='help' /><span className="dark-grey">Already signed up? Login above.</span></>}
+              {message ? <><Icon name='Exclamation' className="mauve-font" /><span className="pink-font">{message}</span></> : <><Icon name='help' /><span className="dark-grey">Already signed up? Login above.</span></>}
             </Message>
           </Grid.Column>
         </Grid.Row>

@@ -6,7 +6,6 @@ const Home = props => {
   if (props.user) {
     return (
       <Container className="top-spacing-2" id="home" as={Grid} stackable columns={4}>
-        {/* <Grid stackable columns={4}> */}
         <Grid.Row className="top-spacing-2">
           <Grid.Column>
             <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592194329/tasty-roots/dvrf1i4qnsl2mvbs0ylq.jpg" alt="sushi" />
@@ -39,8 +38,7 @@ const Home = props => {
           </Grid.Column>
         <Grid.Column>
             <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592161406/tasty-roots/zqlmrmadu0fa2edexuwq.png" alt="nacho" />
-          </Grid.Column>
-          
+          </Grid.Column>     
           <Grid.Column className="square">
             <Image className="square" src="https://res.cloudinary.com/tasty-roots/image/upload/v1592162536/tasty-roots/cijg4nzovudo1tgomooi.jpg" alt="lumpia" />
           </Grid.Column>

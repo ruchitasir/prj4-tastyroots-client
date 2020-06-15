@@ -38,7 +38,7 @@ const FamilyCirclesPage = props => {
 
     return (
         <Container className="top-spacing">
-            <Grid>
+            <Grid stackable>
                 <Grid.Row>
                     <Grid.Column>
                         <Header as="h1" dividing>Family Circles</Header>
