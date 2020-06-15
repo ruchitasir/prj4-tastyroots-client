@@ -7,7 +7,7 @@ const RecipeAddStepsInModal = props => {
 
             return (
                 <Form.Group>
-                        <Form.Input width={16} label="Step" name="step" value={step} onChange={(e) => props.handleStepChange(e, ind)} required />
+                        <Form.Input fluid width={16} label="Step" name="step" value={step} onChange={(e) => props.handleStepChange(e, ind)} required />
                         <Form.Button onClick={() => props.handleRemoveSteps(ind)} className="remove-btn">Remove</Form.Button>
                 </Form.Group>
             )

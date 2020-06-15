@@ -49,7 +49,7 @@ const FamilyCircleDetails = props => {
     return (
 
         <Container className="top-spacing-2">
-            <Grid columns={2}  divided>
+            <Grid columns={2}  divided stackable>
                 <Grid.Column width={4}>
                     <Header as="h1">{familyData.familyName} Family</Header>
                     <Item.Content>Country of Origin: {familyData.countryOrigin}</Item.Content>

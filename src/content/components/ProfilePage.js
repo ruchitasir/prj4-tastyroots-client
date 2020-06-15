@@ -14,7 +14,7 @@ const ProfilePage = props => {
     }
     return (
         <Container className="top-spacing">
-            <Grid columns={2} divided>
+            <Grid columns={2} divided stackable>
                 <Grid.Row>
                     <Grid.Column>
                         <UserFromDB/>
@@ -24,7 +24,8 @@ const ProfilePage = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            <UserRecipes userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>
+            <UserRecipes userDetails={props.userDetails} updateState = {props.updateState} 
+            setUpdateState={props.setUpdateState} />
         </Container>
     )
 }

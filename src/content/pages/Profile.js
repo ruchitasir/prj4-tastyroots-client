@@ -8,6 +8,7 @@ const Profile = props => {
   let [userDetails, setUserDetails] = useState(null)
   let [updateState,setUpdateState]= useState(false)
 
+
   useEffect(() => {
     // Get the token from local storage
     let token = localStorage.getItem('boilerToken')
@@ -41,7 +42,8 @@ const Profile = props => {
   // If user signed in show, user details
   return (
     <div>
-       <ProfilePage user={props.user} userDetails={userDetails} updateState = {updateState} setUpdateState={setUpdateState}/>
+      <ProfilePage user={props.user} userDetails={userDetails} updateState={updateState} 
+      setUpdateState={setUpdateState} />
     </div>
     
   )

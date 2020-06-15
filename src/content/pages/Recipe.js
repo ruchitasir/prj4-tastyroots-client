@@ -75,7 +75,7 @@ const Recipe = props => {
     return (
         <Container>
             <Header as="h1" dividing>Community Recipes</Header>
-            <Card.Group itemsPerRow="4">
+            <Card.Group centered>
                 {display}
             </Card.Group>
         </Container>

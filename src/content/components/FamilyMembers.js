@@ -11,7 +11,7 @@ const FamilyMembers = props => {
     let members = props.familyData.members.map((m) => {
         let memberPic
         if (!m.picture){
-            memberPic = 'http://placekitten.com/200/200'
+            memberPic = 'https://res.cloudinary.com/tasty-roots/image/upload/v1592180109/tasty-roots/w3ptru2tsjlosw7rfyi9.jpg'
         }
         else {
             memberPic = m.picture
