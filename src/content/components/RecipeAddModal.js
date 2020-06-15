@@ -199,28 +199,28 @@ const RecipeAddModal = props => {
     /**************************************************************************/
     return (
 
-        <Modal id='recipeForm' trigger={<Icon className="burgundy-font" name='add' size='large' content="Add recipe"></Icon>} size={"large"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+        <Modal id='recipeForm' trigger={<Icon className="burgundy-font" name='add' size='large' content="Add recipe"></Icon>} stackable size="fullscreen" as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
             <Header icon='food' className="mauve-font" content='Add new recipe' />
             <Modal.Content>
                 <Form.Radio label='Public'
                     onChange={toggleRecipeStatus} slider className="mauve-font"/>
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Form.Input label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
+                        <Form.Input fluid label="Recipe Name" name="recipeName" onChange={(e) => setRecipeName(e.target.value)} required />
                     </Form.Field>
                     <Form.Select fluid required label='Servings' options={servingsOptions} name="servings" onChange={(e, data) => setServings(data.value)} placeholder="Servings" />
                 </Form.Group>
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Form.Input label="Prep Time" name="prepTime" onChange={(e) => setPrepTime(e.target.value)} />
+                        <Form.Input fluid label="Prep Time" name="prepTime" onChange={(e) => setPrepTime(e.target.value)} />
                     </Form.Field>
                     <Form.Field>
-                        <Form.Input label="Cook Time" name="cookTime" onChange={(e) => setCookTime(e.target.value)} />
+                        <Form.Input fluid label="Cook Time" name="cookTime" onChange={(e) => setCookTime(e.target.value)} />
                     </Form.Field>
                 </Form.Group>
                 <Form.Group widths='equal'>
                     <Form.Field>
-                        <Form.TextArea label="Description" name="description" onChange={(e) => setDescription(e.target.value)} required />
+                        <Form.TextArea fluid label="Description" name="description" onChange={(e) => setDescription(e.target.value)} required />
                     </Form.Field>
                 </Form.Group>
                 <RecipeAddIngredientsModal ingredients={ingredients} unitOptions={unitOptions} handleIngredientQuantityChange={handleIngredientQuantityChange} handleIngredientUnitChange={handleIngredientUnitChange} handleIngredientNameChange={handleIngredientNameChange} handleRemoveIngredient={handleRemoveIngredient} />

@@ -82,7 +82,7 @@ https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5z
         return (
             <Container>
                 <Header as='h2' dividing className="top-spacing">Twists</Header>
-                <Card.Group>{display}</Card.Group>
+                <Card.Group centered>{display}</Card.Group>
             </Container>
         )
 
