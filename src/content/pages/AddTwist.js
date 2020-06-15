@@ -4,10 +4,6 @@ import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
 import RecipePics from '../components/RecipePics'
 
-<<<<<<< HEAD
-=======
-let twistedRecipeId = ''
->>>>>>> 6a2c7a352975042617df4e0b285fcbff1c9c2ba5
 const AddTwist = props => {
     let { id } = useParams()
     let [recipeData, setRecipeData] = useState([])
@@ -29,13 +25,8 @@ const AddTwist = props => {
     let [ingredientUnit, setIngredientUnit] = useState()
     let [ingredientQuantity, setIngredientQuantity] = useState()
 
-<<<<<<< HEAD
   
     
-=======
-    // let [twistedRecipeData,setTwistedRecipeData] = useState()
-
->>>>>>> 6a2c7a352975042617df4e0b285fcbff1c9c2ba5
 
     const servingsOptions = [
         { text: '1', value: 1 },
