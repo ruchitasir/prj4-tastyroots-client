@@ -24,7 +24,8 @@ const ProfilePage = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            <UserRecipes userDetails={props.userDetails} updateState = {props.updateState} setUpdateState={props.setUpdateState}/>
+            <UserRecipes userDetails={props.userDetails} updateState = {props.updateState} 
+            setUpdateState={props.setUpdateState} />
         </Container>
     )
 }

@@ -164,6 +164,7 @@ const RecipeAddModal = props => {
                 }
                 response.json().then(result => {
                     console.log("result!", result)
+                    
 
                 })
             })
@@ -193,7 +194,7 @@ const RecipeAddModal = props => {
     }
 
     if (redirect) {
-       return <Redirect to="/profile" />
+    return <Redirect to="/profile" />
     }
     /**************************************************************************/
     return (
