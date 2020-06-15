@@ -90,8 +90,8 @@ const Signup = props => {
               <Form.Input label='Password' type='password' onChange={(e) => setPassword(e.target.value)} required placeholder="minimum 8 characters" />
               <Button className="mauve-bg white-font">Submit</Button>
             </Form>
-            <Message attached='bottom' className="pink-outline">
-              <Icon name='help' /><span className="dark-grey">Already signed up? Login above.</span>
+            <Message attached='bottom'>
+              {message ? <><Icon name='Exclamation' /><span className="dark-grey">{message}</span></> : <><Icon name='help' /><span className="dark-grey">Already signed up? Login above.</span></>}
             </Message>
           </Grid.Column>
         </Grid.Row>

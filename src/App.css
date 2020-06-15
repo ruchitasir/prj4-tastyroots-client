@@ -1,8 +1,8 @@
 .App {
-  height: 90vh;
+  height: 100%;
 }
 body, html {
-  height: 90vh;
+  height: 100%;
   font-family: "Lato";
 }
 main {
@@ -144,9 +144,9 @@ a:hover, a:visited, #link {
 }
 
 .square {
-  max-width: 400px;
-  width: 400px;
-  max-height: 400px;
+  max-width: 250px;
+  width: 250px;
+  max-height: 250px;
 }
 .about {
   font-size: 1.2em;
@@ -155,4 +155,10 @@ a:hover, a:visited, #link {
 .alert {
   margin: 0 auto !important; 
   padding: 0 auto !important;
+}
+#home {
+  max-height: 70vh !important;
+}
+#logo {
+  max-height: 100px;
 }

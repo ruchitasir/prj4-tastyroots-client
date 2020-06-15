@@ -14,7 +14,7 @@ const UserFromDB= ({ userData, fetchUser})=> {
     if(userData && userData.user )  {
         renderUser =  <Item.Group>
                          <Item>
-                            {userData.user.picture ? <Item.Image size='small' src={userData.user.picture} circular /> : <Item.Image size='small' src="http://placekitten.com/300/300" circular />}
+                            {userData.user.picture ? <Item.Image size='small' src={userData.user.picture} circular /> : <Item.Image size='small' src="https://res.cloudinary.com/tasty-roots/image/upload/v1592180109/tasty-roots/w3ptru2tsjlosw7rfyi9.jpg" circular />}
                             <Item.Content verticalAlign="middle">
                                 <h1>{userData.user.firstname} {userData.user.lastname}</h1>
                                 <Item.Meta>
