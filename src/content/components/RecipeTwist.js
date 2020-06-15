@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
-import {  Container, Header, Icon, Image, Card } from 'semantic-ui-react'
+import {  Container, Header, Icon, Image, Card, Button } from 'semantic-ui-react'
 
 const RecipeTwist = props => {
     let [recipeTwist, setRecipeTwist] = useState()
@@ -10,7 +10,7 @@ const RecipeTwist = props => {
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
-        fetch(process.env.REACT_APP_SERVER_URL + 'recipe/twist/' + id, {
+        fetch(process.env.REACT_APP_SERVER_URL + 'recipe/twist/' + props.recipeId, {
             method: 'GET',
             headers: {
                 'Content-Type': "application/json",
@@ -43,6 +43,11 @@ const RecipeTwist = props => {
         
     }, [])
 
+    const handleTwistLink =()=>{
+        props.updateTwist ? props.setUpdateTwist(false) : props.setUpdateTwist(true)
+    }
+
+
     if (!recipeTwist){
         return null
     }
@@ -54,7 +59,12 @@ const RecipeTwist = props => {
                 {(!r.pictures || r.pictures.length < 1) ? <Image src='
 https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5zjggogrej4qcal99e.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                 <Card.Content>
-                    <Card.Header as={Link} to={`/recipe/${r._id}`}>{r.recipeName}</Card.Header>
+                    {/* <Card.Header as={Link} to={`/recipe/${r._id}`}> */}
+                    <Card.Header>
+                        <Button size="tiny" className="btn-outline" as={Link} to={`/recipe/${r._id}`} onClick={handleTwistLink}>
+                            {r.recipeName}
+                        </Button>
+                    </Card.Header>
                     <Card.Meta>
                         <span className='date'>{r.datePosted}</span>
                     </Card.Meta>
@@ -71,7 +81,7 @@ https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5z
 
         return (
             <Container>
-                <Header as='h2 dividing' className="top-spacing">Twists</Header>
+                <Header as='h2' dividing className="top-spacing">Twists</Header>
                 <Card.Group>{display}</Card.Group>
             </Container>
         )
