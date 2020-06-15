@@ -4,7 +4,7 @@ import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Messag
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
 import RecipeTwist from '../components/RecipeTwist'
-import AddTwist from './AddTwist';
+
 
 const RecipeDetails = props => {
     let [recipeData, setRecipeData] = useState([])
@@ -14,12 +14,10 @@ const RecipeDetails = props => {
     let [sharedWith, setSharedWith] = useState([])
     let [share, setShare] = useState(false)
     let [updateShare, setUpdateShare] = useState(false)
+    let [updateTwist, setUpdateTwist] = useState(false)
     let { id } = useParams()
 
     //Fetch recipe details
-    // let [checked, setChecked] = useState(false)
-    // let [publicState, setPublicState] = useState()
-    // let [radiostate, setRadioState] = useState()
     useEffect(() => {
         //Get the token from local storage
         let token = localStorage.getItem('boilerToken')
@@ -55,7 +53,7 @@ const RecipeDetails = props => {
                 console.log(err)
             })
             console.log("WHAT HAPPENING WITH UPDATE SHARE", updateShare)
-    }, [updateShare])
+    }, [updateShare,updateTwist])
 
     //Fetch user details
     useEffect(() => {
@@ -84,7 +82,7 @@ const RecipeDetails = props => {
                 console.log("Error in profile", err)
             })
             console.log("WHAT HAPPENING WITH UPDATE SHARE 2", updateShare)
-    }, [updateShare])
+    }, [updateShare,updateTwist])
 
     if (!recipeData.creatorId) {
         return null
@@ -107,62 +105,7 @@ const RecipeDetails = props => {
             )
         })
     }
-    // var creatorName = recipeData.creatorId.firstname
-    // console.log('checked', checked)
-
-    // const handleToggle = (e) => {
-    //     console.log(e)
-    //     setChecked(!checked)
-    //     // let token = localStorage.getItem('boilerToken')
-    //     // console.log(e)
-    //     // fetch(process.env.REACT_APP_SERVER_URL + 'recipe/' + id, {
-    //     //     method: 'PUT',
-    //     //     headers: {
-    //     //         'Content-Type': "application/json",
-    //     //         'Authorization': `Bearer ${token}`
-    //     //     }
-    //     // })
-    //     //     .then(response => {
-    //     //         console.log('Response:', response)
-    //     //         if (!response.ok) {
-    //     //             setSecretMessage('Invalid')
-    //     //             return
-    //     //         }
-    //     //         //if response is good
-    //     //         response.json()
-    //     //             .then(result => {
-    //     //                 setRecipeData(result)
-    //     //                 console.log(result)
-    //     //             })
-    //     //             .catch((innErr) => {
-    //     //                 console.log('Error in RecipeDetails:', innErr)
-    //     //                 setSecretMessage(innErr)
-    //     //             })
-    //     //     })
-    //     //     .catch((err) => {
-    //     //         setSecretMessage(err)
-    //     //         console.log(err)
-    //     //     })
-
-    //     if (checked){
-    //     // toggleMsg = 'Public'
-    //     radioState = (<Radio toggle label="Public" onChange={(e) => handleToggle(checked} checked/>)
-    //     // setRadioState(radioState)
-    //     }
-    //     else{
-    //         radioState = (<Radio toggle label="Private" onChange={(e) => setChecked(e.currentTarget.value)} />)
-    //         // toggleMsg = 'Private'
-    //     }
-    // }
-    // // let toggleMsg
-    // var radioState = (<Radio toggle label="Public" onClick={handleToggle} value={checked} checked/>)
-    
-    
-    
-    // if (checked ? toggleMsg = 'Public' : toggleMsg = 'Private')
-    
-
-
+  
 
     //********************* Recipe Sharing ************************************
     // If the logged in user is the recipe creator, allow sharing with family circles
@@ -223,7 +166,7 @@ const RecipeDetails = props => {
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row>
-                    <RecipeTwist/>
+                    <RecipeTwist recipeId={recipeData._id} updateTwist={updateTwist} setUpdateTwist={setUpdateTwist}/>
                 </Grid.Row>
             </Grid>
         </Container>
