@@ -3,7 +3,6 @@ import {  Redirect, useParams } from 'react-router-dom'
 import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
 
-let twistedRecipeId =''
 const AddTwist = props => {
     let { id } = useParams()
     let [recipeData, setRecipeData] = useState([])
@@ -24,7 +23,7 @@ const AddTwist = props => {
     let [ingredientUnit, setIngredientUnit] = useState()
     let [ingredientQuantity, setIngredientQuantity] = useState()
 
-    // let [twistedRecipeData,setTwistedRecipeData] = useState()
+  
     
 
     const servingsOptions = [
@@ -248,11 +247,7 @@ const AddTwist = props => {
                 }
                 response.json().then(result => {
                 console.log("result!", result)
-                    if(result){
-                      //  setTwistedRecipeData(result)
-                      twistedRecipeId = result._id
-                        console.log("new twisted recipe id ",result._id,twistedRecipeId)   
-                    }
+                    
                 })
             })
             .catch(err => {
@@ -274,9 +269,9 @@ const AddTwist = props => {
             })
     }
 
+
     if (redirect) {
-       // console.log('twsitedRecipe Id',twistedRecipeId)
-       return <Redirect to={`/recipe/${recipeData._id}`} />
+        return <Redirect to={`/recipe/${recipeData._id}`} />
        
     }
 
