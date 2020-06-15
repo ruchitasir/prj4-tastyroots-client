@@ -29,7 +29,7 @@ const RecipeTwist = props => {
                         setRecipeTwist(result)
                         setSecretMessage(result)
                         console.log('Twist Results:', result)
-                       
+                    
                     })
                     .catch((innErr) => {
                         console.log('Error in RecipeDetails:', innErr)
@@ -68,10 +68,10 @@ https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5z
             </Card>
         )
     })
-   
+
         return (
             <Container>
-                <Header>Twists</Header>
+                <Header as='h2 dividing' className="top-spacing">Twists</Header>
                 <Card.Group>{display}</Card.Group>
             </Container>
         )

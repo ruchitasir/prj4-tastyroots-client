@@ -47,8 +47,8 @@ const FamilyCircleJoin= props=> {
 
    return(
             
-            <Modal id='joinFamilyForm' trigger={<Button name='add' size="small" basic color="purple">Join a Family Circle</Button>} size={"small"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
-                <Header icon='user circle' content='Enter the family token to join the family circle' />
+            <Modal id='joinFamilyForm' trigger={<Button name='add' size="small" className="btn-outline">Join a Family Circle</Button>} size={"small"} as={Form} onSubmit={(e) => handleSubmit(e)} closeIcon>
+                <Header icon='user circle' as="h1" content='Join a family circle' />
                 {/*    <span className="red">{message}</span> */}
                 <Modal.Content>
                     <Message info><p>Make sure your family token is at least 8 characters long.</p></Message>
@@ -59,7 +59,7 @@ const FamilyCircleJoin= props=> {
                     </Form.Group>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button color='green' type="submit">Join Family Circle</Button>
+                    <Button className="mauve-bg white-font" type="submit">Join Family Circle</Button>
                 </Modal.Actions>
             {message ? <Message warning error header='Oops!' content={message}/> : ''}
             </Modal>

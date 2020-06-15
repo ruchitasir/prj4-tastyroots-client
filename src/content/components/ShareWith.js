@@ -44,9 +44,8 @@ const ShareWith = props => {
                     return
                 }
                 response.json().then(result => {
-                    console.log("result!", result)
-                    console.log("PROPS? ", props.updateShare)
                     props.updateShare ? props.setUpdateShare(false) : props.setUpdateShare(true)
+                    props.setShare(false)
                 })
             })
             .catch(err => {
@@ -70,24 +69,29 @@ const ShareWith = props => {
     } else {
         display = (
             <><p>Add or join a family circle to share with.</p>
-                <Button type="text" size={'mini'} basic color="teal" as={Link} to="/familycircle">To family circles</Button></>
+                <Button type="text" size={'mini'} className="btn-outline" as={Link} to="/familycircle">To family circles</Button></>
         )
     }
 
     /**************************************************************************/
-    return (
-        <Container textAlign="center">
-            <Divider horizontal />
-            <Message info>
-                <Message.Header>Who do you want to share this recipe with?</Message.Header>
-                <Form onSubmit={handleSubmit}>
-                    {display}
-                    <Divider horizontal />
-                    {(props.userFamilies) ? <Button type="submit" size={'mini'} basic color="teal">Save</Button> : null}
-                </Form>
-            </Message>
-        </Container>
+ 
+        return (
+            <Container textAlign="center">
+                <Divider horizontal />
+                <Message>
+                    <Message.Header className="mauve-font">Who do you want to share this recipe with?</Message.Header>
+                    <Form onSubmit={handleSubmit}>
+                        {/* {showBox ? {display} : ''} */}
+                        {display}
+                        <Divider horizontal />
+                        {(props.userFamilies) ? <Button type="submit" size={'mini'} className="btn-outline">Save</Button> : null}
+                    </Form>
+                </Message>
+            </Container>
     )
+    
+    
 }
+
 
 export default ShareWith

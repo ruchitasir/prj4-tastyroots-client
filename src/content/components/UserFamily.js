@@ -24,7 +24,7 @@ const UserFamily = props => {
             <List.Item key={fam._id._id}>
                 <Icon name='users' />
                 <List.Content>
-                    <List.Header as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
+                    <List.Header id="link" as={Link} to={`/family/${fam._id._id}`}>{fam._id.familyName}</List.Header>
                     {fam.userRole === 'creator' ? <List.Description>Family Token: {fam._id.familyToken}</List.Description> : <List.Description>Member</List.Description>}
                 </List.Content>
             </List.Item>
