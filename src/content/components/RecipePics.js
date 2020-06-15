@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form } from 'semantic-ui-react';
 
 
-const RecipePic = props => {
+const RecipePics = props => {
     //Cloudinary widget + picture upload
     var checkUploadResult = (resultEvent) => {
         if (resultEvent.event === 'success') {
@@ -37,4 +37,4 @@ const RecipePic = props => {
     )
 }
 
-export default RecipePic
+export default RecipePics

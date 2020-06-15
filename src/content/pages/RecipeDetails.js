@@ -204,11 +204,11 @@ const RecipeDetails = props => {
                 </Grid.Row>
                 <Grid.Row className="top-spacing" centered>
                     <Divider horizontal />
-                    <Button size="tiny" basic color="teal" as={Link} to={`/recipe/${recipeData._id}/twist`} >Add Twist</Button>
+                    <Button size="tiny" className="btn-outline" as={Link} to={`/recipe/${recipeData._id}/twist`} >Add Twist</Button>
                 
-                    {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" basic color="teal">Share Recipe</Button> : null}
+                    {(props.user._id === recipeData.creatorId._id) ? <Button onClick={shareRecipe} size="tiny" className="btn-outline">Share Recipe</Button> : null}
                 </Grid.Row>
-                {share ? <ShareWith recipeData={recipeData} userFamilies={userFamilies}
+                {share ? <ShareWith share={share} setShare={setShare} recipeData={recipeData} userFamilies={userFamilies}
                     sharedWith={sharedWith} userDetails={userDetails} updateShare={updateShare} 
                     setUpdateShare={setUpdateShare}/> : ''}
                 <Divider horizontal />

@@ -29,7 +29,7 @@ const RecipeTwist = props => {
                         setRecipeTwist(result)
                         setSecretMessage(result)
                         console.log('Twist Results:', result)
-                       
+                    
                     })
                     .catch((innErr) => {
                         console.log('Error in RecipeDetails:', innErr)
