@@ -222,7 +222,9 @@ const RecipeDetails = props => {
                         <List as="ol">{instructions}</List>
                     </Grid.Column>
                 </Grid.Row>
-         
+                <Grid.Row>
+                    <RecipeTwist/>
+                </Grid.Row>
             </Grid>
         </Container>
     )

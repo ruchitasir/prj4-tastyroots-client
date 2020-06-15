@@ -108,3 +108,34 @@ a:hover, a:visited {
   color: #84728F !important;
   background-color: white !important; 
 }
+.lost {
+  width: 50%;
+  max-width: 50%;
+  margin: 0 auto;
+  opacity: 60%;
+}
+
+.error {
+  color:  #84728F !important;
+  font-size: 25em;
+  position: absolute;
+  opacity: 70%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.relative {
+  position: relative;
+  text-align: center;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.pg {
+  font-size: 1.2em;
+  color: #5A2737 !important;
+  font-family: 'Lato' sans-serif;
+}
