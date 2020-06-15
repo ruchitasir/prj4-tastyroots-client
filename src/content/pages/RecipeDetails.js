@@ -135,7 +135,7 @@ const RecipeDetails = props => {
     
     return (
         <Container>
-            <Grid >
+            <Grid stackable>
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
