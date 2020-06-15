@@ -142,3 +142,17 @@ a:hover, a:visited, #link {
   color: #5A2737 !important;
   font-family: 'Lato' sans-serif;
 }
+
+.square {
+  max-width: 400px;
+  width: 400px;
+  max-height: 400px;
+}
+.about {
+  font-size: 1.2em;
+}
+
+.alert {
+  margin: 0 auto !important; 
+  padding: 0 auto !important;
+}

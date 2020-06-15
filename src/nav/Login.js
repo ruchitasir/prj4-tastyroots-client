@@ -1,7 +1,7 @@
 // Packages
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Input, Menu } from 'semantic-ui-react'
+import { Button, Form, Input, Menu, Message } from 'semantic-ui-react'
 
 
 const Login = props => {
@@ -49,6 +49,7 @@ const Login = props => {
 
   return (
     <Menu.Menu position='right' className="login">
+      {props.message ?  <Message className="alert" size="tiny" info compact>{props.message}</Message>: ''}
       <Form size={"tiny"} onSubmit={handleSubmit}>
         <Form.Group className="login-fields" inline>
           <Menu.Item>

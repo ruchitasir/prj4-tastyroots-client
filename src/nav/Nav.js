@@ -20,7 +20,6 @@ const Nav = (props) => {
         name='Home'
         as={Link} to="/"
       />
-      message ? <p>{message}</p>: ''
       <Login user={props.user} updateToken={props.updateToken} message={message} setMessage={setMessage}/>
     </Menu>
   )
