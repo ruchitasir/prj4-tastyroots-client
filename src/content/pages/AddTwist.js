@@ -3,6 +3,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
 import RecipePics from '../components/RecipePics'
+import { CLOUDINARY_DEFAULT_IMG_2 } from '../components/CloudinaryImageConst'
 
 const AddTwist = props => {
     let { id } = useParams()
@@ -220,7 +221,11 @@ const AddTwist = props => {
         console.log('recipe steps ', steps)
         console.log('recipe status public', recipeStatus)
         console.log('recipe ingredients', ingredients)
-        let pictures = imageUrl
+        let pictures = [CLOUDINARY_DEFAULT_IMG_2]
+        if(imageUrl){
+             pictures = [imageUrl]
+        }
+        console.log('pictures check cloudinary', pictures)
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',

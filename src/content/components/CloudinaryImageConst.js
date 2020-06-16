@@ -1,0 +1,2 @@
+export const CLOUDINARY_DEFAULT_IMG = 'https://res.cloudinary.com/tasty-roots/image/upload/v1592210962/tasty-roots/hnipqqbegokxfutoghnz.jpg'
+export const CLOUDINARY_DEFAULT_IMG_2  = 'https://res.cloudinary.com/tasty-roots/image/upload/v1592161120/tasty-roots/rt4dyiaqxia9shzup9md.jpg'

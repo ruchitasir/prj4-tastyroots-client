@@ -4,7 +4,7 @@ import RecipeAddStepsInModal from '../components/RecipeAddStepsInModal'
 import RecipeAddIngredientsModal from './RecipeAddIngredientsModal';
 import RecipePics from './RecipePics'
 import { Redirect } from 'react-router-dom'
-
+import { CLOUDINARY_DEFAULT_IMG } from './CloudinaryImageConst'
 
 const RecipeAddModal = props => {
 
@@ -25,7 +25,7 @@ const RecipeAddModal = props => {
     let [ingredientQuantity, setIngredientQuantity] = useState()
     let [redirect, setRedirect] = useState(false)
 
-    let [imageUrl, setImageUrl] = useState(process.env.CLOUDINARY_DEFAULT_IMG)
+    let [imageUrl, setImageUrl] = useState()
 
     const servingsOptions = [
         { text: '1', value: 1 },
@@ -135,7 +135,12 @@ const RecipeAddModal = props => {
 
         let recipePublic = recipeStatus
         console.log('recipe status public', recipeStatus)
-        let pictures = imageUrl
+        let pictures = [CLOUDINARY_DEFAULT_IMG]
+        if(imageUrl){
+             pictures = [imageUrl]
+        }
+       
+        console.log('pictures check cloudinary', pictures)
         let token = localStorage.getItem('boilerToken')
         fetch(process.env.REACT_APP_SERVER_URL + 'recipe', {
             method: 'POST',
