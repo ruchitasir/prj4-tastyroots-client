@@ -25,7 +25,7 @@ const RecipeAddModal = props => {
     let [ingredientQuantity, setIngredientQuantity] = useState()
     let [redirect, setRedirect] = useState(false)
 
-    let [imageUrl, setImageUrl] = useState('')
+    let [imageUrl, setImageUrl] = useState(process.env.CLOUDINARY_DEFAULT_IMG)
 
     const servingsOptions = [
         { text: '1', value: 1 },
