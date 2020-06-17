@@ -22,11 +22,11 @@ footer {
   float: right;
 }
 .top-spacing {
-  margin-top: 1.5em;
+  margin-top: 1.5em !important;
 }
 
 .top-spacing-2 {
-  margin-top: 3em;
+  margin-top: 3em !important;
 }
 .btm-spacing {
   margin-bottom: 1.5em;
