@@ -118,13 +118,14 @@ const RecipeDetails = props => {
     
     return (
         <Container>
+            <Header as="h1">{recipeData.recipeName}</Header>
             <Grid stackable>
+                {/* <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row> */}
                 <Grid.Row>
-                    <Grid.Column width={8}>
-                        <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row>
+                    <Grid.Column width={6}>
                         <RecipeDetailsSnap recipeData={recipeData} />
                     </Grid.Column>
-                    <Grid.Column width={4}>{recipeData.description ? <p className="top-spacing">{recipeData.description}</p>: ''} </Grid.Column>
+                    <Grid.Column width={6}>{recipeData.description ? <p className="top-spacing-2">{recipeData.description}</p>: ''} </Grid.Column>
                     <Grid.Column width={4}>
                         {(!recipeData.pictures || recipeData.pictures.length < 1) ? <Image src='https://res.cloudinary.com/tasty-roots/image/upload/v1592210962/tasty-roots/hnipqqbegokxfutoghnz.jpg' wrapped className="recipePic" /> : <Image src={recipeData.pictures[0]} wrapped className="recipePic" />}
                     </Grid.Column>
