@@ -165,3 +165,11 @@ a:hover, a:visited, #link {
 .recipePic image {
   max-height: 300px;
 }
+.center-it {
+  padding-left: 10%;
+}
+.btn-link {
+  background-color: white !important;
+  padding-left: 0 !important;
+
+}

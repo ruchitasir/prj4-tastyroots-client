@@ -120,7 +120,6 @@ const RecipeDetails = props => {
         <Container>
             <Header as="h1">{recipeData.recipeName}</Header>
             <Grid stackable>
-                {/* <Grid.Row><h1>{recipeData.recipeName}</h1></Grid.Row> */}
                 <Grid.Row>
                     <Grid.Column width={6}>
                         <RecipeDetailsSnap recipeData={recipeData} />

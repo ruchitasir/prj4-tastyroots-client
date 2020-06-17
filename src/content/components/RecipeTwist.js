@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import {  Container, Header, Icon, Image, Card, Button } from 'semantic-ui-react'
+import Moment from 'moment'
 
 const RecipeTwist = props => {
     let [recipeTwist, setRecipeTwist] = useState()
@@ -51,8 +52,8 @@ const RecipeTwist = props => {
     if (!recipeTwist){
         return null
     }
-    
     let display = recipeTwist.map((r) => {
+        let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
 
         <Card key={r._id}>
@@ -61,12 +62,12 @@ https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5z
                 <Card.Content>
                     {/* <Card.Header as={Link} to={`/recipe/${r._id}`}> */}
                     <Card.Header>
-                        <Button size="tiny" className="btn-outline" as={Link} to={`/recipe/${r._id}`} onClick={handleTwistLink}>
+                        <Button className="btn-link" as={Link} to={`/recipe/${r._id}`} onClick={handleTwistLink}>
                             {r.recipeName}
                         </Button>
                     </Card.Header>
                     <Card.Meta>
-                        <span className='date'>{r.datePosted}</span>
+                        <span className='date'>{recipeDate}</span>
                     </Card.Meta>
                     <Card.Description>
                         {r.description}
@@ -82,11 +83,10 @@ https://res.cloudinary.com/tasty-roots/image/upload/v1592124358/tasty-roots/ow5z
         return (
             <Container>
                 <Header as='h2' dividing className="top-spacing">Twists</Header>
-                <Card.Group centered>{display}</Card.Group>
+                <Card.Group classname="center-it">{display}</Card.Group>
             </Container>
         )
 
-   
 }
 
 export default RecipeTwist
