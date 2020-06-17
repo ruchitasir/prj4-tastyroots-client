@@ -4,6 +4,7 @@ import { Redirect, useParams } from 'react-router-dom'
 import { Container, Grid, Item, Header } from 'semantic-ui-react'
 import RecipeCards from '../components/RecipeCards'
 import FamilyMembers from '../components/FamilyMembers'
+import TopButton from '../components/TopButton'
 
 const FamilyCircleDetails = props => {
     let [familyData, setFamilyData] = useState([])
@@ -66,6 +67,7 @@ const FamilyCircleDetails = props => {
                 <FamilyMembers familyData={familyData} />
             </Grid.Row>
             <RecipeCards familyData={familyData} />
+            <TopButton />
         </Container>
     )
 }

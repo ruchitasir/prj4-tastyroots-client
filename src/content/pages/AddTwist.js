@@ -4,6 +4,7 @@ import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
 import RecipePics from '../components/RecipePics'
 import { CLOUDINARY_DEFAULT_IMG_2 } from '../components/CloudinaryImageConst'
+import TopButton from '../components/TopButton'
 
 const AddTwist = props => {
     let { id } = useParams()
@@ -322,6 +323,7 @@ const AddTwist = props => {
                     <Button className="mauve-bg white-font" type='submit' onClick={(e) => handleSubmit(e)}>Add twist</Button>
                 </Form.Field>
             </Form>
+            <TopButton />
         </Container>
     )
 

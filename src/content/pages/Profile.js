@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import ProfilePage from '../components/ProfilePage'
 import UserFromDB from '../components/UserFromDB'
+import TopButton from '../components/TopButton'
 
 const Profile = props => {
 
@@ -44,6 +45,7 @@ const Profile = props => {
     <div>
       <ProfilePage user={props.user} userDetails={userDetails} updateState={updateState} 
       setUpdateState={setUpdateState} />
+      <TopButton />
     </div>
     
   )

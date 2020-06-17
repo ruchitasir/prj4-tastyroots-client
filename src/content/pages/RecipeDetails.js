@@ -4,6 +4,7 @@ import { Button, Checkbox, Container, Divider, Grid, Header, Image, List, Messag
 import RecipeDetailsSnap from '../components/RecipeDetailsSnap'
 import ShareWith from '../components/ShareWith'
 import RecipeTwist from '../components/RecipeTwist'
+import TopButton from '../components/TopButton'
 
 
 const RecipeDetails = props => {
@@ -152,6 +153,7 @@ const RecipeDetails = props => {
                     <RecipeTwist recipeId={recipeData._id} updateTwist={updateTwist} setUpdateTwist={setUpdateTwist}/>
                 </Grid.Row>
             </Grid>
+            <TopButton />
         </Container>
     )
 }
