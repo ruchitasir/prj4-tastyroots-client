@@ -12,7 +12,6 @@ const RecipeCards = props => {
         let recipeDate = Moment(r.datePosted).format('MM/DD/YYYY')
         return (
 
-            <Grid.Column>
                 <Card key={r._id}>
                     {(!r.pictures || r.pictures.length < 1) ? <Image src='https://res.cloudinary.com/tasty-roots/image/upload/v1592160517/tasty-roots/vykzrh9lnhk25axpku2j.jpg' wrapped /> : <Image src={r.pictures[0]} wrapped />}
                     <Card.Content>
@@ -28,7 +27,6 @@ const RecipeCards = props => {
                         <Icon name='user' />Serves {r.servings}
                     </Card.Content>
                 </Card>
-            </Grid.Column>
 
         )
     })
@@ -44,11 +42,11 @@ const RecipeCards = props => {
     return (
         <Container className="top-spacing-2">
             <Header as="h2" dividing>Family Recipes</Header>
-            <Grid columns='equal' stackable>
-                <Grid.Row>
+            <Container className="top-spacing-2">
+                <Card.Group className="center-it">
                     {recipe}
-                </Grid.Row>
-            </Grid>
+                </Card.Group>
+            </Container>
 
         </Container>
     )
