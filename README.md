@@ -81,4 +81,4 @@ Client side
 - Comment section on recipes
 - Tags for filtering (included in current data schema)
 - Search feature
-
+- Further integration of redux to manage states
