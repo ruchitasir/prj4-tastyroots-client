@@ -1,5 +1,6 @@
 # Tasty Roots
 MERN Family Recipe Sharing App - a tasty way to preserve family recipes and keep your roots alive!
+demo account: tasty@roots.com (tastyroots)
 
 ## About
 Joined by their love of cooking and good food [Ruchita Sirkanungo](https://github.com/ruchitasir), [Sharon Lee](https://github.com/essleeung) and [Royce Ubando](https://github.com/royce-u) embarked on this journey to create a place to share recipes and keep their family traditions alive.
