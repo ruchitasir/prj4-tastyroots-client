@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom'
 import { Container, Form, Button } from 'semantic-ui-react';
 import RecipeAddIngredientsModal from '../components/RecipeAddIngredientsModal';
+import TwistAddSteps from '../components/TwistAddSteps';
 import RecipePics from '../components/RecipePics'
 import { CLOUDINARY_DEFAULT_IMG_2 } from '../components/CloudinaryImageConst'
+import TopButton from '../components/TopButton'
 
 const AddTwist = props => {
     let { id } = useParams()
@@ -179,18 +181,18 @@ const AddTwist = props => {
     }
 
 
-    let showSteps = ''
-    if (steps) {
-        showSteps = steps.map((step, ind) => {
-            return (
-                <Form.Group widths='equal'>
-                    <Form.Input label="Step" name="step" value={step} onChange={(e) => handleStepChange(e, ind)} required />
-                    <Form.Button onClick={() => handleRemoveSteps(ind)} className="remove-btn">Remove</Form.Button>
-                </Form.Group>
-            )
-        })
+    // let showSteps = ''
+    // if (steps) {
+    //     showSteps = steps.map((step, ind) => {
+    //         return (
+    //             <Form.Group>
+    //                 <Form.Input label="Step" name="step" value={step} onChange={(e) => handleStepChange(e, ind)} required />
+    //                 <Form.Button onClick={() => handleRemoveSteps(ind)} className="remove-btn">Remove</Form.Button>
+    //             </Form.Group>
+    //         )
+    //     })
 
-    }
+    // }
 
     let showPublic = <Form.Radio label='Public' onChange={toggleRecipeStatus} slider />
     if (recipeStatus) {
@@ -267,7 +269,7 @@ const AddTwist = props => {
                 setServings('')
                 setPrepTime('')
                 setCookTime('')
-                setSteps([])
+                // setSteps([])
                 setIngredients([])
                 setIngredientName('')
                 setIngredientQuantity(0)
@@ -308,8 +310,9 @@ const AddTwist = props => {
                     </Form.Field>
                 </Form.Group>
                 <Form.Group widths='equal'>
-                    {showSteps}
+                    {/* {showSteps} */}
                 </Form.Group>
+                <TwistAddSteps steps={steps} handleRemoveSteps={handleRemoveSteps} handleStepChange={handleStepChange} />
                 <Form.Field>
                     <Button className="btn-outline" onClick={(e) => addSteps(e)}>Add steps</Button>
                 </Form.Field>
@@ -322,6 +325,7 @@ const AddTwist = props => {
                     <Button className="mauve-bg white-font" type='submit' onClick={(e) => handleSubmit(e)}>Add twist</Button>
                 </Form.Field>
             </Form>
+            <TopButton />
         </Container>
     )
 

@@ -22,11 +22,11 @@ footer {
   float: right;
 }
 .top-spacing {
-  margin-top: 1.5em;
+  margin-top: 1.5em !important;
 }
 
 .top-spacing-2 {
-  margin-top: 3em;
+  margin-top: 3em !important;
 }
 .btm-spacing {
   margin-bottom: 1.5em;
@@ -115,14 +115,14 @@ a:hover, a:visited, #link {
   width: 50%;
   max-width: 50%;
   margin: 0 auto;
-  opacity:  60% !important;
+  opacity:  0.6;
 }
 
 .error {
   color:  #84728F !important;
   font-size: 25em;
   position: absolute;
-  opacity: 70% !important;
+  opacity: 0.7;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -164,4 +164,40 @@ a:hover, a:visited, #link {
 }
 .recipePic image {
   max-height: 300px;
+}
+.center-it {
+  padding-left: 10%;
+}
+.btn-link {
+  background-color: white !important;
+  padding-left: 0 !important;
+
+}
+/* back to top button  */
+.scrollTop {
+  position: fixed; 
+  right: 0;
+  bottom: 4em;
+  align-items: center;
+  height: 20px;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: opacity 0.4s;
+  opacity: 0.5;
+  border-radius: 50% !important;
+}
+
+.scrollTop:hover{
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }

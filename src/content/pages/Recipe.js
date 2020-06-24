@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import { Card, Container, Grid, Header, Icon, Image } from 'semantic-ui-react'
 import Moment from 'moment'
+import TopButton from '../components/TopButton';
 // import RecipeDetails from './RecipeDetails'
 
 //Fetch call to display all public recipes
@@ -75,9 +76,10 @@ const Recipe = props => {
     return (
         <Container>
             <Header as="h1" dividing>Community Recipes</Header>
-            <Card.Group centered>
+            <Card.Group className="center-it">
                 {display}
             </Card.Group>
+            <TopButton />
         </Container>
 
     )

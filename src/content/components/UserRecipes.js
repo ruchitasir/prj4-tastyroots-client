@@ -72,7 +72,7 @@ const UserRecipes = props => {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            <Card.Group centered>
+            <Card.Group className="center-it">
                 {recipe}
             </Card.Group>
         </Container>
