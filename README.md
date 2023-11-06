@@ -75,8 +75,6 @@ Client side
 | /recipe/:id | Recipe show page |
 | /family/:id | Family show page |
 
-
-
 #### Future features
 
 - Comment section on recipes
